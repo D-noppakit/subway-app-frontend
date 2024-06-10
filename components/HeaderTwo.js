@@ -16,7 +16,7 @@ export default function HeaderOne({ debug, CartCount }) {
       </div>
       <div className='w-[100px] flex justify-center items-center relative'>
         <div className='w-[70px] rounded-[100px] border border-[#DFE0E7] h-[45px] flex justify-between items-center ps-2 pe-2'>
-          <Image src={"/imgs/Core_Flat.png"} width={20} height={20} />
+          <Image src={"/imgs/Core_Flat.png"} width={20} height={20} alt='1' />
           <div >ไทย</div>
         </div>
       </div>
