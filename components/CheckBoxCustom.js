@@ -1,22 +1,23 @@
+"use client"
 import React, { useState } from 'react'
 
-export default function CheckBoxCustom({ text, isChecked, onCheckboxChange, disabled = true }) {
-
+export default function CheckBoxCustom({ text, isChecked, onCheckboxChange, disabled, id, item }) {
+    console.log({ item })
     const handleCheckboxChange = (event) => {
         const value = event.target.checked;
-        onCheckboxChange(value);
+        onCheckboxChange(value, id)
     };
     let themeClass = ""
     if (disabled) {
-        themeClass = "container-checkbox flex justify-center items-center disable"
+        themeClass = "container-checkbox flex justify-center items-center"
     } else {
-        themeClass = "container-checkbox flex justify-center items-center "
+        themeClass = "container-checkbox flex justify-center items-center"
     }
 
     return (
         <>
-            <label className={themeClass} htmlFor="checkbox1">{text}
-                <input type="checkbox" id="checkbox1" disabled={disabled} checked={isChecked} onChange={handleCheckboxChange} />
+            <label className={themeClass} >{text}
+                <input type="checkbox" disabled={disabled} checked={isChecked} onChange={handleCheckboxChange} />
                 <span className="checkmark-checkbox"></span>
             </label>
         </>
