@@ -1,16 +1,14 @@
+
 "use client"
 import Image from "next/image";
-import TextboxSubway from "@/components/subwaytextbox"
-import CheckBoxCustom from "@/components/CheckBoxCustom";
-import { useState } from "react";
-
-
+import ButtonOrange from "@/components/Button/ButtonOrange"
 export default function Home() {
 
 
   return (
     <>
       <div>Home</div>
+      < ButtonOrange btnText={"สั่งออเดอร์"} whenClick={() => { console.log("orangebutton") }} />
     </>
   );
 }
