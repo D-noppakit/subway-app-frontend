@@ -4,7 +4,7 @@ import React from 'react'
 export default function HeaderOne({ debug, CartCount }) {
 
   console.log(CartCount)
-  const bgClass = "flex w-full h-[76px] justify-between p-3 " + (debug ? "bg-green-500" : '')
+  const bgClass = "flex w-full h-[76px] justify-between p-3 absolute top-0" + (debug ? "bg-green-500" : '')
   // console.log(debug)
   return (
     <div className={bgClass}>
