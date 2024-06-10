@@ -160,3 +160,13 @@
   background: white;
   border: none;
 }
+
+/* when disable */
+/* When the checkbox is checked, add a  background */
+.container-radio input:checked:disabled~.checkmark-rad.container-radio {
+  background-color: #DFE0E7;
+}
+
+.container-radio input:checked:disabled~.checkmark-rad.container-radio:hover {
+  background-color: #DFE0E7;
+}

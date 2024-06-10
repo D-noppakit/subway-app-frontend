@@ -4,8 +4,9 @@ import TextboxSubway from "@/components/subwaytextbox"
 import CheckBoxCustom from "@/components/CheckBoxCustom";
 import { useState } from "react";
 import RadioBoxCustom from "@/components/RadioBoxCustom";
-
-
+import HeaderOne from "@/components/HeaderOne";
+import HeaderTwo from "@/components/HeaderTwo";
+import HeaderTree from "@/components/HeaderTree"
 
 export default function HowToUse() {
     // Mock data for checkboxes
@@ -33,7 +34,10 @@ export default function HowToUse() {
                     text={item.value}
                 />
             ))}
-            <RadioBoxCustom /> 
+            <RadioBoxCustom />
+            <HeaderOne debug={true} CartCount={10} />
+            <HeaderTwo debug={true}  CartCount={10} />
+            <HeaderTree debug={true}  CartCount={10} />
         </>
     );
 }
