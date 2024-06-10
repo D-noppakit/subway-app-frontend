@@ -3,6 +3,13 @@
 @tailwind utilities;
 
 
+
+:root {
+  --foreground-rgb: 0, 0, 0;
+  --background-start-rgb: 214, 219, 220;
+  --background-end-rgb: 255, 255, 255;
+}
+
 .container-checkbox {
   display: block;
   position: relative;
@@ -25,6 +32,13 @@
   width: 0;
 }
 
+body {
+  color: rgb(var(--foreground-rgb));
+  background: linear-gradient(to bottom,
+      transparent,
+      rgb(var(--background-end-rgb))) rgb(var(--background-start-rgb));
+}
+
 /* Create a custom checkbox */
 .checkmark-checkbox {
   position: absolute;
@@ -39,6 +53,66 @@
 /* On mouse-over, add a grey background color */
 .container-checkbox:hover input~.checkmark-checkbox {
   background-color: #ccc;
+}
+
+
+.custom-select {
+  position: relative;
+  display: inline-block;
+  color: #2C2C30;
+
+}
+
+.custom-select select {
+  display: inline-block;
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  font-size: 14px;
+}
+
+.custom-select::after {
+  content: '';
+  position: absolute;
+  width: 12px;
+  height: 6px;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  background: url('/imgs/arrow-down.png') no-repeat center center;
+  background-size: contain;
+  pointer-events: none;
+}
+
+.custom-select select.success {
+  border: 1px solid #32A75A;
+}
+
+.success-msg {
+  font-size: 12px;
+  color: #32A75A;
+  line-height: 18px;
+}
+
+.custom-select select.error {
+  border: 1px solid #EF4C49;
+}
+
+.error-msg {
+  font-size: 12px;
+  color: #EF4C49;
+  line-height: 18px;
+}
+
+.custom-select select.disabled {
+  border: 1px solid #DFE0E7;
+  background-color: #EDEFF5;
+  color: #A3A6B7;
+  cursor: not-allowed;
+
 }
 
 /* When the checkbox is checked, add a blue background */
@@ -128,7 +202,7 @@
 /* When the radio button is checked, add a blue background */
 .container-radio input:checked~.checkmark-radio {
   background-color: #00944D;
-  border: none; 
+  border: none;
 }
 
 /* Create the indicator (the dot/circle - hidden when not checked) */

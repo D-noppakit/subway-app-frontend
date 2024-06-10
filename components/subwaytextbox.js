@@ -1,3 +1,4 @@
+
 import * as React from 'react';
 export default function subwaytextbox({type}) {
     console.log("typeeee",type)
@@ -6,5 +7,5 @@ export default function subwaytextbox({type}) {
       <div></div>
        {/* <Button>Primary</Button> */}
     </div>
-  )
+  );
 }
