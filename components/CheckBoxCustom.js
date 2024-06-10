@@ -2,7 +2,7 @@
 import React, { useState } from 'react'
 
 export default function CheckBoxCustom({ text, isChecked, onCheckboxChange, disabled, id, item }) {
-    console.log({ item })
+    // console.log({ item })
     const handleCheckboxChange = (event) => {
         const value = event.target.checked;
         onCheckboxChange(value, id)

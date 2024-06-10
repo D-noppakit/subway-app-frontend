@@ -5,7 +5,6 @@ import CheckBoxCustom from "@/components/CheckBoxCustom";
 import { useState } from "react";
 
 
-
 export default function Home() {
 
 

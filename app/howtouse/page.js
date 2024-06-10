@@ -3,6 +3,7 @@ import Image from "next/image";
 import TextboxSubway from "@/components/subwaytextbox"
 import CheckBoxCustom from "@/components/CheckBoxCustom";
 import { useState } from "react";
+import RadioBoxCustom from "@/components/RadioBoxCustom";
 
 
 
@@ -11,7 +12,7 @@ export default function HowToUse() {
     const CheckBoxData = [{ id: 1, value: "แซนวิช", checked: false }, { id: 2, value: "แซนวิช2", checked: false }, { id: 3, value: "แซนวิช3", checked: false }];
     const [checkedItems, setCheckedItems] = useState(CheckBoxData);
     const handleCheckboxChange = (id, isChecked) => {
-        console.log({ id })
+        // console.log({ id })
         setCheckedItems(prevState =>
             prevState.map(item =>
                 item.id === id ? { ...item, checked: isChecked } : item
@@ -19,7 +20,7 @@ export default function HowToUse() {
         );
 
     };
-    console.log({ checkedItems })
+    // console.log({ checkedItems })
 
     return (
         <>
@@ -32,6 +33,7 @@ export default function HowToUse() {
                     text={item.value}
                 />
             ))}
+            <RadioBoxCustom /> 
         </>
     );
 }
