@@ -20,26 +20,22 @@ export default function HowToUse() {
         );
 
     };
+    // console.log({ checkedItems })
+
     return (
-        <>
-            {checkedItems.map((item) => (
-                <CheckBoxCustom
-                    key={item.id}
-                    item={item}
-                    isChecked={item.checked}
-                    onCheckboxChange={(isChecked) => handleCheckboxChange(item.id, isChecked)}
-                    text={item.value}
-                />
-            ))}
-            <RadioBoxCustom />
-            <HeaderOne debug={true} CartCount={10} />
-            <HeaderTwo debug={true}  CartCount={10} />
-            <HeaderTree debug={true}  CartCount={10} />
-            <CardWelcomeCustomer text1={"ลงชื่อเข้าใช้"} text2={"ปลดล็อคสิทธิประโยชน์อีกเพียบ ด้วยสมาชิก ซับเวย์ รีวอร์ด"} btnText={'ลงชื่อเข้าใช้ / สมัครสมาชิก'} whenClick={submit} type={2} />
-        </>
+        <div>
+
+            <CheckBoxCustom
+                key={1}
+                isChecked={true}
+                onCheckboxChange={()=>{console.log("hello")}}
+                text={"hello"}
+            />
+
+        </div>
     );
 }
 
-function submit(){
+function submit() {
     console.log("ลงชื่อเข้าใช้")
 }
