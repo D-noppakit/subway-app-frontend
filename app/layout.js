@@ -18,6 +18,7 @@ export default function RootLayout({ children }) {
     <>
       <Head>
         <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+        <link rel="subway" href="/favicon.ico" />
       </Head>
       <html lang="en">
         <body className={`${kanit.className} h-full w-full overflow-auto font-[500]`}>
