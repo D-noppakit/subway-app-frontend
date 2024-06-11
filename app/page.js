@@ -9,12 +9,18 @@ import CardSquare from "@/components/Card/CardSquare"
 import CardListItem from "@/components/Card/CardListItem";
 import Skeleton from 'react-loading-skeleton'
 import 'react-loading-skeleton/dist/skeleton.css'
+import { useStore } from "zustand";
+import CardSquareSkel from "@/components/Skeleton/CardSquareSkel"
+import HomeBanner from "@/components/HomeComponents/HomeBanner";
 
 
-export default function Home() {
+export default function page() {
+
   let listData = [
     { id: "1", value: "us" },
-    { id: "2", value: "en" }
+    { id: "2", value: "en" },
+    { id: "3", value: "en" },
+    { id: "4", value: "en" }
   ]
   const [isOpenBulgur, setIsOpenBulgur] = useState(false)
   const ClickBulgur = (state) => {
@@ -22,12 +28,15 @@ export default function Home() {
   }
   return (
     <div className="relative">
-      <HeaderOne CartCount={10} whenClickBulgur={ClickBulgur} />
+      <HeaderOne CartCount={0} whenClickBulgur={ClickBulgur} />
       <SelectionTopHome />
       <div className="w-screen p-5">
         <SectionBottom />
-        <CardSquare />
-        <CardListItem />
+        <div className="grid grid-cols-2 gap-3 justify-self-center">
+          {true ? <RenderCardSquareSkel /> : listData.map(v => <CardSquare key={v.id} />)}
+        </div>
+        <HomeBanner />
+        {/* <CardListItem /> */}
       </div>
       {/* bulgur when click */}
       <div className={"absolute top-0 z-50"}>
@@ -35,4 +44,15 @@ export default function Home() {
       </div>
     </div>
   );
+}
+
+function RenderCardSquareSkel() {
+  return(
+    <>
+      <CardSquareSkel />
+      <CardSquareSkel />
+      <CardSquareSkel />
+      <CardSquareSkel />
+    </>
+  )
 }

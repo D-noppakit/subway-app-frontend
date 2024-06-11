@@ -3,7 +3,7 @@ import Image from 'next/image'
 export default function CardSquare({ whenClick = () => console.log("CardSquare"), title = 'Italian B.M.T.', price = 185, fullPrice = 200, isDisabled = false }) {
   let hasdiscout = fullPrice && fullPrice > 0 && fullPrice > price
   return (
-    <div style={{ display: "flex", flexDirection: 'column', width: 'fit-content' }} onClick={whenClick}>
+    <div className='justify-self-center' style={{ display: "flex", flexDirection: 'column', width: 'fit-content' }} onClick={whenClick}>
       <Image src={"/imgs/demo/img1.webp"} alt="img1" height={164} width={164} sizes="100vw" style={{ borderRadius: "16px" }} />
       <div>
         <span>{title}</span>

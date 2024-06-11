@@ -21,10 +21,9 @@ export default function HeaderOne({ debug, CartCount, whenClickBulgur }) {
       <div className='w-[125px] h-full flex items-center align-middle justify-center'>
         <Image src={"/imgs/subway-logo-home.png"} width={200} height={200} alt='subway' />
       </div>
-      <div className='w-[36px] flex justify-center items-center relative'>
+      <div className='w-[30px] flex justify-center items-center relative'>
         {CartCount > 0 ? <NotiCart num={CartCount} /> : <></>}
-
-        <Image src={"/imgs/Cart.png"} width={200} height={200} alt='3' />
+        <Image src={"/imgs/CartOrange.png"} width={100} height={100} alt='3' />
       </div>
     </div>
   )
