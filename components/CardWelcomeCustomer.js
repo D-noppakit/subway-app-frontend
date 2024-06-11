@@ -21,7 +21,6 @@ export default function CardWelcomeCustomer({ text1, text2, whenClick, btnText, 
       <div className='text-[24px] w-full'>
         <span> {text1}  {type !== 1 ? <Image style={{ display: 'inline' }} src={"/imgs/smile.png"} width={20} height={10}
           alt="Picture of the author" /> : <></>}</span>
-
       </div>
       <div>{text2}</div>
       <Btn />
