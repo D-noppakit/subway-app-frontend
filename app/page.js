@@ -7,7 +7,6 @@ import SelectionTopHome from "@/components/SelectionTopHome";
 import SectionBottom from "@/components/HomeComponents/SectionBottom";
 import Head from "next/head";
 import SideNavBar from "@/components/HomeComponents/SideNavBar";
-import Selectbox from "@/components/subwaytextbox"
 import { useState } from "react";
 
 export default function Home() {
@@ -28,6 +27,7 @@ export default function Home() {
       <SelectionTopHome />
       {/* <Selectbox type="success" listData={listData}/> */}
       <SectionBottom />
+      
       {/* bulgur */}
       <div className={"absolute top-0 z-50"}>
         <SideNavBar isOpen={isOpenBulgur} Close={setIsOpenBulgur} />
