@@ -1,6 +1,6 @@
 import Image from 'next/image'
 
-export default function HeaderOne({ debug, CartCount }) {
+export default function HeaderTree({ debug, CartCount }) {
 
   console.log(CartCount)
   const bgClass = "flex w-full h-[76px] justify-between p-3 " + (debug ? "bg-green-500" : '')
