@@ -155,3 +155,15 @@
   background: var(--neutral50);
   color:var(--green600);
 }
+
+.price{
+  color: var(--green700);
+}
+
+.price-discount{
+  color: var(--red600);
+}
+
+.price-non-discout{
+  color: var(--neutral600);
+}
