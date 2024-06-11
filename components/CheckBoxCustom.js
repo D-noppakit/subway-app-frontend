@@ -1,7 +1,7 @@
 "use client"
 import React, { useState } from 'react'
 
-export default function CheckBoxCustom({ text, isChecked, onCheckboxChange, disabled, id, item }) {
+export default function CheckBoxCustom({ text, isChecked, onCheckboxChange, disabled, id }) {
     // console.log({ item })
     const handleCheckboxChange = (event) => {
         const value = event.target.checked;
@@ -9,7 +9,7 @@ export default function CheckBoxCustom({ text, isChecked, onCheckboxChange, disa
     };
     let themeClass = ""
     if (disabled) {
-        themeClass = "container-checkbox flex justify-center items-center"
+        themeClass = "container-checkbox flex justify-center items-center disabled"
     } else {
         themeClass = "container-checkbox flex justify-center items-center"
     }
