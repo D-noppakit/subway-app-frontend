@@ -1,14 +1,15 @@
 
 "use client"
-import Image from "next/image";
 import HeaderOne from "@/components/HeaderOne";
 import SelectionTopHome from "@/components/SelectionTopHome";
 import SectionBottom from "@/components/HomeComponents/SectionBottom";
-import Head from "next/head";
 import SideNavBar from "@/components/HomeComponents/SideNavBar";
 import { useState } from "react";
 import CardSquare from "@/components/Card/CardSquare"
 import CardListItem from "@/components/Card/CardListItem";
+import Skeleton from 'react-loading-skeleton'
+import 'react-loading-skeleton/dist/skeleton.css'
+
 
 export default function Home() {
   let listData = [
@@ -28,13 +29,10 @@ export default function Home() {
         <CardSquare />
         <CardListItem />
       </div>
-    
-
       {/* bulgur when click */}
       <div className={"absolute top-0 z-50"}>
         <SideNavBar isOpen={isOpenBulgur} Close={setIsOpenBulgur} />
       </div>
-
     </div>
   );
 }

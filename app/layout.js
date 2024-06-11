@@ -1,6 +1,6 @@
 import { Kanit } from '@next/font/google';
 const kanit = Kanit({
-  weight: ['400', '700'], // Specify the weights you need
+  weight: ['400', '500' , '700'], // Specify the weights you need
   subsets: ['thai', 'latin'], // Specify the subsets you need
 });
 import "./globals.css";
@@ -20,7 +20,7 @@ export default function RootLayout({ children }) {
         <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
       </Head>
       <html lang="en">
-        <body className={`${kanit.className} h-full w-full overflow-auto`}>
+        <body className={`${kanit.className} h-full w-full overflow-auto font-[500]`}>
           {children}
         </body>
       </html>
