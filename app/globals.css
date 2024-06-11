@@ -2,6 +2,69 @@
 @tailwind components;
 @tailwind utilities;
 
+:root {
+  --neutral50: #ffffff;
+  --neutral100: #f8f9fb;
+  --neutral200: #edeff5;
+  --neutral300: #e8eaf1;
+  --neutral400: #dfe0e7;
+  --neutral500: #c3c4cd;
+  --neutral600: #a3a6b7;
+  --neutral700: #72747d;
+  --neutral800: #3f4047;
+  --neutral900: #2c2c30;
+  --blue50: #eff8ff;
+  --blue100: #b9ddff;
+  --blue200: #8cc4ff;
+  --blue300: #72aeff;
+  --blue400: #5699ff;
+  --blue500: #3684f3;
+  --blue600: #0169cd;
+  --blue700: #005dc5;
+  --blue800: #004baf;
+  --blue900: #003999;
+  --orange50: #fff4ea;
+  --orange100: #ffd6bd;
+  --orange200: #ff996a;
+  --orange300: #ff8356;
+  --orange400: #ff6d42;
+  --orange500: #e6572f;
+  --orange600: #cd401b;
+  --orange700: #b44405;
+  --orange800: #9b2500;
+  --orange900: #832f00;
+  --red50: #ffece8;
+  --red100: #ffcdc6;
+  --red200: #ff988e;
+  --red300: #ff8279;
+  --red400: #ff6059;
+  --red500: #ef4c49;
+  --red600: #cd3e3f;
+  --red700: #b4262d;
+  --red800: #9b001c;
+  --red900: #83000c;
+  --yellowed50: #ffffe7;
+  --yellowed100: #fffed7;
+  --yellowed200: #fff7a6;
+  --yellowed300: #ffeb76;
+  --yellowed400: #fad759;
+  --yellowed500: #e9af3d;
+  --yellowed600: #ca8828;
+  --yellowed700: #af6e26;
+  --yellowed800: #895118;
+  --yellowed900: #5f370e;
+  --green50: #e8ffee;
+  --green100: #cbffe0;
+  --green200: #85ebae;
+  --green300: #75d390;
+  --green400: #57bd7a;
+  --green500: #32a75a;
+  --green600: #00944d;
+  --green700: #006e39;
+  --green800: #005929;
+  --green900: #004618;
+}
+
 /* Create a custom checkbox */
 .checkmark-checkbox {
   position: absolute;
@@ -78,3 +141,12 @@
 
 }
 
+.bt-custom.secondary {
+  background: #008938;
+  color: #FFFFFF;
+}
+
+.bt-custom.secondary {
+  background: #F2B700;
+  color: #FFFFFF;
+}
