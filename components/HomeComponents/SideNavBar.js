@@ -21,7 +21,7 @@ export default function SideNavBar({ isOpen = false, Close = () => console.log("
                 {isOpen && <HeaderTwo Close={handleClose} />}
                 <div className="p-4">
 
-                    <div className='relative mt-1 mb-5'>
+                    <div className=' relative mt-1 mb-5 flex justify-center'>
                         <CardWelcomeCustomer text1={"ลงชื่อเข้าใช้"} text2={"ปลดล็อคสิทธิประโยชน์อีกเพียบ ด้วยสมาชิก ซับเวย์ รีวอร์ด"} btnText={"ลงชื่อเข้าใช้ / สมัครสมาชิก"} />
                     </div>
                     <ButtonMenu text={"ออเดอร์ของฉัน"} img={logo1} />

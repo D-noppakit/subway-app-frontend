@@ -16,7 +16,7 @@ export default function Promotion() {
         // cssEase: "linear"
     };
     return (
-        <div className='mt-5 w-full overflow-hidden  p-5'>
+        <div className='mt-5 w-full overflow-hidden'>
             <Slider {...settings}>
                 <DrawListPromotion img={ImagePromotionDemo} />
                 <DrawListPromotion img={ImageDemo2} />

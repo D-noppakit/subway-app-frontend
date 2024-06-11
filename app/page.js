@@ -24,16 +24,11 @@ export default function Home() {
       <HeaderOne CartCount={10} whenClickBulgur={ClickBulgur} />
       <SelectionTopHome />
       <div className="w-screen p-5">
-          <CardSquare/>
-      </div>
-      <div className="w-screen p-5">
-          <CardListItem/>
-      </div>
-      {/* <Selectbox type="success" listData={listData}/> */}
-      <SectionBottom />
-      <div className="w-screen p-5">
+        <SectionBottom />
         <CardSquare />
+        <CardListItem />
       </div>
+    
 
       {/* bulgur when click */}
       <div className={"absolute top-0 z-50"}>
