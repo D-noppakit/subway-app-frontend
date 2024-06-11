@@ -2,6 +2,7 @@ import Image from "next/image"
 import SubwayRewards from "./HomeComponents/SubwayRewards"
 import ButtonCustom from "./Button/ButtonCustom"
 
+
 export default function SelectionTopHome({ NameLocation = "Subway CW Tower", headerText = 'ซับเวย์ ยินดีต้อนรับ', SubText = "วันนี้รับเมนูไหนดีครับ... สั่งออเดอร์ Subway ที่นี่ แล้วไปรับหน้าร้านได้เลยนะ!" }) {
     return (
         <main className={`w-full h-[466px] bg-[#0b8a45]`}>
