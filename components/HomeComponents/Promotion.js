@@ -8,11 +8,12 @@ export default function Promotion() {
     var settings = {
         dots: true,
         infinite: true,
-        speed: 200,
+        speed: 1000,
         slidesToShow: 1,
         slidesToScroll: 1,
         autoplay: true,
-        autoplaySpeed: 1000,
+        autoplaySpeed: 3000,
+        centerPadding: "100px"
         // cssEase: "linear"
     };
     return (
@@ -29,7 +30,7 @@ export default function Promotion() {
 }
 function DrawListPromotion({ img }) {
     return (
-        <div className='border-2 border-neutral300 border rounded-[24px]'>
+        <div className='border-2 border-neutral300 border rounded-[24px] ms-2 me-2'>
             <Image src={img} style={{ borderRadius: "24px" }} alt='mock' sizes='100vw' />
         </div>
     )
