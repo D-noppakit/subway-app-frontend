@@ -14,7 +14,7 @@ export default function SelectionTopHome({ NameLocation = "Subway CW Tower", hea
                     {SubText}
                 </div>
                 <div className="w-screen absolute z-10 rounded-[16px] top-[40vh] left-1/2 transform -translate-x-1/2 -translate-y-1/2">
-                    <ButtonCustom btnText={"สั่งออเดอร์"} width="80%" />
+                    <ButtonCustom btnText={"สั่งออเดอร์"} width="80%" type="secondary" />
                 </div>
 
             </div>
