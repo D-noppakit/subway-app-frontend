@@ -1,14 +1,17 @@
 
 import Image from 'next/image'
 
-export default function HeaderOne({ debug, CartCount }) {
-
-  console.log(CartCount)
-  const bgClass = "flex w-full h-[76px] justify-between p-3 absolute top-0" + (debug ? "bg-green-500" : '')
-  // console.log(debug)
+export default function HeaderOne({ debug, CartCount, whenClickBulgur }) {
+  const bgClass = "z-20 flex w-full h-[76px] justify-between p-3 absolute top-0" + (debug ? "bg-green-500" : '')
+  const handleEventClick = (event) => {
+    console.log("Event:", event)
+    // คุณสามารถดูค่า event แบบละเอียดด้วย
+    console.log("Event target:", event.target)
+    whenClickBulgur(true)
+  }
   return (
     <div className={bgClass}>
-      <div className='w-[36px] flex justify-center items-center'>
+      <div onClick={handleEventClick} className='w-[36px] flex justify-center items-center'>
         <Image src={"/imgs/burger.png"} width={100} height={100} alt='1' />
       </div>
       <div className='w-[125px] h-full flex items-center align-middle justify-center'>
