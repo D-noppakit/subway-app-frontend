@@ -65,6 +65,18 @@
   --green900: #004618;
 }
 
+html, body {
+  margin: 0;
+  padding: 0;
+  overflow: hidden; /* Prevents scrolling */
+  height: 100%;
+  width: 100%;
+}
+
+* {
+  box-sizing: border-box;
+}
+
 /* Create a custom checkbox */
 .checkmark-checkbox {
   position: absolute;
