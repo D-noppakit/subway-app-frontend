@@ -141,12 +141,17 @@
 
 }
 
-.bt-custom.secondary {
-  background: #008938;
-  color: #FFFFFF;
+.bt-custom.primary {
+  background: var(--green700);
+  color: var(--neutral50);
 }
 
 .bt-custom.secondary {
-  background: #F2B700;
+  background: var(--yellowed500);
   color: #FFFFFF;
+}
+
+.bt-custom.outline {
+  background: var(--neutral50);
+  color:var(--green600);
 }

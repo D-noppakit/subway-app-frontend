@@ -24,7 +24,7 @@ export default function ButtonCustom({ whenClick = () => console.log("ButtonCust
     }
     return (
         <div className={`flex justify-center items-center text-white w-[${width}]`} >
-            <button className={`flex justify-center items-center w-[${width}] p-3 bg-${setcolor.bg} text-${setcolor.text} rounded-[100px] text-xl bt-custom `} onClick={whenClick} disabled = {isDisabled ? true: null}>
+            <button className={`flex justify-center items-center w-[${width}] p-3 rounded-[100px] text-xl bt-custom ${type}`} onClick={whenClick} disabled = {isDisabled ? true: null}>
                 <Image src={"/imgs/CartGreen.png"} width={20} height={10}
                     alt="Picture of the author" />
                 <div className='w-[5px]'></div>
