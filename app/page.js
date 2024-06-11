@@ -1,7 +1,6 @@
 
 "use client"
 import Image from "next/image";
-import ButtonCustom from "@/components/Button/ButtonCustom"
 import HeaderOne from "@/components/HeaderOne";
 import SelectionTopHome from "@/components/SelectionTopHome";
 import SectionBottom from "@/components/HomeComponents/SectionBottom";
@@ -21,10 +20,7 @@ export default function Home() {
     setIsOpenBulgur(state)
   }
   return (
-    <>
-      <Head>
-        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-      </Head>
+    <div className="relative">
       <HeaderOne CartCount={10} whenClickBulgur={ClickBulgur} />
       <SelectionTopHome />
       <div className="w-screen p-5">
@@ -35,13 +31,15 @@ export default function Home() {
       </div>
       {/* <Selectbox type="success" listData={listData}/> */}
       <SectionBottom />
-      
-      {/* bulgur */}
-      <div className={"absolute top-0 z-50"}>
-        <SideNavBar isOpen={isOpenBulgur} Close={setIsOpenBulgur} />
-        
+      <div className="w-screen p-5">
+        <CardSquare />
       </div>
 
-    </>
+      {/* bulgur when click */}
+      <div className={"absolute top-0 z-50"}>
+        <SideNavBar isOpen={isOpenBulgur} Close={setIsOpenBulgur} />
+      </div>
+
+    </div>
   );
 }
