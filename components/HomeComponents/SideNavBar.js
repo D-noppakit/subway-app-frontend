@@ -10,7 +10,7 @@ export default function SideNavBar() {
     return (
         <div className=" z-30">
             <div>
-                {$} <HeaderTwo />
+                {false && <HeaderTwo /> } 
             </div>
 
             <div
