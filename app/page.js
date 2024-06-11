@@ -8,6 +8,7 @@ import Head from "next/head";
 import SideNavBar from "@/components/HomeComponents/SideNavBar";
 import { useState } from "react";
 import CardSquare from "@/components/Card/CardSquare"
+import CardListItem from "@/components/Card/CardListItem";
 
 export default function Home() {
   let listData = [
@@ -22,6 +23,12 @@ export default function Home() {
     <div className="relative">
       <HeaderOne CartCount={10} whenClickBulgur={ClickBulgur} />
       <SelectionTopHome />
+      <div className="w-screen p-5">
+          <CardSquare/>
+      </div>
+      <div className="w-screen p-5">
+          <CardListItem/>
+      </div>
       {/* <Selectbox type="success" listData={listData}/> */}
       <SectionBottom />
       <div className="w-screen p-5">
