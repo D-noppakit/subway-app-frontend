@@ -26,7 +26,7 @@ export default function HeaderOne({ debug, CartCount }) {
 function NotiCart({ num }) {
   console.log({ num })
   return (
-    <div className='absolute w-[20px] h-[15px] bg-[#FF5C39] rounded-full fs-[1px] top-3 right-0'>
+    <div className={`absolute w-[20px] h-[15px] bg-[#FF5C39] rounded-full fs-[1px] top-3 right-0`}>
       <div className='text-[10px] text-center text-white'>
         {num}
       </div>
