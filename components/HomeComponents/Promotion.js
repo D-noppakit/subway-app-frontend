@@ -13,7 +13,6 @@ export default function Promotion() {
         slidesToScroll: 1,
         autoplay: true,
         autoplaySpeed: 3000,
-        centerPadding: "100px"
         // cssEase: "linear"
     };
     return (
@@ -30,7 +29,7 @@ export default function Promotion() {
 }
 function DrawListPromotion({ img }) {
     return (
-        <div className='border-2 border-neutral300 border rounded-[24px] ms-2 me-2'>
+        <div className='border-2 border-neutral300 border rounded-[24px] ms-1 me-1'>
             <Image src={img} style={{ borderRadius: "24px" }} alt='mock' sizes='100vw' />
         </div>
     )
