@@ -167,3 +167,15 @@
 .price-non-discout{
   color: var(--neutral600);
 }
+
+.multiline-span {
+  display: inline-block;
+  white-space: normal;
+  word-wrap: break-word;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  overflow: hidden;
+  line-height: 1.8;
+}
