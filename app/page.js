@@ -32,8 +32,10 @@ export default function Home() {
             </div>
       {/* <Selectbox type="success" listData={listData}/> */}
       <SectionBottom />
+      {/* bulgur */}
       <div className={"absolute top-0 z-50"}>
         <SideNavBar isOpen={isOpenBulgur} Close={setIsOpenBulgur} />
+        
       </div>
 
     </>
