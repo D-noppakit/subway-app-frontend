@@ -29,7 +29,7 @@ export default function SideNavBar({ isOpen = false, Close = () => console.log("
                 <div className="p-4 relative">
 
                     <div className=' relative mt-1 mb-5 flex justify-center w-full h-full'>
-                        <CardWelcomeCustomer whenClick={OpenCardLoginByPhonNo} text1={"ลงชื่อเข้าใช้"} text2={"ปลดล็อคสิทธิประโยชน์อีกเพียบ ด้วยสมาชิก ซับเวย์ รีวอร์ด"} btnText={"ลงชื่อเข้าใช้ / สมัครสมาชิก"} type={2} />
+                        <CardWelcomeCustomer whenClick={OpenCardLoginByPhonNo} text1={"ลงชื่อเข้าใช้"} text2={"ปลดล็อคสิทธิประโยชน์อีกเพียบ ด้วยสมาชิก ซับเวย์ รีวอร์ด"} btnText={"ลงชื่อเข้าใช้ / สมัครสมาชิก"} type={1} />
                     </div>
 
                     <ButtonMenu text={"ออเดอร์ของฉัน"} img={logo1} />
