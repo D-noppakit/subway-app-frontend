@@ -1,5 +1,6 @@
 import React from 'react'
 import Image from 'next/image'
+import ButtonCustom from './Button/ButtonCustom'
 export default function CardWelcomeCustomer({ text1, text2, whenClick, btnText, type }) {
   const Btn = () => {
     if (type === 1) {

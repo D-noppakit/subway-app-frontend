@@ -6,12 +6,19 @@ import logo1 from "@/public/imgs/timenav.png"
 import choiceMark from "@/public/imgs/Choice-Mark.png"
 import PinMap from "@/public/imgs/pin-map.png"
 import PersonSetting from "@/public/imgs/user-setting-bolt-nut.png"
-import QAimg from  "@/public/imgs/QAimg.png"
- 
+import QAimg from "@/public/imgs/QAimg.png"
+import CardLoginByPhonNo from "@/components/Card/CardLoginByPhonNo"
+
 export default function SideNavBar({ isOpen = false, Close = () => console.log("Close") }) {
-    // const [isOpen, setIsOpen] = useState(false);
+    const [isOpenLoginCard, setisOpenLoginCard] = useState(false);
     const handleClose = () => {
         Close(!isOpen)
+    }
+    const CloseCardLoginByPhonNo = () => {
+        setisOpenLoginCard(false)
+    }
+    const OpenCardLoginByPhonNo = () => {
+        setisOpenLoginCard(true)
     }
     return (
         <div >
@@ -19,18 +26,20 @@ export default function SideNavBar({ isOpen = false, Close = () => console.log("
                 className={`fixed top-0 left-0 h-full bg-gray-100 transition-transform duration-300 ease-out ${isOpen ? 'w-full transform translate-x-0' : 'w-[-100px] transform -translate-x-full'}`}
             >
                 {isOpen && <HeaderTwo Close={handleClose} />}
-                <div className="p-4">
+                <div className="p-4 relative">
 
-                    <div className=' relative mt-1 mb-5 flex justify-center'>
-                        <CardWelcomeCustomer text1={"ลงชื่อเข้าใช้"} text2={"ปลดล็อคสิทธิประโยชน์อีกเพียบ ด้วยสมาชิก ซับเวย์ รีวอร์ด"} btnText={"ลงชื่อเข้าใช้ / สมัครสมาชิก"} type={1} />
+                    <div className=' relative mt-1 mb-5 flex justify-center w-full h-full'>
+                        <CardWelcomeCustomer whenClick={OpenCardLoginByPhonNo} text1={"ลงชื่อเข้าใช้"} text2={"ปลดล็อคสิทธิประโยชน์อีกเพียบ ด้วยสมาชิก ซับเวย์ รีวอร์ด"} btnText={"ลงชื่อเข้าใช้ / สมัครสมาชิก"} type={2} />
                     </div>
+
                     <ButtonMenu text={"ออเดอร์ของฉัน"} img={logo1} />
                     <ButtonMenu text={"ซับเวย์ รีวอร์ด"} img={choiceMark} />
                     <ButtonMenu text={"ค้นหาสาขา"} img={PinMap} />
                     <ButtonMenu text={"ตั้งค่าโปรไฟล์"} img={PersonSetting} />
                     <ButtonMenu text={"ช่วยเหลือ"} img={QAimg} />
-                    
+
                 </div>
+                {isOpenLoginCard && <CardLoginByPhonNo close={CloseCardLoginByPhonNo} />}
             </div>
         </div>
     );
