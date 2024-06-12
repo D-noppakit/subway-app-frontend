@@ -1,7 +1,7 @@
 import React from 'react'
 import Image from 'next/image'
 import logo1 from "@/public/imgs/timenav.png"
-
+import Plus from "@/public/imgs/plus.png"
 export default function CardListItem({ whenClick = () => console.log("CardListItem"), title = '(6" นิ้ว) Cheese & Egg', des = "แซนด์วิชชีสและไข่ ขนาด 6 นิ้ว (เมนูนี้มีชีสตาม สูตร หากแพ้ชีสโปรดแจ้ง)(เมนูนี้มีชีสตาม สูตร หากแพ้ชีสโปรดแจ้ง)", price = 185, fullPrice = 0, isDisabled = false, img = "/imgs/demo/img1.webp" }) {
   let hasdiscout = fullPrice && fullPrice > 0 && fullPrice > price
   return (
@@ -13,20 +13,23 @@ export default function CardListItem({ whenClick = () => console.log("CardListIt
           <span className='multiline-span' style={{ maxHeight: "50px", lineHeight: "1.8" }}>{title}</span>
         </div>
         <div>
-          <span className='multiline-span' style={{ maxHeight: "50px", lineHeight: "1.8", color: "var(--neutral700)",fontSize: "12px" }}>{des}</span>
+          <span className='multiline-span' style={{ maxHeight: "50px", lineHeight: "1.8", color: "var(--neutral700)", fontSize: "12px" }}>{des}</span>
         </div>
-        <div className={hasdiscout > 0 ? "price-discount" : "price"} style={{ display: 'flex', fontSize: '16px' }}>Total ฿{price}
-          {hasdiscout ? <div style={{ marginLeft: "5px", color: "var(--neutral600)", textDecorationLine: "line-through" }}>
-            ฿{fullPrice}
-          </div> : null}
+        <div className={hasdiscout > 0 ? "price-discount" : "price"} style={{ display: 'flex', fontSize: '16px',justifyContent:"space-between" }}>
+          <div>
+            ฿{price}
+            {hasdiscout ? <div style={{ marginLeft: "5px", color: "var(--neutral600)", textDecorationLine: "line-through" }}>
+              ฿{fullPrice}
+            </div> : null}
+          </div>
+          <div style={{ backgroundColor: "var(--green600)", color: "var(--neutral50)", width: "24px", height: "24px", borderRadius: "999px", display: "flex", justifyContent: "center", fontWeight: "bold" }}>
+            <button>
+              <Image src={Plus} width={24} height={24} />
+            </button>
+          </div>
         </div>
 
-        {/* <div style={{ display: "flex", }}>
-          <button style={{ width: "114px", height: "40px", borderRadius: "100px", border: "1px solid var(--neutral300)", gap: "8px", display: "flex", alignItems: "center", padding: "8px 10px 8px 10px", color: "var(--green600)" }}>
-            <Image src={logo1} width={24} height={24} />
-            สั่งอีกครั้ง
-          </button>
-        </div> */}
+
       </div>
     </div>
   )
