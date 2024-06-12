@@ -9,9 +9,9 @@ import CardSquare from "@/components/Card/CardSquare"
 import CardListItem from "@/components/Card/CardListItem";
 import Skeleton from 'react-loading-skeleton'
 import 'react-loading-skeleton/dist/skeleton.css'
-import { useStore } from "zustand";
 import CardSquareSkel from "@/components/Skeleton/CardSquareSkel"
 import HomeBanner from "@/components/HomeComponents/HomeBanner";
+import BannerSkel from "@/components/Skeleton/BannerSkel"
 
 
 export default function page() {
@@ -35,7 +35,8 @@ export default function page() {
         <div className="grid grid-cols-2 gap-3 justify-self-center">
           {true ? <RenderCardSquareSkel /> : listData.map(v => <CardSquare key={v.id} />)}
         </div>
-        <HomeBanner />
+
+        {true ? <BannerSkel /> : <HomeBanner />}
         {/* <CardListItem /> */}
       </div>
       {/* bulgur when click */}
