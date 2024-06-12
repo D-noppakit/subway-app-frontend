@@ -63,6 +63,8 @@
   --green700: #006e39;
   --green800: #005929;
   --green900: #004618;
+  --primary: #008938;
+  --secondary: #F2B700;
 }
 
 html, body {
@@ -154,12 +156,12 @@ html, body {
 }
 
 .bt-custom.primary {
-  background: var(--green700);
+  background: var(--primary);
   color: var(--neutral50);
 }
 
 .bt-custom.secondary {
-  background: var(--yellowed500);
+  background: var(--secondary);
   color: #FFFFFF;
 }
 
@@ -174,7 +176,7 @@ html, body {
 }
 
 .price{
-  color: var(--green700);
+  color: var(--primary);
 }
 
 .price-discount{
