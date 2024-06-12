@@ -19,12 +19,13 @@ export default function ButtonCustom({ whenClick = () => console.log("ButtonCust
     }
 
     if(isDisabled){
+        tpye = "disabled"
         setcolor.bg = 'neutral500'
         setcolor.text = 'neutral50'
     }
     return (
-        <div className={`flex justify-center items-center text-white w-[${width}]`} >
-            <button className={`flex justify-center items-center w-[${width}] p-3 rounded-[100px] text-xl bt-custom ${type}`} onClick={whenClick} disabled = {isDisabled ? true: null}>
+        <div className={`flex justify-center items-center text-white w-full`} >
+            <button className={`flex justify-center items-center w-full p-3 rounded-[100px] text-xl bt-custom ${type}`} onClick={whenClick} disabled = {isDisabled ? true: null}>
                 {img && <Image src={img} width={20} height={10}
                     alt="Picture of the author" />}
                 
