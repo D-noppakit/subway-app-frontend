@@ -2,7 +2,7 @@ import React from 'react'
 import Image from 'next/image'
 import logo1 from "@/public/imgs/timenav.png"
 import Plus from "@/public/imgs/plus.png"
-export default function CardListItem({ whenClick = () => console.log("CardListItem"), title = '(6" นิ้ว) Cheese & Egg', des = "แซนด์วิชชีสและไข่ ขนาด 6 นิ้ว (เมนูนี้มีชีสตาม สูตร หากแพ้ชีสโปรดแจ้ง)(เมนูนี้มีชีสตาม สูตร หากแพ้ชีสโปรดแจ้ง)", price = 185, fullPrice = 0, isDisabled = false, img = "/imgs/demo/img1.webp" }) {
+export default function CardListItem({ whenClick = () => console.log("CardListItem"), title = '(6" นิ้ว) Cheese & Egg', des = "แซนด์วิชชีสและไข่ ขนาด 6 นิ้ว (เมนูนี้มีชีสตาม สูตร หากแพ้ชีสโปรดแจ้ง)(เมนูนี้มีชีสตาม สูตร หากแพ้ชีสโปรดแจ้ง)", price = 185, fullPrice = 0, isDisabled = false, img = "/imgs/demo/img1.webp",tagText = "", tagBgColor ="" }) {
   let hasdiscout = fullPrice && fullPrice > 0 && fullPrice > price
   return (
     <div className={'w-full'} style={{ display: "flex", flexDirection: 'row', height: '93px' }} onClick={whenClick}>
