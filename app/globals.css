@@ -168,6 +168,11 @@ html, body {
   color:var(--green600);
 }
 
+.bt-custom.disabled {
+  background: var(--neutral500);
+  color:var(--neutral50);
+}
+
 .price{
   color: var(--green700);
 }
