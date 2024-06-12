@@ -8,15 +8,15 @@ export default function SelectionTopHome({ NameLocation = "Subway CW Tower", hea
     return (
         <main className={`w-full h-[466px] bg-[#0b8a45] relative`}>
             <div className="relative ">
-                <LocationAt NameLocation={"Subway CW Tower"} Time={"ทันที"} whenClick={() => console.log('ทันที')}  />
+                <LocationAt NameLocation={"Subway CW Tower"} Time={"ทันที"} whenClick={() => console.log('ทันที')} />
                 <div className="font-[700] text-white text-3xl w-[90%] text-center h-[100px] absolute z-10 rounded-[16px] top-[25vh] max-[375px]:top-[33vh] left-1/2 transform -translate-x-1/2 -translate-y-1/2">
                     {headerText}
                 </div>
                 <div className="text-white text-lg w-[90%] text-center h-[100px] absolute z-10 rounded-[16px] top-[30vh] max-[375px]:top-[40vh] left-1/2 transform -translate-x-1/2 -translate-y-1/2">
                     {SubText}
                 </div>
-                <div className="w-screen absolute z-10 rounded-[16px] top-[35vh] max-[375px]:top-[50vh] left-1/2 transform -translate-x-1/2 -translate-y-1/2">
-                    <ButtonCustom btnText={"สั่งออเดอร์"} width="80%" type="secondary" />
+                <div className="w-[50%]  absolute z-10 rounded-[16px] top-[35vh] max-[375px]:top-[50vh] left-1/2 transform -translate-x-1/2 -translate-y-1/2">
+                    <ButtonCustom btnText={"สั่งออเดอร์"} type="secondary" />
                 </div>
 
             </div>

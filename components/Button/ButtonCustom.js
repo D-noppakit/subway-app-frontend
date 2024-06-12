@@ -19,7 +19,7 @@ export default function ButtonCustom({ whenClick = () => console.log("ButtonCust
     }
 
     if(isDisabled){
-        tpye = "disabled"
+        type = "disabled"
         setcolor.bg = 'neutral500'
         setcolor.text = 'neutral50'
     }
