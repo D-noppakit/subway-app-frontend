@@ -191,3 +191,19 @@ html, body {
   overflow: hidden;
   line-height: 1.8;
 }
+
+.contaner-list-item{
+  height: fit-content;
+  gap: 14px;
+  display: flex;
+  flex-direction: column;
+}
+
+.contaner-list-item .list-item:not(:last-child){
+  border-bottom: 1px solid #E9E9E9;
+  padding-bottom: 14px;
+}
+
+.contaner-list-item .list-item:last-child{
+  padding-bottom: 30px;
+}
