@@ -47,7 +47,7 @@ export default function page() {
 }
 
 function RenderCardSquareSkel() {
-  return(
+  return (
     <>
       <CardSquareSkel />
       <CardSquareSkel />
