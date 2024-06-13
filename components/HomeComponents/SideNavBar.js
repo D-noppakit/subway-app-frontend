@@ -35,6 +35,9 @@ export default function SideNavBar({ isOpen = false, Close = () => console.log("
         Close(!isOpen)
     }
     const CloseCard = () => {
+        setLoading(false)
+        setIsConfirmOTP(false)
+        setIsCard(false)
         setIsCard(false)
     }
     const OpenCard = () => {
