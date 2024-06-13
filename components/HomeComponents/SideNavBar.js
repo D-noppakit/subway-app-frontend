@@ -14,11 +14,16 @@ import OtpInput from 'react-otp-input';
 import ButtonWhiteBorderGray from '../Button/ButtonWhiteBorderGray';
 import Loading from '../Loading';
 import CardLoginSuccess from "@/components/Card/CardLoginSuccess"
+import Image from 'next/image';
+import Link from 'next/link';
+
+
 
 export default function SideNavBar({ isOpen = false, Close = () => console.log("Close") }) {
     const [isOpenCard, setIsCard] = useState(false);
     const [isConfirmOTP, setIsConfirmOTP] = useState(false);
     const [isLoading, setLoading] = useState(false);
+    const [isLogin, SetIsLogin] = useState(false);
     const handleClose = () => {
         Close(!isOpen)
     }
@@ -39,6 +44,7 @@ export default function SideNavBar({ isOpen = false, Close = () => console.log("
             setIsConfirmOTP(false)
             setTimeout(() => {
                 setLoading(false)
+                SetIsLogin(true)
             }, 3000)
         }
         if (isOpenCard) {
@@ -117,7 +123,33 @@ export default function SideNavBar({ isOpen = false, Close = () => console.log("
                     <ButtonMenu text={"ช่วยเหลือ"} img={QAimg} />
                 </div>
                 <FlowLogin />
-                <CardLoginSuccess/>
+                {isLogin && <CardLoginSuccess>
+                    <div className='gap-3 flex justify-center items-center flex-col my-5'>
+
+                        <Image src={"/imgs/subway-logo-white.png"} height={80} width={80} style={{ objectFit: "contain" }} alt="bg" />
+                        <div>
+                            <div className='text-[24px] font-[500] text-center'> ยินดีต้อนรับ</div>
+                            <div className='text-[32px] font-[700] text-center'> คุณมาคัส</div>
+                            <div className='text-[16px] font-[500] text-center'>
+                                คุณสมัครเป็นสมาชิกซับเวย์สำเร็จ!
+                                เช็กสิทธิพิเศษและเริ่มสั่งออเดอร์ได้ทันที</div>
+                        </div>
+                        <Link href="/howtouse">
+                            <div className='w-[160px]'>
+                                <ButtonCustom type={"secondary"} btnText={"สั่งออเดอร์"} />
+                            </div>
+                        </Link>
+                        <Link href="/">
+                            <div className='w-[130px]'>
+                                <ButtonCustom type={"primary"} img='' btnText={"กลับสู่หน้าหลัก"} textSize='16px' whenClick={() => win} />
+                            </div>
+                        </Link>
+
+
+                    </div>
+                </CardLoginSuccess>}
+
+
             </div>
         </div>
     );
