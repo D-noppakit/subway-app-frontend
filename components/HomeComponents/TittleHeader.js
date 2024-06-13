@@ -8,8 +8,9 @@ export default function TittleHeader({ textHeader = "ดีล & โปรโม
         <div className='w-full text-[#008938]' >
             <div className={`flex justify-between items-center rounded-[100px] text-xl bt-custom`}>
                 <div className='flex justify-center items-center '>
-                    <Image src={img} width={25} height={25}
-                        alt="Picture of the author" />
+                    {img ? <Image src={img} width={25} height={25}
+                        alt="Picture of the author" />:null}
+                    
                     <div className='w-[5px]'></div>
                     <span className='text-[20px]'> {textHeader}</span>
                 </div>
