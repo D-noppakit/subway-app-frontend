@@ -5,8 +5,6 @@ import SelectionTopHome from "@/components/SelectionTopHome";
 import SectionBottom from "@/components/HomeComponents/SectionBottom";
 import SideNavBar from "@/components/HomeComponents/SideNavBar";
 import { useState } from "react";
-import CardSquare from "@/components/Card/CardSquare"
-import CardListItem from "@/components/Card/CardListItem";
 import Skeleton from 'react-loading-skeleton'
 import 'react-loading-skeleton/dist/skeleton.css'
 import CardSquareSkel from "@/components/Skeleton/CardSquareSkel"
@@ -16,7 +14,7 @@ import LocationAt from "@/components/HomeComponents/LocationAt"
 import Image from "next/image"
 import CardLastOrder from "@/components/Card/CardLastOrder";
 import TittleHeader from "@/components/HomeComponents/TittleHeader";
-
+import CardCategory from "@/components/Card/CardCategory"
 
 
 export default function page() {
@@ -34,7 +32,7 @@ export default function page() {
     return (
         <div className="relative">
             <HeaderOne CartCount={0} whenClickBulgur={ClickBulgur} />
-            <div style={{height:"fit-content"}}>
+            <div style={{ height: "fit-content" }}>
                 <main className={`w-full h-[139px] bg-[#0b8a45] relative`}>
                     <div className="relative ">
                         <LocationAt NameLocation={"Subway CW Tower"} Time={"ทันที"} whenClick={() => console.log('ทันที')} />
@@ -47,14 +45,17 @@ export default function page() {
 
                 </main>
             </div>
-            <div style={{padding:'16px',marginTop:"10px"}} className="flex flex-col">
-                <CardLastOrder/>
+            <div style={{ padding: '16px', marginTop: "10px" }} className="flex flex-col">
+                <CardLastOrder />
                 <div className="flex">
                     <div className="flex flex-col pt-5">
-                        <TittleHeader textHeader="เลือกหมวดหมู่" img= {''}/>
+                        <TittleHeader textHeader="เลือกหมวดหมู่" img={''} />
                     </div>
 
                 </div>
+            </div>
+            <div className={"absolute top-0 z-50"}>
+                <SideNavBar isOpen={isOpenBulgur} Close={setIsOpenBulgur} />
             </div>
 
         </div>
