@@ -4,7 +4,7 @@ import HeaderOne from "@/components/HeaderOne";
 import SelectionTopHome from "@/components/SelectionTopHome";
 import SectionBottom from "@/components/HomeComponents/SectionBottom";
 import SideNavBar from "@/components/HomeComponents/SideNavBar";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import CardSquare from "@/components/Card/CardSquare"
 import CardListItem from "@/components/Card/CardListItem";
 import Skeleton from 'react-loading-skeleton'
@@ -12,7 +12,8 @@ import 'react-loading-skeleton/dist/skeleton.css'
 import CardSquareSkel from "@/components/Skeleton/CardSquareSkel"
 import HomeBanner from "@/components/HomeComponents/HomeBanner";
 import BannerSkel from "@/components/Skeleton/BannerSkel"
-
+import Loading from "@/components/Loading";
+import useStore from '@/lib/store';
 
 export default function page() {
 
@@ -26,8 +27,10 @@ export default function page() {
   const ClickBulgur = (state) => {
     setIsOpenBulgur(state)
   }
+  const { isLoading } = useStore()
   return (
     <div className="relative">
+      {isLoading && <Loading />}
       <HeaderOne CartCount={0} whenClickBulgur={ClickBulgur} />
       <SelectionTopHome />
       <div className="w-screen p-5">
