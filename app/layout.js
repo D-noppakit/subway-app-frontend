@@ -1,12 +1,13 @@
 import { Kanit } from '@next/font/google';
 const kanit = Kanit({
-  weight: ['400', '500' , '700'], // Specify the weights you need
+  weight: ['400', '500', '700'], // Specify the weights you need
   subsets: ['thai', 'latin'], // Specify the subsets you need
 });
 import "./globals.css";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import Head from "next/head";
+
 
 export const metadata = {
   title: "Subway",
