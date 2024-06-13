@@ -10,11 +10,12 @@ import PersonSetting from "@/public/imgs/user-setting-bolt-nut.png"
 import QAimg from "@/public/imgs/QAimg.png"
 import CardHeaderGreen from "@/components/Card/CardHeaderGreen"
 import ButtonCustom from '../Button/ButtonCustom'
-import  ButtonMenu  from '@/components/Button/ButtonMenu';
+import ButtonMenu from '@/components/Button/ButtonMenu';
 import store from '@/lib/store';
 
 export default function SideNavBar({ isOpen = false, Close = () => console.log("Close") }) {
     const [isOpenCard, setIsCard] = useState(false);
+    const [isConfirmOTP, setIsConfirmOTP] = useState(false);
     const { PhoneOTPValue, OnChangePhoneOTPValue, SendOTP } = store()
     const handleClose = () => {
         Close(!isOpen)
@@ -25,6 +26,7 @@ export default function SideNavBar({ isOpen = false, Close = () => console.log("
     const OpenCard = () => {
         setIsCard(true)
     }
+
     return (
         <div >
             <div className={`fixed top-0 left-0 h-full bg-gray-100 transition-transform duration-300 ease-out ${isOpen ? 'w-full transform translate-x-0' : 'w-[-100px] transform -translate-x-full'}`} >
