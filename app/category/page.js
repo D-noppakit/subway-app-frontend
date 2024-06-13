@@ -47,9 +47,16 @@ export default function page() {
             </div>
             <div style={{ padding: '16px', marginTop: "10px" }} className="flex flex-col">
                 <CardLastOrder />
-                <div className="flex">
-                    <div className="flex flex-col pt-5">
+                <div className="flex w-full">
+                    <div className="flex flex-col pt-5 w-full">
                         <TittleHeader textHeader="เลือกหมวดหมู่" img={''} />
+                        <div className="grid grid-cols-2 gap-2 w-full">
+                            <CardCategory />
+                            <CardCategory />
+                            <CardCategory />
+                            <CardCategory />
+                            <CardCategory />
+                        </div>
                     </div>
 
                 </div>
