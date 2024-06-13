@@ -8,15 +8,18 @@ import ButtonCustom from '../Button/ButtonCustom'
 import UseCardLoginByPhonNoStore from '@/lib/CardLoginByPhonNoStore';
 
 export default function CardLoginByPhonNo({ close = () => console.log("ส่ง function ปิดมา") }) {
-    const { OnChangeValue, inputValue } = UseCardLoginByPhonNoStore()
     // const  
     // console.log("CardLoginByPhonNo.inputValue", CardLoginByPhonNo.inputValue)
-    const PhoneNoInputComponent = React.memo(() => (
-        <div className={`flex h-[50px] justify-center items-center my-5 text-[#DFE0E7] w-full border border-1 rounded-3xl relative p-1 text-lg`} >
+  
+    function PhoneNoInputComponent() {
+        const { OnChangeValue, inputValue } = UseCardLoginByPhonNoStore()
+        return(
+        <div   div className={`flex h-[50px] justify-center items-center my-5 text-[#DFE0E7] w-full border border-1 rounded-3xl relative p-1 text-lg`} >
             <div className='flex justify-start  items-center w-24 p-3 rounded-[100px] text-xl bt-custom'>66+ |</div>
-            <input className={`h-full w-full outline-none text-black`} onChange={OnChangeValue} value={inputValue} placeholder='123-456-789' />
+            <input className={`h-full w-full outline-none text-black`}  onChange={(e) => OnChangeValue(e.target.value)} value={inputValue} placeholder='123-456-789' />
         </div>
-    ));
+        )
+    }
 
     function NoneMember() {
         return (

@@ -63,8 +63,14 @@
   --green700: #006e39;
   --green800: #005929;
   --green900: #004618;
-  --primary: #008938;
-  --secondary: #F2B700;
+  --primary-subway-green: #008938;
+  --primary-subway-yellow: #F2B700;
+  --primary-subway-black: #000000;
+  --primary-subway-white: #ffffff;
+  --secondary-spinach-green: #00491E;
+  --secondary-monterey-yellow: #F4E300;
+  --secondary-tomato-red: #FF5C39;
+  --secondary-pepper-green: #97D700;
 }
 
 html, body {
@@ -156,12 +162,12 @@ html, body {
 }
 
 .bt-custom.primary {
-  background: var(--primary);
+  background: var(--primary-subway-green);
   color: var(--neutral50);
 }
 
 .bt-custom.secondary {
-  background: var(--secondary);
+  background: var(--primary-subway-yellow);
   color: #FFFFFF;
 }
 
@@ -176,7 +182,7 @@ html, body {
 }
 
 .price{
-  color: var(--primary);
+  color: var(--primary-subway-green);
 }
 
 .price-discount{
@@ -213,4 +219,17 @@ html, body {
 
 .contaner-list-item .list-item:last-child{
   padding-bottom: 30px;
+}
+
+.card-item.isDisabled *{
+  color: var(--neutral600) !important;
+
+}
+.card-item.isDisabled .badgeCustom{
+  color: var(--neutral50) !important;
+  background-color: var(--neutral600) !important;
+}
+.card-item.isDisabled .badgeCustom>span{
+  color: var(--neutral50) !important;
+
 }

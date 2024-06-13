@@ -1,10 +1,18 @@
 import React from 'react'
 import Image from 'next/image'
-export default function CardSquare({ whenClick = () => console.log("CardSquare"), title = 'Italian B.M.T.', price = 185, fullPrice = 200, isDisabled = false }) {
+import Plus from "@/public/imgs/plus.png"
+
+import BadgeCustom from '@/components/Badge/BadgeCustom'
+export default function CardSquare({ whenClick = () => console.log("CardSquare"), title = 'Italian B.M.T.', price = 185, fullPrice = 200, isDisabled = false, tagText = "", tagBgColor = "" }) {
   let hasdiscout = fullPrice && fullPrice > 0 && fullPrice > price
+  
   return (
     <div className='justify-self-center' style={{ display: "flex", flexDirection: 'column', width: 'fit-content' }} onClick={whenClick}>
-      <Image src={"/imgs/demo/img1.webp"} alt="img1" height={164} width={164} sizes="100vw" style={{ borderRadius: "16px" }} />
+      <div style={{ position: "relative" }}>
+        <Image src={"/imgs/demo/img1.webp"} alt="img1" height={164} width={164} sizes="100vw" style={{ borderRadius: "16px" }} />
+        {tagText && tagBgColor ? (<div style={{position:"absolute",top:"7px",right:"7px"}}><BadgeCustom tagText = {tagText} tagBgColor = {tagBgColor} /></div>) : null}
+      </div>
+
       <div>
         <span>{title}</span>
       </div>
@@ -16,9 +24,7 @@ export default function CardSquare({ whenClick = () => console.log("CardSquare")
         </div>
 
         <div style={{ backgroundColor: "var(--green600)", color: "var(--neutral50)", width: "24px", height: "24px", borderRadius: "999px", display: "flex", justifyContent: "center", fontWeight: "bold" }}>
-          <button>
-            +
-          </button>
+          <Image src={Plus} width={24} height={24} />
         </div>
       </div>
     </div>
