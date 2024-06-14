@@ -112,7 +112,6 @@ export default function SideNavBar({ isOpen = false, Close = () => console.log("
                             <div className='h-[48px] w-full'>
                                 <ButtonCustom btnText={"ยืนยัน"} img='' type={"primary"} whenClick={Login} />
                             </div>
-
                         </div>
                     </CardHeaderGreen>
                 </>
@@ -166,8 +165,10 @@ export default function SideNavBar({ isOpen = false, Close = () => console.log("
                 <div className='text-[#A3A6B7] text-center text-[10px] mt-5'>ลิขสิทธิ์ Subway Thailand 2024 สงวนลิขสิทธิ์</div>
                 <FlowLogin />
                 {isLogin && <CardLoginSuccess>
-                    <div className='gap-3 flex justify-center items-center flex-col my-5'>
-
+                    <div className='absolute h-full top-0 left-0'>
+                        <Image className='' alt='bg-wallcome' width={3000} height={100} style={{width:"100vw"}} src={"/bg-image/bg-wallcome.png"} />
+                    </div>
+                    <div className='gap-3 flex justify-center items-center flex-col my-5 relative z-20'>
                         <Image src={"/imgs/subway-logo-white.png"} height={80} width={80} style={{ objectFit: "contain" }} alt="bg" />
                         <div>
                             <div className='text-[24px] font-[500] text-center'> ยินดีต้อนรับ</div>
@@ -185,6 +186,7 @@ export default function SideNavBar({ isOpen = false, Close = () => console.log("
                             <ButtonCustom type={"primary"} img='' btnText={"กลับสู่หน้าหลัก"} textSize='16px' whenClick={GotoHome} />
                         </div>
                     </div>
+                    
                 </CardLoginSuccess>}
 
 

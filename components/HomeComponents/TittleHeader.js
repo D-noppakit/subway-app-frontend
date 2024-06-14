@@ -21,7 +21,7 @@ export default function TittleHeader({ textHeader = "ดีล & โปรโม
                     <div className='font-[500]' >ทั้งหมด</div>
                     <div className='w-2'></div>
                     <div className='flex justify-center items-center'>
-                        <Image src={ArrowGreenImg} width={14} height={14} ></Image>
+                        <Image src={ArrowGreenImg} width={14} height={14} alt={"arrow-images"} ></Image>
                     </div>
                 </Link>  }
                 
