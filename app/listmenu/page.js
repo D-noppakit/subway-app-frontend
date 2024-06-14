@@ -13,8 +13,10 @@ import IconSearch from "@/public/icon/IconSearch.png"
 import IconFavorite from "@/public/icon/IconFavorite.png"
 import TittleHeader from "@/components/HomeComponents/TittleHeader";
 import CardSquare from "@/components/Card/CardSquare";
+import { useRouter } from "next/navigation";
+useRouter
 export default function page() {
-
+    const router = useRouter()
     let listData = [
         { id: "1", value: "us" },
         { id: "2", value: "en" },
@@ -59,7 +61,7 @@ export default function page() {
                     <div>
                         <TittleHeader textHeader="โปรโมชั่น" />
                         <div className={'list-promotion pt-2 grid grid-cols-2 gap-2 w-full'}>
-                            <CardSquare />
+                            <CardSquare whenClick={()=>router.push("/list-order/orderid")} />
                             <CardSquare />
                             <CardSquare />
                             <CardSquare />

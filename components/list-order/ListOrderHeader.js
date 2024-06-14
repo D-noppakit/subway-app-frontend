@@ -3,9 +3,11 @@ import ButtonAir from "../Button/ButtonAir"
 import DeliciousRecipe from "./DeliciousRecipe"
 import demoImage from "/public/imgs/demo/img1.webp"
 import Image from "next/image"
+import { useRouter } from 'next/navigation'
 
 
 export default function ListOrderHeader({ name = '(6" นิ้ว) อิตาเลียน บีเอ็มที', price = 185, ClickFoodAllergy }) {
+    const router = useRouter()
     return (
         <div>
             <div className="relative h-full">
@@ -20,7 +22,7 @@ export default function ListOrderHeader({ name = '(6" นิ้ว) อิตา
                     />
                 </div>
                 <div className="absolute top-0 w-full">
-                    <ButtonAir />
+                    <ButtonAir ClickClose={()=>{router.push("/listmenu")}} />
                 </div>
 
                 <div

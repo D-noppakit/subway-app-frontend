@@ -14,6 +14,8 @@ import HomeBanner from "@/components/HomeComponents/HomeBanner";
 import BannerSkel from "@/components/Skeleton/BannerSkel"
 import Loading from "@/components/Loading";
 import useStore from '@/lib/store';
+import { useRouter } from 'next/navigation'
+
 
 export default function page() {
 
@@ -24,6 +26,7 @@ export default function page() {
     { id: "4", value: "en" }
   ]
   const [isOpenBulgur, setIsOpenBulgur] = useState(false)
+  const router = useRouter()
   const ClickBulgur = (state) => {
     console.log("ClickBulgur", state)
     setIsOpenBulgur(state)
@@ -37,7 +40,7 @@ export default function page() {
       <div className="w-screen p-5">
         <SectionBottom />
         <div className="grid grid-cols-2 gap-3 justify-self-center">
-          {false ? <RenderCardSquareSkel /> : listData.map(v => <CardSquare key={v.id} />)}
+          {false ? <RenderCardSquareSkel /> : listData.map(v => <CardSquare key={v.id} whenClick={()=>router.push("/listmenu")} />)}
         </div>
         {false ? <BannerSkel /> : <HomeBanner />}
         {/* <CardListItem /> */}
