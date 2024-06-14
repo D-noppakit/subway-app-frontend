@@ -9,7 +9,7 @@ export default function CardSquare({ whenClick = () => console.log("CardSquare")
   return (
     <div className='justify-self-center' style={{ display: "flex", flexDirection: 'column', width: 'fit-content' }} onClick={whenClick}>
       <div style={{ position: "relative" }}>
-        <Image src={"/imgs/demo/img1.webp"} alt="img1" height={164} width={164} sizes="100vw" style={{ borderRadius: "16px" }} />
+        <Image src={"/imgs/demo/img1.webp"} alt="img1" height={1000} width={1000}  style={{ borderRadius: "16px", width:"100%",objectFit:"contain"}} />
         {tagText && tagBgColor ? (<div style={{position:"absolute",top:"7px",right:"7px"}}><BadgeCustom tagText = {tagText} tagBgColor = {tagBgColor} /></div>) : null}
       </div>
 

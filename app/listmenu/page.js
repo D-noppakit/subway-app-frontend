@@ -11,6 +11,8 @@ import Image from "next/image"
 import Subwaytextbox from "@/components/Subwaytextbox";
 import IconSearch from "@/public/icon/IconSearch.png"
 import IconFavorite from "@/public/icon/IconFavorite.png"
+import TittleHeader from "@/components/HomeComponents/TittleHeader";
+import CardSquare from "@/components/Card/CardSquare";
 export default function page() {
 
     let listData = [
@@ -40,8 +42,41 @@ export default function page() {
 
                 </main>
             </div>
-            <div className={'container-promotion flex'} >
-                <TittleHeader textHeader="ซุป, เมนูทานเล่น และอื่นๆ"/>
+            <div className={'container-bottom flex ps-[16px] pe-[16px] flex-col'}>
+                <div className="container-searchbox flex justify-between pt-6 " >
+                    <div>
+                        <Subwaytextbox />
+
+                    </div>
+                    <div className={'border rounded-full border-[--neutral400] w-[45px] h-[45px] flex justify-center items-center'}>
+                        <Image src={IconSearch} width={24} height={24} style={{ width: "24px", height: "24px", objectFit: "cover" }} />
+                    </div>
+                    <div className={'border rounded-full border-[--neutral400] w-[45px] h-[45px] flex justify-center items-center'}>
+                        <Image src={IconFavorite} width={24} height={24} style={{ width: "24px", height: "24px", objectFit: "cover" }} />
+                    </div>
+                </div>
+                <div className={'container-content-bottom flex flex-col pt-5'} >
+                    <div>
+                        <TittleHeader textHeader="โปรโมชั่น" />
+                        <div className={'list-promotion pt-2 grid grid-cols-2 gap-2 w-full'}>
+                            <CardSquare />
+                            <CardSquare />
+                            <CardSquare />
+                            <CardSquare />
+                        </div>
+                    </div>
+                    <div>
+                        <TittleHeader textHeader="อาหารเช้า (เช้าตรู่ - 11 โมงเท่านั้น)" />
+                        <div className=''>
+
+                        </div>
+                    </div>
+
+
+
+
+                </div>
+
 
             </div>
 
