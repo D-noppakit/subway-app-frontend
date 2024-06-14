@@ -43,6 +43,23 @@ export default function SideNavBar({ isOpen = false, Close = () => console.log("
     const OpenCard = () => {
         setIsCard(true)
     }
+    const CheckPhoneNo = async (phoneno) => {
+        console.log({ phoneno })
+        const req = await fetch("http://localhost:3003/api/v1/profile/subway/checkphone", {
+            method: "POST",
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+                phoneno: phoneno
+            }),
+        });
+
+        const data = await req.json();
+        console.log(data);
+        setIsConfirmOTP(true);
+    }
+
 
     const FlowLogin = ({ Phoneno = "", OTPRef, OTPTime }) => {
         const [PhoneOTPValue, setPhoneOTPValue] = useState("")
@@ -95,7 +112,6 @@ export default function SideNavBar({ isOpen = false, Close = () => console.log("
                             <div className='h-[48px] w-full'>
                                 <ButtonCustom btnText={"ยืนยัน"} img='' type={"primary"} whenClick={Login} />
                             </div>
-
                         </div>
                     </CardHeaderGreen>
                 </>
@@ -108,7 +124,7 @@ export default function SideNavBar({ isOpen = false, Close = () => console.log("
                         <input value={PhoneOTPValue} onChange={(e) => setPhoneOTPValue(e.target.value)} className={`h-full w-full outline-none text-black`} placeholder='123-456-789' />
                     </div>
                     <div className='h-[48px] w-full'>
-                        <ButtonCustom type={'primary'} width='100%' img='' btnText={"เข้าสู่ระบบ"} isDisabled={false} whenClick={() => setIsConfirmOTP(true)} />
+                        <ButtonCustom type={'primary'} width='100%' img='' btnText={"เข้าสู่ระบบ"} isDisabled={false} whenClick={() => { Login(PhoneOTPValue) }} />
                     </div>
                     <div className={`flex h-[32px] w-full justify-center items-center my-5 rounded-3xl relative p-1 text-lg`} >
                         <ButtonWhiteBorderGray>
@@ -149,8 +165,10 @@ export default function SideNavBar({ isOpen = false, Close = () => console.log("
                 <div className='text-[#A3A6B7] text-center text-[10px] mt-5'>ลิขสิทธิ์ Subway Thailand 2024 สงวนลิขสิทธิ์</div>
                 <FlowLogin />
                 {isLogin && <CardLoginSuccess>
-                    <div className='gap-3 flex justify-center items-center flex-col my-5'>
-
+                    <div className='absolute h-full top-0 left-0'>
+                        <Image className='' alt='bg-wallcome' width={3000} height={100} style={{width:"100vw"}} src={"/bg-image/bg-wallcome.png"} />
+                    </div>
+                    <div className='gap-3 flex justify-center items-center flex-col my-5 relative z-20'>
                         <Image src={"/imgs/subway-logo-white.png"} height={80} width={80} style={{ objectFit: "contain" }} alt="bg" />
                         <div>
                             <div className='text-[24px] font-[500] text-center'> ยินดีต้อนรับ</div>
@@ -168,6 +186,7 @@ export default function SideNavBar({ isOpen = false, Close = () => console.log("
                             <ButtonCustom type={"primary"} img='' btnText={"กลับสู่หน้าหลัก"} textSize='16px' whenClick={GotoHome} />
                         </div>
                     </div>
+                    
                 </CardLoginSuccess>}
 
 

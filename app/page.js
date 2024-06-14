@@ -25,6 +25,7 @@ export default function page() {
   ]
   const [isOpenBulgur, setIsOpenBulgur] = useState(false)
   const ClickBulgur = (state) => {
+    console.log("ClickBulgur", state)
     setIsOpenBulgur(state)
   }
   const { isLoading } = useStore()
@@ -36,7 +37,8 @@ export default function page() {
       <div className="w-screen p-5">
         <SectionBottom />
         <div className="grid grid-cols-2 gap-3 justify-self-center">
-          {true ? <RenderCardSquareSkel /> : listData.map(v => <CardSquare key={v.id} />)}
+          {false ? <RenderCardSquareSkel /> : listData.map(v => <CardSquare key={v.id} />)}
+     
         </div>
 
         {true ? <BannerSkel /> : <HomeBanner />}
