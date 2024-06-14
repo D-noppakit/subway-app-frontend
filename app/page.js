@@ -37,7 +37,7 @@ export default function page() {
       <div className="w-screen p-5">
         <SectionBottom />
         <div className="grid grid-cols-2 gap-3 justify-self-center">
-          {true ? <RenderCardSquareSkel /> : listData.map(v => <CardSquare key={v.id} />)}
+          {false ? <RenderCardSquareSkel /> : listData.map(v => <CardSquare key={v.id} />)}
      
         </div>
 
