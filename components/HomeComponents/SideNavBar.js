@@ -141,7 +141,7 @@ export default function SideNavBar({ isOpen = false, Close = () => console.log("
         <div >
             {isLoading && <Loading />}
             <div className={`fixed top-0 left-0 h-full bg-gray-100 transition-transform duration-300 ease-out ${isOpen ? 'w-full transform translate-x-0' : 'w-[-100px] transform -translate-x-full'}`} >
-                {isOpen && <HeaderTwo Close={handleClose} />}
+                <HeaderTwo Close={handleClose} />
                 <div className="p-4 relative">
                     <div className=' relative mt-1 mb-5 flex justify-center w-full h-full'>
                         <CardWelcomeCustomer whenClick={OpenCard} text1={"ลงชื่อเข้าใช้"} text2={"ปลดล็อคสิทธิประโยชน์อีกเพียบ ด้วยสมาชิก ซับเวย์ รีวอร์ด"} btnText={"ลงชื่อเข้าใช้ / สมัครสมาชิก"} type={1} />

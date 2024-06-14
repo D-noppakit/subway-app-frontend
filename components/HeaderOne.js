@@ -1,10 +1,6 @@
 
 import Image from 'next/image'
-import { Kanit } from '@next/font/google';
-const kanit = Kanit({
-  weight: ['400', '700'], // Specify the weights you need
-  subsets: ['thai', 'latin'], // Specify the subsets you need
-});
+
 export default function HeaderOne({ debug, CartCount, whenClickBulgur }) {
   const bgClass = "z-20 flex w-full h-[76px] justify-between p-3 absolute top-0" + (debug ? "bg-green-500" : '')
   const handleEventClick = (event) => {

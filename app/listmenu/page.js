@@ -14,7 +14,6 @@ import IconFavorite from "@/public/icon/IconFavorite.png"
 import TittleHeader from "@/components/HomeComponents/TittleHeader";
 import CardSquare from "@/components/Card/CardSquare";
 import { useRouter } from "next/navigation";
-useRouter
 export default function page() {
     const router = useRouter()
     let listData = [
