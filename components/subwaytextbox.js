@@ -2,14 +2,14 @@
 import * as React from "react";
 import "@/app/globals.css";
 
-export default function subwaytextbox({
+export default function Subwaytextbox({
   type,
-  defaultValue ,
+  defaultValue,
   listData = [],
   errorMsg = "Error message"
 }) {
   return (
-    <div class="max-w-2xl mx-auto">
+    <div class="w-full">
       <div class="custom-select">
         <select
           id=""
@@ -19,7 +19,7 @@ export default function subwaytextbox({
           }
           class=""
           style={{ paddingRight: "30px", width: "240px", height: "48px" }}
-          disabled = {type == 'disabled' ?true:null}
+          disabled={type == 'disabled' ? true : null}
         >
           {defaultValue &&
             <option id={defaultValue}>

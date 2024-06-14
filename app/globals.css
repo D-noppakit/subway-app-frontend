@@ -113,11 +113,12 @@ html, body {
   display: inline-block;
   width: 100%;
   padding: 10px;
-  border: 1px solid #ccc;
+  border: 1px solid var(--neutral400);
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;
   font-size: 14px;
+  background-color: var(--primary-subway-white);
 }
 
 .custom-select::after {
@@ -231,5 +232,11 @@ html, body {
 }
 .card-item.isDisabled .badgeCustom>span{
   color: var(--neutral50) !important;
+}
 
+.grid.grid-cols-2 div:nth-child(odd){
+  justify-self: flex-start;
+}
+.grid.grid-cols-2 div:nth-child(even){
+  justify-self: flex-end;
 }
