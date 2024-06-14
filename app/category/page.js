@@ -39,7 +39,7 @@ export default function page() {
 
                     </div>
                     <div className="sm:top-[-6vh] md:top-[-6vh] top-[-8vh] absolute z-0 h-[200px] " style={{ objectFit: "contain", overflow: "hidden" }}>
-                        <Image src={"/imgs/bg-select-top.png"} alt="bg-select-top.png" className="w-full" width={window.innerWidth} height={139}
+                        <Image src={"/imgs/bg-select-top.png"} alt="bg-select-top.png" className="w-full" width={()=>window.innerWidth} height={139}
                         />
                     </div>
 

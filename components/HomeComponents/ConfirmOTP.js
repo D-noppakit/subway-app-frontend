@@ -1,5 +1,5 @@
 import CardHeaderGreen from "../Card/CardHeaderGreen"
-export default function ConfrimOTP() {
+export default function ConfirmOTP() {
     return (
         <CardHeaderGreen>
             <div>ConfirmOTP</div>

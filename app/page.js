@@ -25,6 +25,7 @@ export default function page() {
   ]
   const [isOpenBulgur, setIsOpenBulgur] = useState(false)
   const ClickBulgur = (state) => {
+    console.log("ClickBulgur", state)
     setIsOpenBulgur(state)
   }
   const { isLoading } = useStore()

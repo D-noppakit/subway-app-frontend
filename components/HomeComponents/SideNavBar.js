@@ -43,6 +43,23 @@ export default function SideNavBar({ isOpen = false, Close = () => console.log("
     const OpenCard = () => {
         setIsCard(true)
     }
+    const CheckPhoneNo = async (phoneno) => {
+        console.log({ phoneno })
+        const req = await fetch("http://localhost:3003/api/v1/profile/subway/checkphone", {
+            method: "POST",
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+                phoneno: phoneno
+            }),
+        });
+
+        const data = await req.json();
+        console.log(data);
+        setIsConfirmOTP(true);
+    }
+
 
     const FlowLogin = ({ Phoneno = "", OTPRef, OTPTime }) => {
         const [PhoneOTPValue, setPhoneOTPValue] = useState("")
@@ -108,7 +125,7 @@ export default function SideNavBar({ isOpen = false, Close = () => console.log("
                         <input value={PhoneOTPValue} onChange={(e) => setPhoneOTPValue(e.target.value)} className={`h-full w-full outline-none text-black`} placeholder='123-456-789' />
                     </div>
                     <div className='h-[48px] w-full'>
-                        <ButtonCustom type={'primary'} width='100%' img='' btnText={"เข้าสู่ระบบ"} isDisabled={false} whenClick={() => setIsConfirmOTP(true)} />
+                        <ButtonCustom type={'primary'} width='100%' img='' btnText={"เข้าสู่ระบบ"} isDisabled={false} whenClick={() => { Login(PhoneOTPValue) }} />
                     </div>
                     <div className={`flex h-[32px] w-full justify-center items-center my-5 rounded-3xl relative p-1 text-lg`} >
                         <ButtonWhiteBorderGray>
