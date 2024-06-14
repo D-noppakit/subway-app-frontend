@@ -38,10 +38,8 @@ export default function page() {
         <SectionBottom />
         <div className="grid grid-cols-2 gap-3 justify-self-center">
           {false ? <RenderCardSquareSkel /> : listData.map(v => <CardSquare key={v.id} />)}
-     
         </div>
-
-        {true ? <BannerSkel /> : <HomeBanner />}
+        {false ? <BannerSkel /> : <HomeBanner />}
         {/* <CardListItem /> */}
       </div>
       {/* bulgur when click */}

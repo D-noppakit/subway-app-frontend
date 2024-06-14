@@ -18,7 +18,6 @@ import Image from 'next/image';
 
 
 
-
 export default function SideNavBar({ isOpen = false, Close = () => console.log("Close") }) {
     const [isOpenCard, setIsCard] = useState(false);
     const [isConfirmOTP, setIsConfirmOTP] = useState(false);
