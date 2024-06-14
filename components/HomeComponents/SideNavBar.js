@@ -15,7 +15,7 @@ import ButtonWhiteBorderGray from '../Button/ButtonWhiteBorderGray';
 import Loading from '../Loading';
 import CardLoginSuccess from "@/components/Card/CardLoginSuccess"
 import Image from 'next/image';
-import Link from 'next/link';
+
 
 
 
@@ -24,10 +24,20 @@ export default function SideNavBar({ isOpen = false, Close = () => console.log("
     const [isConfirmOTP, setIsConfirmOTP] = useState(false);
     const [isLoading, setLoading] = useState(false);
     const [isLogin, SetIsLogin] = useState(false);
+    const GotoHome = () => {
+        SetIsLogin(false)
+        setLoading(false)
+        setIsConfirmOTP(false)
+        setIsCard(false)
+        handleClose()
+    }
     const handleClose = () => {
         Close(!isOpen)
     }
     const CloseCard = () => {
+        setLoading(false)
+        setIsConfirmOTP(false)
+        setIsCard(false)
         setIsCard(false)
     }
     const OpenCard = () => {
@@ -45,7 +55,7 @@ export default function SideNavBar({ isOpen = false, Close = () => console.log("
             setTimeout(() => {
                 setLoading(false)
                 SetIsLogin(true)
-            }, 3000)
+            }, 1000)
         }
         if (isOpenCard) {
             if (isConfirmOTP) {
@@ -82,7 +92,10 @@ export default function SideNavBar({ isOpen = false, Close = () => console.log("
                                     <span>ต้องการรหัสใหม่</span>
                                 </div>
                             </ButtonWhiteBorderGray>
-                            <ButtonCustom btnText={"ยืนยัน"} img='' type={"primary"} whenClick={Login} />
+                            <div className='h-[48px] w-full'>
+                                <ButtonCustom btnText={"ยืนยัน"} img='' type={"primary"} whenClick={Login} />
+                            </div>
+
                         </div>
                     </CardHeaderGreen>
                 </>
@@ -94,7 +107,9 @@ export default function SideNavBar({ isOpen = false, Close = () => console.log("
                         <div className='flex justify-start items-center w-24 p-3 rounded-[100px] text-xl bt-custom'>66+ |</div>
                         <input value={PhoneOTPValue} onChange={(e) => setPhoneOTPValue(e.target.value)} className={`h-full w-full outline-none text-black`} placeholder='123-456-789' />
                     </div>
-                    <ButtonCustom type={'primary'} width='100%' img='' btnText={"เข้าสู่ระบบ"} isDisabled={false} whenClick={() => setIsConfirmOTP(true)} />
+                    <div className='h-[48px] w-full'>
+                        <ButtonCustom type={'primary'} width='100%' img='' btnText={"เข้าสู่ระบบ"} isDisabled={false} whenClick={() => setIsConfirmOTP(true)} />
+                    </div>
                     <div className={`flex h-[32px] w-full justify-center items-center my-5 rounded-3xl relative p-1 text-lg`} >
                         <ButtonWhiteBorderGray>
                             <div className='text-[#008938] w flex justify-start items-center p-3 rounded-[100px] text-sm bt-custom'>เข้าใช้โดยไม่เป็นสมาชิก</div>
@@ -122,6 +137,16 @@ export default function SideNavBar({ isOpen = false, Close = () => console.log("
                     <ButtonMenu text={"ตั้งค่าโปรไฟล์"} img={PersonSetting} />
                     <ButtonMenu text={"ช่วยเหลือ"} img={QAimg} />
                 </div>
+                <div className='py-[8px] px-[16px] w-full  h-[40px] flex justify-center items-center mt-5'>
+                    <ButtonWhiteBorderGray height='40px'>
+                        <div className='text-[#FF5C39] leading-5 font-[500] py-[8px] px-[16px] text-center'>ออกจากระบบ</div>
+                    </ButtonWhiteBorderGray>
+                </div>
+                <div className='text-[#00491E] text-[10px] flex flex-col items-center mt-5'>
+                    <div className=''>นโยบายความเป็นส่วนตัวของ Subway</div>
+                    <div>ข้อกำหนดการใช้งาน การตั้งค่าคุกกี้</div>
+                </div>
+                <div className='text-[#A3A6B7] text-center text-[10px] mt-5'>ลิขสิทธิ์ Subway Thailand 2024 สงวนลิขสิทธิ์</div>
                 <FlowLogin />
                 {isLogin && <CardLoginSuccess>
                     <div className='gap-3 flex justify-center items-center flex-col my-5'>
@@ -134,18 +159,14 @@ export default function SideNavBar({ isOpen = false, Close = () => console.log("
                                 คุณสมัครเป็นสมาชิกซับเวย์สำเร็จ!
                                 เช็กสิทธิพิเศษและเริ่มสั่งออเดอร์ได้ทันที</div>
                         </div>
-                        <Link href="/howtouse">
-                            <div className='w-[160px]'>
-                                <ButtonCustom type={"secondary"} btnText={"สั่งออเดอร์"} />
-                            </div>
-                        </Link>
-                        <Link href="/">
-                            <div className='w-[130px]'>
-                                <ButtonCustom type={"primary"} img='' btnText={"กลับสู่หน้าหลัก"} textSize='16px' whenClick={() => win} />
-                            </div>
-                        </Link>
 
+                        <div className='w-[160px]'>
+                            <ButtonCustom type={"secondary"} btnText={"สั่งออเดอร์"} />
+                        </div>
 
+                        <div className='w-[130px]'>
+                            <ButtonCustom type={"primary"} img='' btnText={"กลับสู่หน้าหลัก"} textSize='16px' whenClick={GotoHome} />
+                        </div>
                     </div>
                 </CardLoginSuccess>}
 

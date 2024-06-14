@@ -12,7 +12,9 @@ export default function ButtonCustom({
     type, isDisabled = false,
     img = '/imgs/CartGreen.png',
     children,
-    useBoxOnly = false }) {
+    useBoxOnly = false,
+    LinkTo = ""
+}) {
 
     const { color } = useStore()
     let setcolor = {
