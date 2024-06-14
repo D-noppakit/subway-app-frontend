@@ -2,9 +2,7 @@ import React, { useState } from "react";
 
 
 
-export default function App() {
-    const [checked, setChecked] = useState(false);
-
+export default function App({checked , setChecked}) {
     const handleChange = () => {
         setChecked((prevChecked) => !prevChecked);
     };

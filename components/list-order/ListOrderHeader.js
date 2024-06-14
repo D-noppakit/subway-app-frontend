@@ -1,9 +1,11 @@
+'use client'
+import ButtonAir from "../Button/ButtonAir"
 import DeliciousRecipe from "./DeliciousRecipe"
 import demoImage from "/public/imgs/demo/img1.webp"
 import Image from "next/image"
 
 
-export default function ListOrderHeader({ name = '(6" นิ้ว) อิตาเลียน บีเอ็มที', price = 185, click }) {
+export default function ListOrderHeader({ name = '(6" นิ้ว) อิตาเลียน บีเอ็มที', price = 185, ClickFoodAllergy }) {
     return (
         <div>
             <div className="relative h-full">
@@ -17,6 +19,10 @@ export default function ListOrderHeader({ name = '(6" นิ้ว) อิตา
                         style={{ objectFit: "contain", width: "100%" }}
                     />
                 </div>
+                <div className="absolute top-0 w-full">
+                    <ButtonAir />
+                </div>
+
                 <div
                     className="bg-[#008938] p-5 rounded-t-[26px] h-[140px] w-full absolute bottom-[-100px] z-10"
                     style={{ width: '100%' }}
@@ -28,7 +34,7 @@ export default function ListOrderHeader({ name = '(6" นิ้ว) อิตา
                     <div className="text-white w-2/3 text-[12px] font-[400]">
                         แซนด์วิชอิตาเลียน บีเอ็มที ขนาด 6 นิ้ว (แนะนำใส่ซอส ตามสูตรเพื่อความอร่อย)
                     </div>
-                    <div onClick={click} className="text-white flex justify-between items-center py-3 border-1 border-b">
+                    <div onClick={ClickFoodAllergy} className="text-white flex justify-between items-center py-3 border-1 border-b">
                         <div className="flex">
                             <div className="w-[19px] h-[19px] me-3">
                                 <Image src={"/icon/hospital-white.png"} width={19} height={19} style={{ objectFit: "contain" }} />
