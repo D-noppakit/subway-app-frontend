@@ -2,16 +2,21 @@
 import DeliciousRecipe from "@/components/list-order/DeliciousRecipe";
 import ListOrderHeader from "@/components/list-order/ListOrderHeader";
 import ListOrderSelection from "@/components/list-order/ListOrderSelection";
-import CalOrder from "@/components/list-order/CalOrder";
+import Description from "@/components/list-order/Description"
+import AllergiesDescription from "@/components/list-order/AllergiesDescription"
+// import CalOrder from "@/components/list-order/CalOrder";
+import dynamic from 'next/dynamic'
+
+const CalOrder = dynamic(() => import('@/components/list-order/CalOrder'), { ssr: false })
 
 const datamock = [
-    { id: 1, name: "a" , group: "A"  }, { id: 2, name: "b"  , group: "A"  }, { id: 3, name: "c"  , group: "A"  }
+    { id: 1, name: "a", group: "A" }, { id: 2, name: "b", group: "A" }, { id: 3, name: "c", group: "A" }
 ]
 const datamock2 = [
-    { id: 1, name: "a" , group: "B"  }, { id: 2, name: "b"  , group: "B"  }, { id: 3, name: "c"  , group: "B"  }
+    { id: 1, name: "a", group: "B" }, { id: 2, name: "b", group: "B" }, { id: 3, name: "c", group: "B" }
 ]
 const datamock3 = [
-    { id: 1, name: "a" , group: "C"  }, { id: 2, name: "C"  , group: "C"  }, { id: 3, name: "c"  , group: "C"  }
+    { id: 1, name: "a", group: "C" }, { id: 2, name: "C", group: "C" }, { id: 3, name: "c", group: "C" }
 ]
 export default async function ListOrderPage({ params }) {
     // useEffect(() => {
@@ -29,8 +34,9 @@ export default async function ListOrderPage({ params }) {
                     <ListOrderSelection num={1} data={datamock} />
                     <ListOrderSelection num={2} data={datamock2} />
                     <ListOrderSelection num={3} data={datamock3} />
+                    <Description />
+                    <AllergiesDescription />
                 </div>
-              
             </div>
             <CalOrder />
         </div>
