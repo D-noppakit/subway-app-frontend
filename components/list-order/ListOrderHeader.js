@@ -22,14 +22,11 @@ export default  function ListOrderHeader({ name = '(6" นิ้ว) อิต�
                     />
                 </div>
                 <div className="absolute top-0 w-full">
-                    <Link href={"/listmenu"}>
                     <ButtonAir ClickClose={()=>{console.log("topage")}} />
-                    </Link>
-                 
                 </div>
 
                 <div
-                    className="bg-[#008938] p-5 rounded-t-[26px] h-[140px] w-full absolute bottom-[-100px] z-10"
+                    className="bg-[#008938] p-5 rounded-t-[26px] h-[140px] w-full absolute bottom-[-10px] z-10"
                     style={{ width: '100%' }}
                 >
                     <div className="text-white text-[18px] flex justify-between">
@@ -52,8 +49,6 @@ export default  function ListOrderHeader({ name = '(6" นิ้ว) อิต�
                         </div>
 
                     </div>
-                    <div className="text-white text-16px py-2">เลือกส่วนประกอบ</div>
-                    <DeliciousRecipe />
                 </div>
 
             </div>
