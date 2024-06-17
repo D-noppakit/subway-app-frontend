@@ -26,7 +26,7 @@ export default async function ListOrderPage({ params }) {
     const { type } = params
 
     return (
-        <div className="h-screen  flex flex-col">
+        <div className="h-screen  flex flex-col ">
             <ListOrderHeader />
             <div className="flex-1 w-full bg-[#008938] ">
                 <div className="px-[20px] pb-[20px] pt-3 gap-1 flex flex-col h-full mb-16">
