@@ -2,7 +2,7 @@
 "use client"
 import HeaderOne from "@/components/HeaderOne";
 import SideNavBar from "@/components/HomeComponents/SideNavBar";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Skeleton from 'react-loading-skeleton'
 import 'react-loading-skeleton/dist/skeleton.css'
 import CardSquareSkel from "@/components/Skeleton/CardSquareSkel"
@@ -14,7 +14,13 @@ import IconFavorite from "@/public/icon/IconFavorite.png"
 import TittleHeader from "@/components/HomeComponents/TittleHeader";
 import CardSquare from "@/components/Card/CardSquare";
 import { useRouter } from "next/navigation";
+import store from "@/lib/store"
+
 export default function page() {
+    const {clearDataOrderListConfirm} = store();
+    useEffect(() => {
+        clearDataOrderListConfirm()
+    }, [])
     const router = useRouter()
     let listData = [
         { id: "1", value: "us" },
@@ -60,7 +66,7 @@ export default function page() {
                     <div>
                         <TittleHeader textHeader="โปรโมชั่น" />
                         <div className={'list-promotion pt-2 grid grid-cols-2 gap-2 w-full'}>
-                            <CardSquare whenClick={()=>router.push("/list-order/orderid")} />
+                            <CardSquare whenClick={() => router.push("/list-order/orderid")} />
                             <CardSquare />
                             <CardSquare />
                             <CardSquare />
