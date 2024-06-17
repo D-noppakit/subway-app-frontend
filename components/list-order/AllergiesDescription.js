@@ -19,8 +19,8 @@ export default function Description() {
             </div>
             <div className='w-full flex justify-around items-center text-white'>
 
-                <button className='px-[12px] py-[6px] border border-1 border-[#DFE0E7] w-[155px] rounded-[100px]'>แพ้อาหาร</button>
-                <button className='px-[12px] py-[6px] border border-1 border-[#DFE0E7] w-[155px] rounded-[100px]'>ไม่แพ้อาหาร</button>
+                <button className='px-[12px] py-[6px] border border-1 border-[#DFE0E7] w-[155px] rounded-[100px] active:bg-[#F2B700]'>แพ้อาหาร</button>
+                <button className='px-[12px] py-[6px] border border-1 border-[#DFE0E7] w-[155px] rounded-[100px] active:bg-[#F2B700]'>ไม่แพ้อาหาร</button>
             </div>
         </div>
     )

@@ -20,14 +20,12 @@ export default function HowToUse() {
         );
 
     };
-    // console.log({ checkedItems })
 
     return (
         <div>
 
             <CheckBoxCustom
                 key={1}
-                isChecked={true}
                 onCheckboxChange={()=>{console.log("hello")}}
                 text={"hello"}
             />

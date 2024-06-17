@@ -4,9 +4,7 @@ import Image from 'next/image'
 export default function HeaderOne({ debug, CartCount, whenClickBulgur }) {
   const bgClass = "z-20 flex w-full h-[76px] justify-between p-3 absolute top-0" + (debug ? "bg-green-500" : '')
   const handleEventClick = (event) => {
-    console.log("Event:", event)
-    // คุณสามารถดูค่า event แบบละเอียดด้วย
-    // console.log("Event target:", event.target)
+    // console.log("Event:", event)
     whenClickBulgur(true)
   }
   return (
