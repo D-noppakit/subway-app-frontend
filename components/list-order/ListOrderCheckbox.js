@@ -12,14 +12,6 @@ export default function ListOrderCheckbox({ id = 1, data, title, num }) {
 
     const CheckBoxData = [{ id: 1, value: "แซนวิช", checked: false }, { id: 2, value: "แซนวิช2", checked: false }, { id: 3, value: "แซนวิช3", checked: false }];
     const [checkedItems, setCheckedItems] = useState(CheckBoxData);
-    const handleCheckboxChange = (id, isChecked) => {
-        setCheckedItems(prevState =>
-            prevState.map(item =>
-                item.id === id ? { ...item, checked: isChecked } : item
-            )
-        );
-
-    };
 
     useEffect(() => {
         if (isArrowTop) {
