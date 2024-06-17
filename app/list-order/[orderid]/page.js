@@ -2,6 +2,7 @@
 import DeliciousRecipe from "@/components/list-order/DeliciousRecipe";
 import ListOrderHeader from "@/components/list-order/ListOrderHeader";
 import ListOrderSelection from "@/components/list-order/ListOrderSelection";
+import ListOrderCheckbox from "@/components/list-order/ListOrderCheckbox";
 import Description from "@/components/list-order/Description"
 import AllergiesDescription from "@/components/list-order/AllergiesDescription"
 // import CalOrder from "@/components/list-order/CalOrder";
@@ -34,6 +35,7 @@ export default async function ListOrderPage({ params }) {
                     <ListOrderSelection num={1} data={datamock} />
                     <ListOrderSelection num={2} data={datamock2} />
                     <ListOrderSelection num={3} data={datamock3} />
+                    <ListOrderCheckbox num={4} data={datamock3} />
                     <Description />
                     <AllergiesDescription />
                 </div>
