@@ -188,8 +188,6 @@ export default function SideNavBar({ isOpen = false, Close = () => console.log("
                     </div>
                     
                 </CardLoginSuccess>}
-
-
             </div>
         </div>
     );
