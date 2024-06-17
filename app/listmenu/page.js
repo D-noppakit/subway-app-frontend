@@ -14,6 +14,7 @@ import IconFavorite from "@/public/icon/IconFavorite.png"
 import TittleHeader from "@/components/HomeComponents/TittleHeader";
 import CardSquare from "@/components/Card/CardSquare";
 import { useRouter } from "next/navigation";
+import CardListItem from "@/components/Card/CardListItem";
 export default function page() {
     const router = useRouter()
     let listData = [
@@ -67,9 +68,45 @@ export default function page() {
                         </div>
                     </div>
                     <div>
-                        <TittleHeader textHeader="อาหารเช้า (เช้าตรู่ - 11 โมงเท่านั้น)" />
-                        <div className=''>
-
+                        <div className='contanier-box-item'>
+                            <div className="box-item-title">
+                                <TittleHeader textHeader="อาหารเช้า (เช้าตรู่ - 11 โมงเท่านั้น)" />
+                            </div>
+                            <div className="box-item-list">
+                                <CardListItem />
+                            </div>
+                            <div className="box-item-list">
+                                <CardListItem />
+                            </div>
+                            <div className="box-item-list">
+                                <CardListItem />
+                            </div>
+                            <div className="box-item-list">
+                                <CardListItem />
+                            </div>
+                            <div className="box-item-list">
+                                <CardListItem />
+                            </div>
+                        </div>
+                        <div className='contanier-box-item'>
+                            <div className="box-item-title">
+                                <TittleHeader textHeader="เมนูมาใหม่ โดนใจกว่าเดิม" />
+                            </div>
+                            <div className="box-item-list">
+                                <CardListItem />
+                            </div>
+                            <div className="box-item-list">
+                                <CardListItem />
+                            </div>
+                            <div className="box-item-list">
+                                <CardListItem />
+                            </div>
+                            <div className="box-item-list">
+                                <CardListItem />
+                            </div>
+                            <div className="box-item-list">
+                                <CardListItem />
+                            </div>
                         </div>
                     </div>
 
