@@ -9,15 +9,14 @@ export default function Subwaytextbox({
   errorMsg = "Error message"
 }) {
   return (
-    <div class="w-full">
-      <div class="custom-select">
+    <div className="w-full">
+      <div className="custom-select">
         <select
           id=""
           className={
             "bg-gray-50 border border-gray-300 text-sm focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 rounded-full " +
             type
           }
-          class=""
           style={{ paddingRight: "30px", width: "240px", height: "48px" }}
           disabled={type == 'disabled' ? true : null}
         >
