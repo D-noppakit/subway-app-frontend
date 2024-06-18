@@ -13,7 +13,7 @@ export default function HeaderOne({ debug, CartCount, whenClickBulgur }) {
     const handleScroll = () => {
       if (typeof document !== 'undefined') {
         const scrolledDown = document.body.scrollTop > 0;
-        console.log(`Scroll position: ${document.body.scrollTop}`);
+        // console.log(`Scroll position: ${document.body.scrollTop}`);
         setIsScrolledDown(scrolledDown);
       }
     };
