@@ -1,6 +1,6 @@
 import Image from "next/image"
 
-import logWhite from "@/public/imgs/subway-logo-white.png"
+import logWhite from "@/public/loading/loading.gif"
 export default function Loading() {
     return (
         <div className='absolute w-screen h-screen flex items-center justify-center z-[100] bg-black bg-opacity-50'>
