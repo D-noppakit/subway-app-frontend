@@ -4,7 +4,6 @@ import { useState, useEffect } from 'react';
 import mainHeaderGreen from "@/public/imgs/subway-logo-green.png"
 export default function HeaderOne({ debug, CartCount, whenClickBulgur }) {
   const handleEventClick = (event) => {
-    // console.log("Event:", event)
     whenClickBulgur(true)
   }
   const [isScrolledDown, setIsScrolledDown] = useState(false);
@@ -13,7 +12,6 @@ export default function HeaderOne({ debug, CartCount, whenClickBulgur }) {
     const handleScroll = () => {
       if (typeof document !== 'undefined') {
         const scrolledDown = document.body.scrollTop > 0;
-        // console.log(`Scroll position: ${document.body.scrollTop}`);
         setIsScrolledDown(scrolledDown);
       }
     };
