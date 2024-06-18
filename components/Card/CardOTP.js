@@ -11,7 +11,7 @@ const formatTime = (millis) => {
     return `${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
 };
 
-export default function CardOTP({ Click, setOtp, otp, CloseCard, PhoneNO, OTPRef, OTPTime  }) {
+export default function CardOTP({ Click, setOtp, otp, CloseCard, PhoneNO, OTPRef, wrongOTP = false }) {
     const [timeLeft, setTimeLeft] = useState(180000);
 
     useEffect(() => {
@@ -24,7 +24,7 @@ export default function CardOTP({ Click, setOtp, otp, CloseCard, PhoneNO, OTPRef
         return () => clearInterval(intervalId);
     }, [timeLeft]);
 
-  
+
     return (
 
         <CardHeaderGreen close={CloseCard}>
@@ -42,7 +42,8 @@ export default function CardOTP({ Click, setOtp, otp, CloseCard, PhoneNO, OTPRef
                         color: 'black',
                         width: "40px",
                         outline: "none",
-                        caretColor: "transparent"
+                        caretColor: "transparent",
+                        borderColor: wrongOTP ? "#D83A3A" : ""
                     }}
                     value={otp}
                     onChange={(value) => {
@@ -56,8 +57,11 @@ export default function CardOTP({ Click, setOtp, otp, CloseCard, PhoneNO, OTPRef
                     renderInput={(props) => <input pattern="[0-9]*"
                         inputMode="numeric" {...props} />}
                 />
+
             </div>
+
             <div className='text-[#A3A6B7] flex justify-center items-center flex-col gap-[10px] text-[14px]'>
+                {wrongOTP ? <div className='text-[12px] text-[#D83A3A]'>รหัส OTP ไม่ถูกต้อง ลองใหม่อีกครั้ง</div> : <></> }
                 <div>อ้างอิง {OTPRef}</div>
                 <div>รหัสยืนยันตัวตนจะหมดอายุใน {formatTime(timeLeft)}</div>
                 <ButtonWhiteBorderGray>

@@ -13,6 +13,7 @@ const FlowLogin = ({ setLoading, setIsCard, setIsConfirmOTP, isOpenCard, isConfi
     const [otp, setOtp] = useState('');
     const [OTPRef, SetOTPRef] = useState('');
     const [OTPTime, SetOTPTime] = useState(null);
+    const [OTPStatus, setOTPStatus] = useState(false)
     useEffect(() => {
         if (PhoneNO.length === 10) {
             SetIsDisabled(false)
@@ -108,13 +109,17 @@ const FlowLogin = ({ setLoading, setIsCard, setIsConfirmOTP, isOpenCard, isConfi
                     setLoading(false)
                     SetIsLogin(true)
                     setIsLoginApp(true)
+                    setOTPStatus(false)
+                } else {
+                    setLoading(false)
+                    setOTPStatus(true)
                 }
             })
             .catch((error) => console.log("error", error));
     }
     if (isOpenCard) {
         if (isConfirmOTP) {
-            return <CardOTP setOtp={setOtp} otp={otp} Click={Login} OTPTime={OTPTime} OTPRef={OTPRef} PhoneNO={PhoneNO} CloseCard={CloseCard} />
+            return <CardOTP setOtp={setOtp} otp={otp} Click={Login} OTPTime={OTPTime} OTPRef={OTPRef} PhoneNO={PhoneNO} CloseCard={CloseCard} wrongOTP={OTPStatus} />
         } else {
 
             return (<CardHeaderGreen close={CloseCard}>
