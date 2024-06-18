@@ -16,6 +16,8 @@ import Loading from "@/components/Loading";
 import useStore from '@/lib/store';
 import { useRouter } from 'next/navigation'
 import useSWR from 'swr'
+import HeaderTwo from "@/components/HeaderTwo";
+import HeaderTree from "@/components/HeaderTree";
 const fetcher = (url) => fetch(url, {
   method: 'POST',
   headers: {
@@ -41,7 +43,7 @@ export default function page() {
     setIsOpenBulgur(state)
   }
   return (
-    <div className="relative">
+    <div className="">
       {/* {isLoading && <Loading />} */}
       <HeaderOne CartCount={0} whenClickBulgur={ClickBulgur} />
       <SelectionTopHome />

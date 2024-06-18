@@ -24,7 +24,7 @@ export default function CardSquare({ whenClick = () => console.log("CardSquare")
         </div>
 
         <div style={{ backgroundColor: "var(--green600)", color: "var(--neutral50)", width: "24px", height: "24px", borderRadius: "999px", display: "flex", justifyContent: "center", fontWeight: "bold" }}>
-          <Image src={Plus} width={24} height={24} />
+          <Image src={Plus} width={24} height={24} alt='img' />
         </div>
       </div>
     </div>
