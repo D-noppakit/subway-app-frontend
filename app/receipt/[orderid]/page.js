@@ -11,7 +11,7 @@ export default function page() {
     setIsOpenBulgur(state)
   }
   return (
-    <div className='relative'>
+    <div className=''>
       <HeaderOne CartCount={0} whenClickBulgur={ClickBulgur} />
       <div style={{ height: "fit-content" }}>
         <main className={`w-full h-[139px] bg-[#0b8a45] relative`}>
