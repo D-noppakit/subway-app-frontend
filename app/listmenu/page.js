@@ -57,10 +57,10 @@ export default function page() {
 
                     </div>
                     <div className={'border rounded-full border-[--neutral400] w-[45px] h-[45px] flex justify-center items-center'}>
-                        <Image src={IconSearch} width={24} height={24} style={{ width: "24px", height: "24px", objectFit: "cover" }} />
+                        <Image src={IconSearch} alt="IconSearch" width={24} height={24} style={{ width: "24px", height: "24px", objectFit: "cover" }} />
                     </div>
                     <div className={'border rounded-full border-[--neutral400] w-[45px] h-[45px] flex justify-center items-center'}>
-                        <Image src={IconFavorite} width={24} height={24} style={{ width: "24px", height: "24px", objectFit: "cover" }} />
+                        <Image src={IconFavorite} alt="IconFavorite" width={24} height={24} style={{ width: "24px", height: "24px", objectFit: "cover" }} />
                     </div>
                 </div>
                 <div className={'container-content-bottom flex flex-col pt-5'} >
