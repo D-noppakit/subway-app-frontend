@@ -20,10 +20,11 @@ import store from "@/lib/store"
 export default function page() {
     const { clearDataOrderListConfirm } = store();
     const [isScrolledDown, setIsScrolledDown] = useState(false);
-
+    //event clear ข้อมูลก่อนทำรายการธถัดไป
     useEffect(() => {
         clearDataOrderListConfirm()
     }, [])
+    //event สำหรับ scroll display
     useEffect(() => {
         const handleScroll = () => {
             if (typeof document !== 'undefined') {
