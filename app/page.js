@@ -15,10 +15,19 @@ import BannerSkel from "@/components/Skeleton/BannerSkel"
 import Loading from "@/components/Loading";
 import useStore from '@/lib/store';
 import { useRouter } from 'next/navigation'
-
-
+import useSWR from 'swr'
+const fetcher = (url) => fetch(url, {
+  method: 'POST',
+  headers: {
+    'Content-Type': 'application/json',
+  },
+  body: JSON.stringify({ "shopcode": "S001" }),
+}).then(res => res.json());
 export default function page() {
-
+  const { data, error, isLoading } = useSWR(
+    'http://localhost:3003/api/v1/product/byshop/promotionhotdeal',
+    fetcher
+  );
   let listData = [
     { id: "1", value: "us" },
     { id: "2", value: "en" },
@@ -31,18 +40,17 @@ export default function page() {
     console.log("ClickBulgur", state)
     setIsOpenBulgur(state)
   }
-  const { isLoading } = useStore()
   return (
     <div className="relative">
-      {isLoading && <Loading />}
+      {/* {isLoading && <Loading />} */}
       <HeaderOne CartCount={0} whenClickBulgur={ClickBulgur} />
       <SelectionTopHome />
       <div className="w-screen p-5">
         <SectionBottom />
         <div className="grid grid-cols-2 gap-3 justify-self-center">
-          {false ? <RenderCardSquareSkel /> : listData.map(v => <CardSquare key={v.id} whenClick={()=>router.push("/listmenu")} />)}
+          {isLoading ? <RenderCardSquareSkel /> : listData.map(v => <CardSquare key={v.id} whenClick={() => router.push("/listmenu")} />)}
         </div>
-        {false ? <BannerSkel /> : <HomeBanner />}
+        {isLoading ? <BannerSkel /> : <HomeBanner />}
         {/* <CardListItem /> */}
       </div>
       {/* bulgur when click */}

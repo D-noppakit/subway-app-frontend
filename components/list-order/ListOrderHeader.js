@@ -16,7 +16,7 @@ export default  function ListOrderHeader({ name = '(6" นิ้ว) อิต�
                         src={demoImage}
                         alt="img-order"
                         className="absolute bottom-0 bg-white"
-                        width={1000}
+                        width={500}
                         height={500}
                         style={{ objectFit: "contain", width: "100%" }}
                     />

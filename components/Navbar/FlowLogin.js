@@ -2,20 +2,25 @@ import { useState } from "react";
 import CardHeaderGreen from "../Card/CardHeaderGreen";
 import ButtonCustom from '../Button/ButtonCustom'
 import ButtonWhiteBorderGray from '../Button/ButtonWhiteBorderGray';
-const FlowLogin = ({ Phoneno = "", OTPRef, OTPTime ,setLoading ,setIsCard ,setIsConfirmOTP  , isOpenCard , isConfirmOTP , CloseCard={} , SetIsLogin}) => {
+import OtpInput from 'react-otp-input';
+const FlowLogin = ({ Phoneno = "", OTPRef, OTPTime, setLoading, setIsCard, setIsConfirmOTP, isOpenCard, isConfirmOTP, CloseCard = {}, SetIsLogin }) => {
     const [PhoneOTPValue, setPhoneOTPValue] = useState("")
     const [otp, setOtp] = useState('');
     const Login = () => {
         console.log("login")
         setLoading(true)
         setIsCard(false)
-        setIsConfirmOTP(false)
+
         setTimeout(() => {
             setLoading(false)
             SetIsLogin(true)
         }, 1000)
     }
+    const GetOTP = () => {
+        setIsConfirmOTP(true)
+    }
     if (isOpenCard) {
+        console.log({ isConfirmOTP })
         if (isConfirmOTP) {
             return <>
                 <CardHeaderGreen close={CloseCard}>
@@ -65,7 +70,7 @@ const FlowLogin = ({ Phoneno = "", OTPRef, OTPTime ,setLoading ,setIsCard ,setIs
                     <input value={PhoneOTPValue} onChange={(e) => setPhoneOTPValue(e.target.value)} className={`h-full w-full outline-none text-black`} placeholder='123-456-789' />
                 </div>
                 <div className='h-[48px] w-full'>
-                    <ButtonCustom type={'primary'} width='100%' img='' btnText={"เข้าสู่ระบบ"} isDisabled={false} whenClick={() => { Login(PhoneOTPValue) }} />
+                    <ButtonCustom type={'primary'} width='100%' img='' btnText={"เข้าสู่ระบบ"} isDisabled={false} whenClick={GetOTP } />
                 </div>
                 <div className={`flex h-[32px] w-full justify-center items-center my-5 rounded-3xl relative p-1 text-lg`} >
                     <ButtonWhiteBorderGray>
