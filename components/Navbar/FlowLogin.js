@@ -20,20 +20,8 @@ const FlowLogin = ({ setLoading, setIsCard, setIsConfirmOTP, isOpenCard, isConfi
             SetIsDisabled(true)
         }
     }, [PhoneNO])
-    useEffect(() => {
-        console.log({ otp })
-    }, [otp])
-
     const Login = () => {
-        console.log("login")
         VerifyOTP()
-        // setLoading(true)
-        // setIsCard(false)
-
-        // setTimeout(() => {
-        //     setLoading(false)
-        //     SetIsLogin(true)
-        // }, 1000)
     }
 
     const GetOTP = () => {
