@@ -17,18 +17,18 @@ function calculateTimeRemaining(timestamp) {
 }
 const FlowLogin = ({ setLoading, setIsCard, setIsConfirmOTP, isOpenCard, isConfirmOTP, CloseCard = {}, SetIsLogin }) => {
     const [PhoneOTPValue, setPhoneOTPValue] = useState("")
-    const { PhoneNO, OnChangePhoneNo, UserInfo, SetUserInfo } = store();
+    const { PhoneNO, OnChangePhoneNo, UserInfo, SetUserInfo, setIsLoginApp } = store();
     const [isDisabled, SetIsDisabled] = useState(false)
     const [otp, setOtp] = useState('');
     const [OTPRef, SetOTPRef] = useState('');
     const [OTPTime, SetOTPTime] = useState(null);
     const [timeRemaining, setTimeRemaining] = useState(null);
-    
+
     useEffect(() => {
         if (OTPTime !== null) {
             const intervalId = setInterval(() => {
                 const newTimeRemaining = calculateTimeRemaining(OTPTime);
-                console.log({newTimeRemaining})
+                console.log({ newTimeRemaining })
                 setTimeRemaining(newTimeRemaining);
 
                 if (newTimeRemaining.total <= 0) {
@@ -142,10 +142,11 @@ const FlowLogin = ({ setLoading, setIsCard, setIsConfirmOTP, isOpenCard, isConfi
                 console.log("VerifyOtp", result)
                 if (result.RespMessage === "Success") {
                     SetUserInfo({ "VerifyOtp": result })
+                    SetUserInfo(result.result)
                     setIsCard(false)
                     setLoading(false)
                     SetIsLogin(true)
-                    
+                    setIsLoginApp(true)
                 }
             })
             .catch((error) => console.log("error", error));

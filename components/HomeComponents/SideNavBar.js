@@ -16,6 +16,7 @@ import Loading from '../Loading';
 import CardLoginSuccess from "@/components/Card/CardLoginSuccess"
 import Image from 'next/image';
 import FlowLogin from '../Navbar/FlowLogin';
+import store from "@/lib/store"
 
 
 
@@ -24,6 +25,12 @@ export default function SideNavBar({ isOpen = false, Close = () => console.log("
     const [isConfirmOTP, setIsConfirmOTP] = useState(false);
     const [isLoading, setLoading] = useState(false);
     const [isLogin, SetIsLogin] = useState(false);
+    const { UserInfo } = store();
+    const [CusName , setCusName] = useState()
+    useEffect(()=>{
+        setCusName(UserInfo?.customerName)
+    },[UserInfo])
+
     const GotoHome = () => {
         SetIsLogin(false)
         setLoading(false)
@@ -43,23 +50,7 @@ export default function SideNavBar({ isOpen = false, Close = () => console.log("
     const OpenCard = () => {
         setIsCard(true)
     }
-    const CheckPhoneNo = async (phoneno) => {
-        console.log({ phoneno })
-        const req = await fetch("http://localhost:3003/api/v1/profile/subway/checkphone", {
-            method: "POST",
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify({
-                phoneno: phoneno
-            }),
-        });
-
-        const data = await req.json();
-        console.log(data);
-        setIsConfirmOTP(true);
-    }
-
+   
 
     return (
         <div >
@@ -86,19 +77,20 @@ export default function SideNavBar({ isOpen = false, Close = () => console.log("
                     <div>ข้อกำหนดการใช้งาน การตั้งค่าคุกกี้</div>
                 </div>
                 <div className='text-[#A3A6B7] text-center text-[10px] mt-5'>ลิขสิทธิ์ Subway Thailand 2024 สงวนลิขสิทธิ์</div>
-                <FlowLogin SetIsLogin={SetIsLogin} setLoading ={setLoading} setIsCard = {setIsCard} setIsConfirmOTP ={setIsConfirmOTP}  isOpenCard = {isOpenCard} isConfirmOTP={isConfirmOTP} CloseCard={CloseCard} />
+                <FlowLogin SetIsLogin={SetIsLogin} setLoading={setLoading} setIsCard={setIsCard} setIsConfirmOTP={setIsConfirmOTP} isOpenCard={isOpenCard} isConfirmOTP={isConfirmOTP} CloseCard={CloseCard} />
                 {isLogin && <CardLoginSuccess>
                     <div className='absolute h-full top-0 left-0'>
-                        <Image className='' alt='bg-wallcome' width={3000} height={100} style={{width:"100vw"}} src={"/bg-image/bg-wallcome.png"} />
+                        <Image className='' alt='bg-wallcome' width={3000} height={100} style={{ width: "100vw" }} src={"/bg-image/bg-wallcome.png"} />
                     </div>
                     <div className='gap-3 flex justify-center items-center flex-col my-5 relative z-20'>
                         <Image src={"/imgs/subway-logo-white.png"} height={80} width={80} style={{ objectFit: "contain" }} alt="bg" />
                         <div>
                             <div className='text-[24px] font-[500] text-center'> ยินดีต้อนรับ</div>
-                            <div className='text-[32px] font-[700] text-center'> คุณมาคัส</div>
+                            <div className='text-[32px] font-[700] text-center'> คุณ <span>{CusName}</span> </div>
                             <div className='text-[16px] font-[500] text-center'>
                                 คุณสมัครเป็นสมาชิกซับเวย์สำเร็จ!
-                                เช็กสิทธิพิเศษและเริ่มสั่งออเดอร์ได้ทันที</div>
+                                เช็กสิทธิพิเศษและเริ่มสั่งออเดอร์ได้ทันที
+                            </div>
                         </div>
 
                         <div className='w-[160px]'>
@@ -109,7 +101,7 @@ export default function SideNavBar({ isOpen = false, Close = () => console.log("
                             <ButtonCustom type={"primary"} img='' btnText={"กลับสู่หน้าหลัก"} textSize='16px' whenClick={GotoHome} />
                         </div>
                     </div>
-                    
+
                 </CardLoginSuccess>}
             </div>
         </div>
