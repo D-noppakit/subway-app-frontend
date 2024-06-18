@@ -1,10 +1,7 @@
 import Image from 'next/image'
 
 export default function HeaderTwo({ debug, CartCount, Close = () => { console.log("close") } }) {
-
-  console.log(CartCount)
   const bgClass = "flex w-full h-[76px] justify-between p-3 bg-white"
-  // console.log(debug)
   return (
     <div className={bgClass}>
       <div className='w-[100px] flex justify-between items-center' onClick={Close}>
