@@ -1,9 +1,30 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import OtpInput from 'react-otp-input';
 import CardHeaderGreen from './CardHeaderGreen';
 import ButtonCustom from '../Button/ButtonCustom'
 import ButtonWhiteBorderGray from '../Button/ButtonWhiteBorderGray';
-export default function CardOTP({Click , setOtp ,otp , CloseCard ,PhoneNO ,OTPRef , OTPTime}) {
+const formatTime = (millis) => {
+    const totalSeconds = Math.floor(millis / 1000);
+    const minutes = Math.floor(totalSeconds / 60);
+    const seconds = totalSeconds % 60;
+
+    return `${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+};
+
+export default function CardOTP({ Click, setOtp, otp, CloseCard, PhoneNO, OTPRef, OTPTime  }) {
+    const [timeLeft, setTimeLeft] = useState(180000);
+
+    useEffect(() => {
+        if (timeLeft <= 0) return;
+        const intervalId = setInterval(() => {
+            setTimeLeft((prevTime) => prevTime - 1000);
+            // console.log({ "timeLeft" : formatTime(timeLeft) })
+        }, 1000);
+
+        return () => clearInterval(intervalId);
+    }, [timeLeft]);
+
+  
     return (
 
         <CardHeaderGreen close={CloseCard}>
@@ -38,7 +59,7 @@ export default function CardOTP({Click , setOtp ,otp , CloseCard ,PhoneNO ,OTPRe
             </div>
             <div className='text-[#A3A6B7] flex justify-center items-center flex-col gap-[10px] text-[14px]'>
                 <div>อ้างอิง {OTPRef}</div>
-                <div>รหัสยืนยันตัวตนจะหมดอายุใน {OTPTime}</div>
+                <div>รหัสยืนยันตัวตนจะหมดอายุใน {formatTime(timeLeft)}</div>
                 <ButtonWhiteBorderGray>
                     <div className='text-[#A3A6B7] w flex justify-start items-center p-3 rounded-[100px] text-sm bt-custom'>
                         <span>ต้องการรหัสใหม่</span>

@@ -5,17 +5,7 @@ import ButtonWhiteBorderGray from '../Button/ButtonWhiteBorderGray';
 import store from "@/lib/store"
 import CardOTP from "../Card/CardOTP";
 
-function calculateTimeRemaining(timestamp) {
-    const now = new Date().getTime();
-    const total = timestamp - now;
-    const seconds = Math.floor((total / 1000) % 60);
-    const minutes = Math.floor((total / 1000 / 60) % 60);
-    return {
-        total,
-        minutes,
-        seconds,
-    };
-}
+
 const FlowLogin = ({ setLoading, setIsCard, setIsConfirmOTP, isOpenCard, isConfirmOTP, CloseCard = {}, SetIsLogin }) => {
     const [PhoneOTPValue, setPhoneOTPValue] = useState("")
     const { PhoneNO, OnChangePhoneNo, UserInfo, SetUserInfo, setIsLoginApp } = store();
@@ -23,25 +13,7 @@ const FlowLogin = ({ setLoading, setIsCard, setIsConfirmOTP, isOpenCard, isConfi
     const [otp, setOtp] = useState('');
     const [OTPRef, SetOTPRef] = useState('');
     const [OTPTime, SetOTPTime] = useState(null);
-    const [timeRemaining, setTimeRemaining] = useState(null);
-
     useEffect(() => {
-        if (OTPTime !== null) {
-            const intervalId = setInterval(() => {
-                const newTimeRemaining = calculateTimeRemaining(OTPTime);
-                console.log({ newTimeRemaining })
-                setTimeRemaining(newTimeRemaining);
-
-                if (newTimeRemaining.total <= 0) {
-                    clearInterval(intervalId);
-                }
-            }, 1000);
-
-            return () => clearInterval(intervalId);
-        }
-    }, [OTPTime]);
-    useEffect(() => {
-
         if (PhoneNO.length === 10) {
             SetIsDisabled(false)
         } else {
@@ -154,52 +126,7 @@ const FlowLogin = ({ setLoading, setIsCard, setIsConfirmOTP, isOpenCard, isConfi
     }
     if (isOpenCard) {
         if (isConfirmOTP) {
-            return <CardOTP setOtp={setOtp} otp={otp} Click={Login} OTPTime={OTPTime} OTPRef={OTPRef} PhoneNO={PhoneNO} />
-            // return <>
-            //     <CardHeaderGreen close={CloseCard}>
-            //         <div className='text-[#008938] font-bold text-[24px] '>ยืนยัน OTP</div>
-            //         <div className='text-[14px] font-[500]'>กรุณากรอกรหัสยืนยัน 6 หลัก ที่ได้รับทาง SMS
-            //             หมายเลขโทรศัพท์ {PhoneNO}</div>
-            //         <div className='flex justify-center items-center p-3'>
-            //             <OtpInput
-            //                 inputStyle={{
-            //                     border: '1px solid #DFE0E7',
-            //                     fontSize: '32px',
-            //                     borderRadius: '10px',
-            //                     display: 'flex',
-            //                     alignItems: 'center',
-            //                     color: 'black',
-            //                     width: "40px",
-            //                     outline: "none",
-            //                     caretColor: "transparent"
-            //                 }}
-            //                 value={otp}
-            //                 onChange={(value) => {
-            //                     if (/^\d*$/.test(value)) {
-            //                         setOtp(value);
-            //                     }
-            //                 }}
-            //                 numInputs={6}
-            //                 shouldAutoFocus
-            //                 renderSeparator={<span className='mx-1'></span>}
-            //                 renderInput={(props) => <input pattern="[0-9]*"
-            //                     inputMode="numeric" {...props} />}
-            //             />
-            //         </div>
-            //         <div className='text-[#A3A6B7] flex justify-center items-center flex-col gap-[10px] text-[14px]'>
-            //             <div>อ้างอิง {OTPRef}</div>
-            //             <div>รหัสยืนยันตัวตนจะหมดอายุใน {OTPTime}</div>
-            //             <ButtonWhiteBorderGray>
-            //                 <div className='text-[#A3A6B7] w flex justify-start items-center p-3 rounded-[100px] text-sm bt-custom'>
-            //                     <span>ต้องการรหัสใหม่</span>
-            //                 </div>
-            //             </ButtonWhiteBorderGray>
-            //             <div className='h-[48px] w-full'>
-            //                 <ButtonCustom btnText={"ยืนยัน"} img='' type={"primary"} whenClick={Login} />
-            //             </div>
-            //         </div>
-            //     </CardHeaderGreen>
-            // </>
+            return <CardOTP setOtp={setOtp} otp={otp} Click={Login} OTPTime={OTPTime} OTPRef={OTPRef} PhoneNO={PhoneNO} CloseCard={CloseCard} />
         } else {
 
             return (<CardHeaderGreen close={CloseCard}>
