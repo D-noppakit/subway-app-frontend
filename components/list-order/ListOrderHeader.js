@@ -39,13 +39,13 @@ export default  function ListOrderHeader({ name = '(6" นิ้ว) อิต�
                     <div onClick={ClickFoodAllergy} className="text-white flex justify-between items-center py-3 border-1 border-b">
                         <div className="flex">
                             <div className="w-[19px] h-[19px] me-3">
-                                <Image src={"/icon/hospital-white.png"} width={19} height={19} style={{ objectFit: "contain" }} />
+                                <Image src={"/icon/hospital-white.png"}  alt="img-order" width={19} height={19} style={{ objectFit: "contain" }} />
                             </div>
                             <div>ข้อมูลสำหรับผู้แพ้อาหาร</div>
                         </div>
 
                         <div className="w-[14px] h-[14px]">
-                            <Image src={"/icon/arrow-white.png"} width={10} height={10} style={{ objectFit: "contain" }} />
+                            <Image src={"/icon/arrow-white.png"}  alt="img-order" width={10} height={10} style={{ objectFit: "contain" }} />
                         </div>
 
                     </div>
