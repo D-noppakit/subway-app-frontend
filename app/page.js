@@ -45,7 +45,7 @@ export default function page() {
   return (
     <div className="">
       {/* {isLoading && <Loading />} */}
-      <HeaderOne CartCount={0} whenClickBulgur={ClickBulgur} />
+      <HeaderOne CartCount={1} whenClickBulgur={ClickBulgur} />
       <SelectionTopHome />
       <div className="w-screen p-5">
         <SectionBottom />

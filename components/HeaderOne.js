@@ -38,14 +38,14 @@ export default function HeaderOne({ debug, CartCount, whenClickBulgur }) {
       </div>
       <div className='w-[40px] flex justify-center items-center relative'>
         {CartCount > 0 ? <NotiCart num={CartCount} /> : <></>}
-        {!isScrolledDown ? <Image className='p-[6px]' src={"/imgs/CartOrange.png"} width={100} height={100} alt='3' /> : <Image src={"/imgs/Shopping-Basket-Card-green.png"} width={100} height={100} alt='3' />}
+        {!isScrolledDown ? <Image className='p-[7px]' src={"/imgs/CartOrange.png"} width={100} height={100} alt='3' /> : <Image src={"/imgs/Shopping-Basket-Card-green.png"} width={100} height={100} alt='3' />}
       </div>
     </div>
   )
 }
 
 function NotiCart({ num }) {
-  console.log({ num })
+  // console.log({ num })
   return (
     <div className={`absolute w-[20px] h-[15px] bg-[#FF5C39] rounded-full fs-[1px] top-3 right-0`}>
       <div className='text-[10px] text-center text-white'>
