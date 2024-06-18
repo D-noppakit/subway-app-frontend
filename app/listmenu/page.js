@@ -18,7 +18,7 @@ import CardListItem from "@/components/Card/CardListItem";
 import store from "@/lib/store"
 
 export default function page() {
-    const {clearDataOrderListConfirm} = store();
+    const { clearDataOrderListConfirm } = store();
     useEffect(() => {
         clearDataOrderListConfirm()
     }, [])
@@ -50,9 +50,9 @@ export default function page() {
 
                 </main>
             </div>
-            <div className={'container-bottom flex ps-[16px] pe-[16px] flex-col'}>
-                <div className="container-searchbox flex justify-between pt-6 " >
-                    <div>
+            <div className={'container-bottom flex flex-col'}>
+                <div className="container-searchbox flex justify-between pt-6 ps-[16px] pe-[16px] pb-2 " style={{ position: "-webkit-sticky", position: "sticky", top: "60px", backgroundColor: "white", zIndex: '2', boxShadow: "0px -2px 25px 0px rgba(0,0,0,0.75)" }}>
+                    <div >
                         <Subwaytextbox />
 
                     </div>
@@ -63,63 +63,62 @@ export default function page() {
                         <Image src={IconFavorite} alt="IconFavorite" width={24} height={24} style={{ width: "24px", height: "24px", objectFit: "cover" }} />
                     </div>
                 </div>
-                <div className={'container-content-bottom flex flex-col pt-5'} >
-                    <div>
-                        <TittleHeader textHeader="โปรโมชั่น" />
-                        <div className={'list-promotion pt-2 grid grid-cols-2 gap-2 w-full'}>
-                            <CardSquare whenClick={() => router.push("/list-order/orderid")} />
-                            <CardSquare />
-                            <CardSquare />
-                            <CardSquare />
+                <div className="ps-[16px] pe-[16px]">
+                    <div className={'container-content-bottom flex flex-col pt-5'} >
+                        <div>
+                            <TittleHeader textHeader="โปรโมชั่น" />
+                            <div className={'list-promotion pt-2 grid grid-cols-2 gap-2 w-full'}>
+                                <CardSquare whenClick={() => router.push("/list-order/orderid")} />
+                                <CardSquare />
+                                <CardSquare />
+                                <CardSquare />
+                            </div>
+                        </div>
+                        <div>
+                            <div className='contanier-box-item'>
+                                <div className="box-item-title">
+                                    <TittleHeader textHeader="อาหารเช้า (เช้าตรู่ - 11 โมงเท่านั้น)" />
+                                </div>
+                                <div className="box-item-list">
+                                    <CardListItem />
+                                </div>
+                                <div className="box-item-list">
+                                    <CardListItem />
+                                </div>
+                                <div className="box-item-list">
+                                    <CardListItem />
+                                </div>
+                                <div className="box-item-list">
+                                    <CardListItem />
+                                </div>
+                                <div className="box-item-list">
+                                    <CardListItem />
+                                </div>
+                            </div>
+                            <div className='contanier-box-item'>
+                                <div className="box-item-title">
+                                    <TittleHeader textHeader="เมนูมาใหม่ โดนใจกว่าเดิม" />
+                                </div>
+                                <div className="box-item-list">
+                                    <CardListItem />
+                                </div>
+                                <div className="box-item-list">
+                                    <CardListItem />
+                                </div>
+                                <div className="box-item-list">
+                                    <CardListItem />
+                                </div>
+                                <div className="box-item-list">
+                                    <CardListItem />
+                                </div>
+                                <div className="box-item-list">
+                                    <CardListItem />
+                                </div>
+                            </div>
                         </div>
                     </div>
-                    <div>
-                        <div className='contanier-box-item'>
-                            <div className="box-item-title">
-                                <TittleHeader textHeader="อาหารเช้า (เช้าตรู่ - 11 โมงเท่านั้น)" />
-                            </div>
-                            <div className="box-item-list">
-                                <CardListItem />
-                            </div>
-                            <div className="box-item-list">
-                                <CardListItem />
-                            </div>
-                            <div className="box-item-list">
-                                <CardListItem />
-                            </div>
-                            <div className="box-item-list">
-                                <CardListItem />
-                            </div>
-                            <div className="box-item-list">
-                                <CardListItem />
-                            </div>
-                        </div>
-                        <div className='contanier-box-item'>
-                            <div className="box-item-title">
-                                <TittleHeader textHeader="เมนูมาใหม่ โดนใจกว่าเดิม" />
-                            </div>
-                            <div className="box-item-list">
-                                <CardListItem />
-                            </div>
-                            <div className="box-item-list">
-                                <CardListItem />
-                            </div>
-                            <div className="box-item-list">
-                                <CardListItem />
-                            </div>
-                            <div className="box-item-list">
-                                <CardListItem />
-                            </div>
-                            <div className="box-item-list">
-                                <CardListItem />
-                            </div>
-                        </div>
-                    </div>
-
-
-
-
                 </div>
+
 
 
             </div>
