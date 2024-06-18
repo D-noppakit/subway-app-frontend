@@ -19,9 +19,29 @@ import store from "@/lib/store"
 
 export default function page() {
     const { clearDataOrderListConfirm } = store();
+    const [isScrolledDown, setIsScrolledDown] = useState(false);
+
     useEffect(() => {
         clearDataOrderListConfirm()
     }, [])
+    useEffect(() => {
+        const handleScroll = () => {
+            if (typeof document !== 'undefined') {
+                const scrolledDown = document.body.scrollTop > 100;
+                // console.log(`Scroll position: ${document.body.scrollTop}`);
+                setIsScrolledDown(scrolledDown);
+            }
+        };
+
+        document.body.addEventListener('scroll', handleScroll);
+        // Initial check in case the user is already scrolled down
+        handleScroll();
+
+        // Cleanup the event listener on component unmount
+        return () => {
+            document.removeEventListener('scroll', handleScroll);
+        };
+    }, []);
     const router = useRouter()
     let listData = [
         { id: "1", value: "us" },
@@ -51,7 +71,7 @@ export default function page() {
                 </main>
             </div>
             <div className={'container-bottom flex flex-col'}>
-                <div className="container-searchbox flex justify-between pt-6 ps-[16px] pe-[16px] pb-2 " style={{ position: "-webkit-sticky", position: "sticky", top: "60px", backgroundColor: "white", zIndex: '2', boxShadow: "0px -2px 25px 0px rgba(0,0,0,0.75)" }}>
+                <div className="container-searchbox flex justify-between pt-6 ps-[16px] pe-[16px] pb-2 " style={{ position: "-webkit-sticky", position: "sticky", top: "60px", backgroundColor: "white", zIndex: '2', boxShadow: isScrolledDown ? "0px -2px 25px 0px rgba(0,0,0,0.75)" : "" }}>
                     <div >
                         <Subwaytextbox />
 
