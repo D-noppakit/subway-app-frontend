@@ -20,7 +20,7 @@ export default function DeliciousRecipe() {
             </div>
             <div className='p-3 text-[12px] w-full flex'>
                 <div className='w-[20%] flex justify-center items-start'>
-                    <Image src={"/icon/i.png"} width={19} height={19} style={{ objectFit: "contain" }} />
+                    <Image src={"/icon/information-orange.png"} width={19} height={19} style={{ objectFit: "contain" }} />
                 </div>
                 <div className='text-[#72747D] text-[12px]'>
                     ตามสูตรอาจมีวัตถุดิบที่ก่อให้เกิดการแพ้อาหาร หากคุณมี
