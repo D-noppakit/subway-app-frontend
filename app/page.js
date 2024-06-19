@@ -88,12 +88,11 @@ function PickUpAt({ setIsOpenModalLocation, }) {
   useEffect(() => {
     if (activeBTN2) {
       setOpenSelect(true)
-    }else{
+    } else {
       setOpenSelect(false)
     }
 
-  }, [activeBTN2 ,activeBTN1 ])
-
+  }, [activeBTN2, activeBTN1])
   return <CardHeaderGreen close={() => setIsOpenModalLocation(false)} >
     <div className='flex items-center justify-center flex-col'>
       <div className='flex w-full text-[#008938] font-[700] text-[24px] items-center'>
@@ -123,7 +122,7 @@ function PickUpAt({ setIsOpenModalLocation, }) {
         <button onClick={() => { setActiveBTN2(!activeBTN2); setActiveBTN1(!activeBTN1) }} className={`px-[12px] py-[6px] border border-1 text-[#008938] border-[#DFE0E7] w-[155px] rounded-[100px] ${activeBTN2 && "bg-[#F2B700] text-white"} `}
         >สั่งล่วงหน้า</button>
       </div>
-      {openSelect &&  <div className="flex flex-col w-full">
+      {openSelect && <div className="flex flex-col w-full">
         <div className="mt-3 w-full">เลือกเวลารับ</div>
         <div className="w-full">
           <Select className="w-full h-[48px] mt-4"
@@ -133,14 +132,17 @@ function PickUpAt({ setIsOpenModalLocation, }) {
                 borderRadius: '100px',
                 height: "48px"
               }),
+              indicatorSeparator: (baseStyles) => ({
+                display: 'none',
+              }),
             }}
             defaultValue={selectedOption}
             onChange={setSelectedOption}
             options={options}
           />
         </div>
-      </div> }
-     
+      </div>}
+
       <div className="w-full mt-5">
         <ButtonCustom type={"primary"} img="" btnText={"ยืนยัน"} />
       </div>
