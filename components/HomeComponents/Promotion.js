@@ -4,7 +4,7 @@ import React from 'react'
 import Slider from "react-slick";
 import ImagePromotionDemo from "@/public/imgs/demo/promotion-mock.png"
 import ImageDemo2 from "@/public/imgs/demo/img1.webp"
-export default function Promotion({listData = []}) {
+export default function Promotion({ listData = [] }) {
     var settings = {
         dots: true,
         infinite: true,
@@ -15,13 +15,13 @@ export default function Promotion({listData = []}) {
         autoplaySpeed: 3000,
         // cssEase: "linear"
     };
-    console.log("listDataxxxx",listData)
+    // console.log("listDataxxxx", listData)
     return (
         <div className='mt-5 w-full overflow-hidden'>
             <Slider {...settings}>
-                {listData.length > 0 ? listData.map((v) => (<>
-                    <DrawListPromotion img={v.img} />
-                </>)) : null}
+                {listData.length > 0 ? listData.map((v, index) => (
+                    <DrawListPromotion img={v.img} key={index} />
+                )) : null}
             </Slider>
         </div >
     );
@@ -29,7 +29,7 @@ export default function Promotion({listData = []}) {
 function DrawListPromotion({ img }) {
     return (
         <div className='border-2 border-neutral300 border rounded-[24px] ms-1 me-1'>
-            <Image src={img} style={{ borderRadius: "24px",width: '100%', height: 'auto' }} alt={img} sizes='100vw' width={0} height={0}  />
+            <Image src={img} style={{ borderRadius: "24px", width: '100%', height: 'auto' }} alt={img} sizes='100vw' width={0} height={0} />
         </div>
     )
 }
