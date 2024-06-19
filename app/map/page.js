@@ -1,7 +1,12 @@
 import ButtonCustom from '@/components/Button/ButtonCustom';
 import CardBGWhite from '@/components/Card/CardBGWhite';
 import React from 'react';
+import Store1 from "@/public/icon/Store-1.png"
+import information from "@/public/icon/information-circle--information-frame-info-more-help-point-circle.png"
+import Image from 'next/image';
+
 export default function Map() {
+    const mock = Array.from({ length: 10 }, (_, index) => "1")
     return (
         <div className='h-screen w-screen'>
             {/* map in this  */}
@@ -13,43 +18,30 @@ export default function Map() {
                     </div>
                 </div>
                 <div className="flex flex-col overflow-y-auto max-h-[60vh] hide-scrollbar ">
-                    <CardBGWhite>
-                        <div>asdfasdfasdfsd</div>
-                        <div>asdfasdfasdfsd</div>
-                        <div>asdfasdfasdfsd</div>
-                        <div>asdfasdfasdfsd</div>
-                    </CardBGWhite>
-                    <CardBGWhite>
-                        <div>asdfasdfasdfsd</div>
-                        <div>asdfasdfasdfsd</div>
-                        <div>asdfasdfasdfsd</div>
-                        <div>asdfasdfasdfsd</div>
-                    </CardBGWhite>
-                    <CardBGWhite>
-                        <div>asdfasdfasdfsd</div>
-                        <div>asdfasdfasdfsd</div>
-                        <div>asdfasdfasdfsd</div>
-                        <div>asdfasdfasdfsd</div>
-                    </CardBGWhite>
+                    {mock.map((_, index) => {
+                        return <CardBGWhite key={index}>
+                            <div className='flex items-center justify-between'>
+                                <div className='flex items-center' >
+                                    <div className='me-2'><Image src={Store1} width={16} height={16} /></div>
+                                    <div>ซับเวย์ แม็กซ์แวลูพัฒนาการ </div>
+                                </div>
+                                <div className='flex self-start'>
+                                    <Image src={information} width={16} height={16} />
+                                </div>
+                            </div>
+                            <div className='text-[12px] text-[#72747D] my-3'>
+                                แม็กซ์แวลู, 255 ทางหลวงพิเศษหมาย เลข 7 แขวงสวนหลวง เขตสวนหลวง กรุงเทพมหานคร 10250
+                            </div>
+                            <div className='flex w-full justify-between items-center'>
+                                <div className='flex'>
+                                    <div className=' px-2 bg-[#97D700] text-white rounded-2xl me-3'>เปิด</div>
+                                    <div className='text-[#A3A6B7] text-[14px] flex justify-center items-center'> ปิดเวลา 19:30 น.</div>
+                                </div>
+                                <div>0.10 กม.</div>
+                            </div>
+                        </CardBGWhite>
+                    })}
 
-                    <CardBGWhite>
-                        <div>asdfasdfasdfsd</div>
-                        <div>asdfasdfasdfsd</div>
-                        <div>asdfasdfasdfsd</div>
-                        <div>asdfasdfasdfsd</div>
-                    </CardBGWhite>
-                    <CardBGWhite>
-                        <div>asdfasdfasdfsd</div>
-                        <div>asdfasdfasdfsd</div>
-                        <div>asdfasdfasdfsd</div>
-                        <div>asdfasdfasdfsd</div>
-                    </CardBGWhite>
-                    <CardBGWhite>
-                        <div>asdfasdfasdfsd</div>
-                        <div>asdfasdfasdfsd</div>
-                        <div>asdfasdfasdfsd</div>
-                        <div>asdfasdfasdfsd</div>
-                    </CardBGWhite>
                 </div>
             </div>
         </div>
