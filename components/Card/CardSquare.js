@@ -3,13 +3,13 @@ import Image from 'next/image'
 import Plus from "@/public/imgs/plus.png"
 
 import BadgeCustom from '@/components/Badge/BadgeCustom'
-export default function CardSquare({ whenClick = () => console.log("CardSquare"), title = 'Italian B.M.T.', price = 185, fullPrice = 200, isDisabled = false, tagText = "", tagBgColor = "" }) {
+export default function CardSquare({ whenClick = () => console.log("CardSquare"), title = 'Italian B.M.T.', price = 185, fullPrice = 200, isDisabled = false, tagText = "", tagBgColor = "", img = "/imgs/demo/img1.webp" }) {
   let hasdiscout = fullPrice && fullPrice > 0 && fullPrice > price
   
   return (
     <div className='justify-self-center' style={{ display: "flex", flexDirection: 'column', width: 'fit-content' }} onClick={whenClick}>
       <div style={{ position: "relative" }}>
-        <Image src={"/imgs/demo/img1.webp"} alt="img1" height={1000} width={1000}  style={{ borderRadius: "16px", width:"100%",objectFit:"contain"}} />
+        <Image src={img} alt="img1" height={1000} width={1000}  style={{ borderRadius: "16px", width:"100%",objectFit:"contain"}} />
         {tagText && tagBgColor ? (<div style={{position:"absolute",top:"7px",right:"7px"}}><BadgeCustom tagText = {tagText} tagBgColor = {tagBgColor} /></div>) : null}
       </div>
 
