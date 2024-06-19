@@ -5,7 +5,6 @@ import ListOrderSelection from "@/components/list-order/ListOrderSelection";
 import ListOrderCheckbox from "@/components/list-order/ListOrderCheckbox";
 import Description from "@/components/list-order/Description"
 import AllergiesDescription from "@/components/list-order/AllergiesDescription"
-// import CalOrder from "@/components/list-order/CalOrder";
 import dynamic from 'next/dynamic'
 
 const CalOrder = dynamic(() => import('@/components/list-order/CalOrder'), { ssr: false })
@@ -20,9 +19,7 @@ const datamock3 = [
     { id: 1, name: "a", group: "C" }, { id: 2, name: "C", group: "C" }, { id: 3, name: "c", group: "C" }
 ]
 export default async function ListOrderPage({ params }) {
-    // useEffect(() => {
-    //     store.set((state) => ({ ...state, DataOrderListConfirm: [] }));
-    // }, []);
+
     const { type } = params
 
     return (

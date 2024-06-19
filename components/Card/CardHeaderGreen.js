@@ -6,7 +6,7 @@ import LogoWhite from "@/public/logo/logo-small-white.png"
 import IconClose from "@/public/icon/close-white.png"
 export default function CardHeaderGreen({ children, close = () => console.log("ส่ง function ปิดมา") }) {
     return (
-        <div className="absolute z-100 top-0  bg-[#F8F9FB] bg-opacity-80 w-full h-full">
+        <div className="absolute z-[100] top-0  bg-[#F8F9FB] bg-opacity-80 w-full h-full">
             <div className=" rounded-3xl absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-white shadow-lg w-[90%]">
                 <div className='h-[70px]rounded-t-3xl relative  '>
                     <Image src={ImagCardJHeader} alt='headerTile' style={{ objectFit: "contain", borderTopLeftRadius: "24px", borderTopRightRadius: "24px" }} />
