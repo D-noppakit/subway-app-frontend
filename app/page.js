@@ -26,7 +26,7 @@ const fetcher = (url) => fetch(url, {
   body: JSON.stringify({ "shopcode": "S001" }),
 }).then(res => res.json());
 export default function page() {
-  const { data, error, isLoading } = useSWR(
+  const { data: dataPromohot, error:errorPromohot } = useSWR(
     'http://localhost:3003/api/v1/product/byshop/promotionhotdeal',
     fetcher
   );
@@ -42,17 +42,31 @@ export default function page() {
     console.log("ClickBulgur", state)
     setIsOpenBulgur(state)
   }
+  // if (errorPromohot){
+
+  //   console.log("errorPromohot",errorPromohot)
+  //   return <div>Error fetching data</div>;
+  // } 
+
+  if (dataPromohot) {
+    console.log(dataPromohot)
+  }
+
   return (
     <div className="">
       {/* {isLoading && <Loading />} */}
+      {/* {errorPromohot ?
+      <div className="w-screen h-screen opacity-40 bg-[--primary-subway-black] z-50" style={{position:'fixed'}}>
+        
+      </div>:null} */}
       <HeaderOne CartCount={1} whenClickBulgur={ClickBulgur} />
       <SelectionTopHome />
       <div className="w-screen p-5">
-        <SectionBottom />
+         { !dataPromohot ? <SectionBottom Loading={false} listData={[]} /> : <SectionBottom Loading={true} listData={dataPromohot.result.promo }/> } 
         <div className="grid grid-cols-2 gap-3 justify-self-center">
-          {isLoading ? <RenderCardSquareSkel /> : listData.map(v => <CardSquare key={v.id} whenClick={() => router.push("/listmenu")} />)}
+          {!dataPromohot ? <RenderCardSquareSkel /> : dataPromohot.result.hotdeal.map(v => <CardSquare key={v.itemcode} whenClick={() => router.push("/listmenu")} />)}
         </div>
-        {isLoading ? <BannerSkel /> : <HomeBanner />}
+        {!dataPromohot ? <BannerSkel /> : <HomeBanner />}
         {/* <CardListItem /> */}
       </div>
       {/* bulgur when click */}
