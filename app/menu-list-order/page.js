@@ -2,12 +2,13 @@
 import HeaderOne from '@/components/HeaderOne'
 import React, { useState } from 'react'
 import Image from "next/image"
-import LocationPin from "@/public/icon/LocationPin.png"
-import InformationRed from "@/public/icon/InformationRed.png"
 import TimeImage from "@/public/imgs/timenav.png"
 import SideNavBar from '@/components/HomeComponents/SideNavBar'
+import { useRouter } from 'next/navigation'
+
 export default function page() {
     const [isOpenBulgur, setIsOpenBulgur] = useState(false)
+    const router = useRouter()
     const ClickBulgur = (state) => {
         console.log("ClickBulgur", state)
         setIsOpenBulgur(state)
@@ -17,8 +18,8 @@ export default function page() {
     // }
     return (
         <div className=''>
-            <HeaderOne CartCount={0} whenClickBulgur={ClickBulgur} />
-            <SideNavBar isOpen={isOpenBulgur} Close={setIsOpenBulgur} />
+            {!isOpenBulgur && <HeaderOne CartCount={0} whenClickBulgur={ClickBulgur} />}
+
             <div className='h-screen' >
                 <main className={`w-full h-[139px] bg-[#0b8a45] relative`}>
                     <div className="sm:top-[-6vh] md:top-[-6vh] top-[-8vh] absolute h-[200px] " style={{ objectFit: "contain", overflow: "hidden" }}>
@@ -33,26 +34,27 @@ export default function page() {
                             <div className='text-[#008938] text-[24px]'>ออเดอร์ของฉัน</div>
                         </div>
                         <div className='mt-5'>
-                            <CardListOrder />
-                            <CardListOrder />
-                            <CardListOrder />
-                            <CardListOrder />
-                            <CardListOrder />
-                            <CardListOrder />
-                            <CardListOrder />
-                            <CardListOrder />
-                            <CardListOrder />
-                            <CardListOrder />
-                            
+                            <CardListOrder Click={()=>{router.push("/receipt/123")}} />
+                            <CardListOrder Click={()=>{router.push("/receipt/123")}} />
+                            <CardListOrder Click={()=>{router.push("/receipt/123")}} />
+                            <CardListOrder Click={()=>{router.push("/receipt/123")}} />
+                            <CardListOrder Click={()=>{router.push("/receipt/123")}} />
+                            <CardListOrder Click={()=>{router.push("/receipt/123")}} />
+                            <CardListOrder Click={()=>{router.push("/receipt/123")}} />
+                            <CardListOrder Click={()=>{router.push("/receipt/123")}} />
+                            <CardListOrder Click={()=>{router.push("/receipt/123")}} />
+                            <CardListOrder Click={()=>{router.push("/receipt/123")}} />
+
                         </div>
                     </div>
                 </div>
+                <SideNavBar isOpen={isOpenBulgur} Close={setIsOpenBulgur} />
             </div>
         </div>
     )
 }
-const CardListOrder = () => {
-    return <div className='border-[#DFE0E7] border-1 border p-3 gap-2 rounded-lg my-5'>
+const CardListOrder = ({ Click }) => {
+    return <div onClick={Click} className='border-[#DFE0E7] border-1 border p-3 gap-2 rounded-lg my-5'>
         <div className='p-1 flex justify-between border-b-1 border-b-[#E8EAF1] border-b '>
             <div>14 พ.ค. 2024  -  12:15 น.</div>
             <div>
