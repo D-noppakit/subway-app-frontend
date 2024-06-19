@@ -2,9 +2,11 @@ import Image from "next/image"
 import SubwayRewards from "./HomeComponents/SubwayRewards"
 import ButtonCustom from "./Button/ButtonCustom"
 import LocationAt from "@/components/HomeComponents/LocationAt"
+import { useRouter } from "next/navigation"
 
 
 export default function SelectionTopHome({ NameLocation = "Subway CW Tower", headerText = 'ซับเวย์ ยินดีต้อนรับ', SubText = "วันนี้รับเมนูไหนดีครับ... สั่งออเดอร์ Subway ที่นี่ แล้วไปรับหน้าร้านได้เลยนะ!" , setIsOpenModalLocation }) {
+    const router = useRouter()
     return (
         <main className={`w-full h-[466px] bg-[#0b8a45] relative`}>
             <div className="relative ">
@@ -17,7 +19,7 @@ export default function SelectionTopHome({ NameLocation = "Subway CW Tower", hea
                 </div>
                 <div className="w-[50%]  absolute z-10 rounded-[16px] top-[35vh] max-[375px]:top-[50vh] left-1/2 transform -translate-x-1/2 -translate-y-1/2">
                     <div className="h-[55px]">
-                        <ButtonCustom btnText={"สั่งออเดอร์"} type="secondary" />
+                        <ButtonCustom btnText={"สั่งออเดอร์"} type="secondary" whenClick={()=>{router.push('/category')}} />
                     </div>
 
                 </div>

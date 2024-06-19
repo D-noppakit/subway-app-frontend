@@ -22,7 +22,7 @@ export default function RootLayout({ children }) {
         <link rel="subway" href="/favicon.ico" />
       </Head>
       <html lang="en">
-        <body className={`${kanit.className} h-full w-full overflow-auto font-[500]`}>
+        <body className={`${kanit.className} h-full w-full overflow-auto font-[500] hide-scrollbar`}>
           {children}
         </body>
       </html>

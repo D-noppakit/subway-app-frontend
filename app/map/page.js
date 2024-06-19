@@ -1,7 +1,6 @@
 import ButtonCustom from '@/components/Button/ButtonCustom';
 import CardBGWhite from '@/components/Card/CardBGWhite';
 import React from 'react';
-
 export default function Map() {
     return (
         <div className='h-screen w-screen'>
