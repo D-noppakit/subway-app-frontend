@@ -72,7 +72,6 @@ export default function ListOrderCheckbox({ id = 1, data, title, num }) {
                             </div>
                         )
                     }
-
                 })}
 
             </div>
