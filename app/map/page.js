@@ -8,12 +8,22 @@ import Image from 'next/image';
 import CardHeaderGreen from '@/components/Card/CardHeaderGreen';
 import ImagePhone from "@/public/icon/phone.png"
 import ImageMap1 from "@/public/icon/map1.png"
+import { useRouter } from 'next/navigation';
 
 export default function Map() {
+    const router = useRouter();
     const [closeInfo, setCloseInfo] = useState(false)
     const mock = Array.from({ length: 10 }, (_, index) => "1")
     return (
-        <div className='h-screen w-screen'>
+        <div className='h-screen w-screen relative bg-slate-400'>
+            <div className='h-77px absolute z-[10] top-0 w-full inline-flex items-center outline-none p-1'>
+                <div className='flex justify-between items-center h-[77px] px-4 w-full'>
+
+                    <Image onClick={() => { router.back() }} alt='close' src={"/icon/Close-green.png"} height={45} width={45} style={{ objectFit: "contain" }} />
+
+                    <input className='border border-1 border-[#DFE0E7] rounded-3xl h-[45px] w-5/6 outline-none p-[16px]' placeholder='ค้นหาสาขา' />
+                </div>
+            </div>
             {/* map in this  */}
             <div className="inline-flex flex-col absolute bg-[#008938] h-2/3 bottom-0 rounded-t-3xl p-4 w-full">
                 <div className="flex w-full justify-between items-center">
@@ -26,7 +36,7 @@ export default function Map() {
 
                     {mock.map((_, index) => {
                         return <CardBGWhite key={index}>
-                            <div onClick={() => setCloseInfo(true) }>
+                            <div onClick={() => setCloseInfo(true)}>
                                 <div className='flex items-center justify-between'>
                                     <div className='flex items-center' >
                                         <div className='me-2'><Image src={Store1} width={16} height={16} alt='icon-home' /></div>
@@ -52,7 +62,7 @@ export default function Map() {
 
                 </div>
             </div>
-            {closeInfo && <CardHeaderGreen close={()=> setCloseInfo(false)} titleHeader={"ซับเวย์ แม็กซ์แวลูพัฒนาการ "}>
+            {closeInfo && <CardHeaderGreen close={() => setCloseInfo(false)} titleHeader={"ซับเวย์ แม็กซ์แวลูพัฒนาการ "}>
                 <div className='flex gap-2 flex-col'>
                     <div className='flex'>
                         <div className=' px-2 bg-[#97D700] text-white rounded-2xl me-3'>เปิด</div>
