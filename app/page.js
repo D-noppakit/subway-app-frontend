@@ -84,7 +84,7 @@ export default function page() {
               <div className="text-[#72747D] text-[12px]"> ทุกวัน 7:00 - 19:00 น.</div>
             </div>
             <div className="w-2/12 flex justify-center items-center">
-              <Image src={HomeImage} height={20} width={20} alt="image" />
+              <Image src={"/icon/LocationPin.png"} height={24} width={24} alt="image" />
             </div>
           </div>
           <div className='w-full text-[14px] text-[#2C2C30] py-3'>
