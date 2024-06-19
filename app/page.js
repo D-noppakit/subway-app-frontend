@@ -44,8 +44,6 @@ export default function page() {
   if (dataPromohot) {
     console.log(dataPromohot)
   }
-
-
   return (
     <div className="">
       {/* {isLoading && <Loading />} */}
@@ -72,10 +70,11 @@ export default function page() {
 }
 import Select from 'react-select';
 function PickUpAt({ setIsOpenModalLocation, }) {
-
+  const router = useRouter()
   const [activeBTN1, setActiveBTN1] = useState(true)
   const [activeBTN2, setActiveBTN2] = useState(false)
   const [openSelect, setOpenSelect] = useState(false)
+
   const options = [
     { value: '1', label: '10:30 - 11:00' },
     { value: '2', label: '11:30 - 11:00' },
@@ -144,7 +143,7 @@ function PickUpAt({ setIsOpenModalLocation, }) {
       </div>}
 
       <div className="w-full mt-5">
-        <ButtonCustom type={"primary"} img="" btnText={"ยืนยัน"} />
+        <ButtonCustom type={"primary"} img="" btnText={"ยืนยัน"} whenClick={() => {router.push("/map")}} />
       </div>
     </div>
   </CardHeaderGreen>
