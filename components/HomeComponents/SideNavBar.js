@@ -17,20 +17,23 @@ import CardLoginSuccess from "@/components/Card/CardLoginSuccess"
 import Image from 'next/image';
 import FlowLogin from '../Navbar/FlowLogin';
 import store from "@/lib/store"
-
-
-
+import { useRouter } from 'next/navigation';
 export default function SideNavBar({ isOpen = false, Close = () => console.log("Close") }) {
+    const router = useRouter()
     const [isOpenCard, setIsCard] = useState(false);
     const [isConfirmOTP, setIsConfirmOTP] = useState(false);
     const [isLoading, setLoading] = useState(false);
     const [isLogin, SetIsLogin] = useState(false);
+    const [isLoginClient, SetIsLoginClient] = useState(false);
     const { UserInfo } = store();
-    const [CusName , setCusName] = useState()
-    useEffect(()=>{
+    const [CusName, setCusName] = useState("")
+    const { IsLoginApp, ClearAllData } = store()
+    useEffect(() => {
         setCusName(UserInfo?.customerName)
-    },[UserInfo])
-
+    }, [UserInfo])
+    useEffect(() => {
+        SetIsLoginClient(IsLoginApp)
+    }, [IsLoginApp])
     const GotoHome = () => {
         SetIsLogin(false)
         setLoading(false)
@@ -50,7 +53,7 @@ export default function SideNavBar({ isOpen = false, Close = () => console.log("
     const OpenCard = () => {
         setIsCard(true)
     }
-   
+
 
     return (
         <div >
@@ -59,7 +62,13 @@ export default function SideNavBar({ isOpen = false, Close = () => console.log("
                 <HeaderTwo Close={handleClose} />
                 <div className="p-4 relative">
                     <div className=' relative mt-1 mb-5 flex justify-center w-full h-full'>
-                        <CardWelcomeCustomer whenClick={OpenCard} text1={"ลงชื่อเข้าใช้"} text2={"ปลดล็อคสิทธิประโยชน์อีกเพียบ ด้วยสมาชิก ซับเวย์ รีวอร์ด"} btnText={"ลงชื่อเข้าใช้ / สมัครสมาชิก"} type={1} />
+                        <CardWelcomeCustomer
+                            whenClick={isLoginClient ? () => { router.push("/category") } : OpenCard}
+                            text1={isLoginClient ? ("สวัสดี คุณ" + CusName) : ("ลงชื่อเข้าใช้")}
+                            text2={isLoginClient ? "วันนี้รับเมนูไหนดีครับ... สั่งออเดอร์ Subway ที่นี่ แล้วไปรับหน้าร้านได้เลย!" : "ปลดล็อคสิทธิประโยชน์อีกเพียบ ด้วยสมาชิก ซับเวย์ รีวอร์ด"}
+                            btnText={isLoginClient ? "สั่งออเดอร์" : "ลงชื่อเข้าใช้ / สมัครสมาชิก"}
+                            type={isLoginClient ? 2 : 1}
+                        />
                     </div>
                     <ButtonMenu text={"ออเดอร์ของฉัน"} img={logo1} />
                     <ButtonMenu text={"ซับเวย์ รีวอร์ด"} img={choiceMark} />
@@ -68,7 +77,7 @@ export default function SideNavBar({ isOpen = false, Close = () => console.log("
                     <ButtonMenu text={"ช่วยเหลือ"} img={QAimg} />
                 </div>
                 <div className='py-[8px] px-[16px] w-full  h-[40px] flex justify-center items-center mt-5'>
-                    <ButtonWhiteBorderGray height='40px'>
+                    <ButtonWhiteBorderGray height='40px' Click={ClearAllData}>
                         <div className='text-[#FF5C39] leading-5 font-[500] py-[8px] px-[16px] text-center'>ออกจากระบบ</div>
                     </ButtonWhiteBorderGray>
                 </div>
