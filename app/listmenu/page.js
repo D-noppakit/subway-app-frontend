@@ -28,6 +28,7 @@ const fetcher = (url) => fetch(url, {
 }).then(res => res.json());
 
 export default function page() {
+
     const { clearDataOrderListConfirm } = store();
     const [isScrolledDown, setIsScrolledDown] = useState(false);
 
@@ -72,6 +73,7 @@ export default function page() {
         setIsOpenBulgur(state)
     }
     if (dataPromohot) {
+
         console.log("dataPromohot", dataPromohot)
     }
 
@@ -106,43 +108,134 @@ export default function page() {
                 </div>
                 <div className="ps-[16px] pe-[16px]">
                     <div className={'container-content-bottom flex flex-col pt-5'} >
+
+                        {!dataPromohot ?
+                            <div>
+
+
+                                <div className="w-1/3">
+                                    <Skeleton count={1} height={23} borderRadius={24} />
+                                </div>
+                                <div className={'list-promotion pt-2 grid grid-cols-2 gap-2 w-full'}>
+                                    <div className='w-full flex flex-col'>
+                                        <div>
+                                            <Skeleton count={1} height={170} borderRadius={24} />
+
+                                        </div>
+                                        <div className="w-2/3">
+                                            <Skeleton count={1} height={19} borderRadius={24} />
+
+                                        </div>
+                                        <div className="w-1/3">
+                                            <Skeleton count={1} height={19} borderRadius={24} />
+
+                                        </div>
+
+                                    </div>
+                                    <div className='w-full flex flex-col'>
+                                        <div>
+                                            <Skeleton count={1} height={170} borderRadius={24} />
+
+                                        </div>
+                                        <div className="w-2/3">
+                                            <Skeleton count={1} height={19} borderRadius={24} />
+
+                                        </div>
+                                        <div className="w-1/3">
+                                            <Skeleton count={1} height={19} borderRadius={24} />
+
+                                        </div>
+
+                                    </div>
+                                    <div className='w-full flex flex-col'>
+                                        <div>
+                                            <Skeleton count={1} height={170} borderRadius={24} />
+
+                                        </div>
+                                        <div className="w-2/3">
+                                            <Skeleton count={1} height={19} borderRadius={24} />
+
+                                        </div>
+                                        <div className="w-1/3">
+                                            <Skeleton count={1} height={19} borderRadius={24} />
+
+                                        </div>
+
+                                    </div>
+                                    <div className='w-full flex flex-col'>
+                                        <div>
+                                            <Skeleton count={1} height={170} borderRadius={24} />
+
+                                        </div>
+                                        <div className="w-2/3">
+                                            <Skeleton count={1} height={19} borderRadius={24} />
+
+                                        </div>
+                                        <div className="w-1/3">
+                                            <Skeleton count={1} height={19} borderRadius={24} />
+
+                                        </div>
+
+                                    </div>
+                                </div>
+                                <div className='contanier-box-item'>
+                                    <div className="box-item-title">
+                                        <div className="w-1/3">
+                                            <Skeleton count={1} height={23} borderRadius={24} />
+                                        </div>
+                                    </div>
+                                    <RenderCardeSkel />
+                                    <RenderCardeSkel />
+                                    <RenderCardeSkel />
+                                    <RenderCardeSkel />
+                                </div>
+                            </div>
+
+                            :
+                            dataPromohot.result.map((elm)=>{
+                                
+                                console.log("elm",elm)
+                                if(elm.con_type == 'square'){
+
+                                    return RenderCatTypeSquare(elm.container_name_th, elm.list_data, elm.icon, elm.text_color)
+                                }
+                            })
+                        }
                         <div>
-                            {!dataPromohot ?
+                            {/* {!dataPromohot ?
                                 <div className="w-1/3">
                                     <Skeleton count={1} height={23} borderRadius={24} />
                                 </div>
                                 :
                                 <TittleHeader textHeader={dataPromohot.result[0].container_name_th} img={'/' + dataPromohot.result[0].icon} />
 
+                            } */}
+
+                            {/* <div className={'list-promotion pt-2 grid grid-cols-2 gap-2 w-full'}> */}
+                            {
+                                // !dataPromohot ? listData.map((e) => (
+                                //     <div className='w-full flex flex-col'>
+                                //         <div>
+                                //             <Skeleton count={1} height={170} borderRadius={24} />
+
+                                //         </div>
+                                //         <div className="w-2/3">
+                                //             <Skeleton count={1} height={19} borderRadius={24} />
+
+                                //         </div>
+                                //         <div className="w-1/3">
+                                //             <Skeleton count={1} height={19} borderRadius={24} />
+
+                                //         </div>
+
+                                //     </div>
+                                // )) :
+                                //     dataPromohot.result[0].list_data.map((elm) => (
+                                //         <CardSquare title={elm.th_name} price={elm.price} img={elm.img} />
+                                //     ))
+
                             }
-
-                            <div className={'list-promotion pt-2 grid grid-cols-2 gap-2 w-full'}>
-                                {/* <CardSquare whenClick={() => router.push("/list-order/orderid")} /> */}
-
-                                {
-                                    !dataPromohot ? listData.map((e) => (
-                                        <div className='w-full flex flex-col'>
-                                            <div>
-                                                <Skeleton count={1} height={170} borderRadius={24} />
-
-                                            </div>
-                                            <div className="w-2/3">
-                                                <Skeleton count={1} height={19} borderRadius={24} />
-
-                                            </div>
-                                            <div className="w-1/3">
-                                                <Skeleton count={1} height={19} borderRadius={24} />
-
-                                            </div>
-
-                                        </div>
-                                    )) :
-                                        dataPromohot.result[0].list_data.map((elm) => (
-                                            <CardSquare title={elm.th_name} price={elm.price} img={elm.img} />
-                                        ))
-
-                                }
-                                {/* <div className="w-1/3">
+                            {/* <div className="w-1/3">
                                     <Skeleton count={1} height={23} borderRadius={24} />
                                 </div>
                                 :
@@ -162,47 +255,51 @@ export default function page() {
                                     </div>
 
                                 </div> */}
-                                {/* <CardSquare />
+                            {/* <CardSquare />
                                 <CardSquare />
                                 <CardSquare /> */}
-                            </div>
+                            {/* </div> */}
                         </div>
                         <div>
-                            {!dataPromohot ?
+                            {
+                                // !dataPromohot ?
 
-                                <div className='contanier-box-item'>
-                                    <div className="box-item-title">
-                                        <div className="w-1/3">
-                                            <Skeleton count={1} height={23} borderRadius={24} />
-                                        </div>
-                                    </div>
-                                    <RenderCardeSkel />
-                                    <RenderCardeSkel />
-                                    <RenderCardeSkel />
-                                    <RenderCardeSkel />
-                                </div>
-                                :
-                                <div className='contanier-box-item'>
-                                    <div className="box-item-title">
-                                        <TittleHeader textHeader="อาหารเช้า (เช้าตรู่ - 11 โมงเท่านั้น)" />
-                                    </div>
-                                    <div className="box-item-list">
-                                        <CardListItem />
-                                    </div>
-                                    <div className="box-item-list">
-                                        <CardListItem />
-                                    </div>
-                                    <div className="box-item-list">
-                                        <CardListItem />
-                                    </div>
-                                    <div className="box-item-list">
-                                        <CardListItem />
-                                    </div>
-                                    <div className="box-item-list">
-                                        <CardListItem />
-                                    </div>
-                                </div>
+                                //     <div className='contanier-box-item'>
+                                //         <div className="box-item-title">
+                                //             <div className="w-1/3">
+                                //                 <Skeleton count={1} height={23} borderRadius={24} />
+                                //             </div>
+                                //         </div>
+                                //         <RenderCardeSkel />
+                                //         <RenderCardeSkel />
+                                //         <RenderCardeSkel />
+                                //         <RenderCardeSkel />
+                                //     </div>
+                                //     :
+                                //     dataPromohot.result.length > 1
+
                             }
+
+                            {/* <div className='contanier-box-item'>
+                                <div className="box-item-title">
+                                    <TittleHeader textHeader="อาหารเช้า (เช้าตรู่ - 11 โมงเท่านั้น)" />
+                                </div>
+                                <div className="box-item-list">
+                                    <CardListItem />
+                                </div>
+                                <div className="box-item-list">
+                                    <CardListItem />
+                                </div>
+                                <div className="box-item-list">
+                                    <CardListItem />
+                                </div>
+                                <div className="box-item-list">
+                                    <CardListItem />
+                                </div>
+                                <div className="box-item-list">
+                                    <CardListItem />
+                                </div>
+                            </div> */}
                         </div>
                     </div>
                 </div>
@@ -257,6 +354,26 @@ function RenderCardSquareSkel() {
             <CardSquareSkel />
             <CardSquareSkel />
             <CardSquareSkel />
+        </>
+    )
+}
+
+function RenderCatTypeSquare(title, listData, icon, textColor) {
+    return (
+        <>
+            <TittleHeader textHeader={title} img={'/' + icon} />
+            <div className={'list-promotion pt-2 grid grid-cols-2 gap-2 w-full'}>
+                {listData.map((elm) => (
+                    <CardSquare title={elm.th_name} price={elm.price} img={elm.img} />
+                ))}
+            </div>
+        </>
+    )
+}
+function RenderCatTypeList(title, listData) {
+    return (
+        <>
+
         </>
     )
 }

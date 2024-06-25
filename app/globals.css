@@ -297,3 +297,23 @@ body {
   left: 0;
   /* ตำแหน่งจากซ้าย */
 }
+
+.item-des-small {
+  position: relative;
+  /* ใช้ตำแหน่งสัมพัทธ์ */
+  padding-left: 1.5em;
+  /* เยื้องเนื้อหา */
+  margin-bottom: 10px;
+  /* ระยะห่างระหว่างแต่ละ div */
+}
+.container-detail .item-des-small::before {
+  content: '• ';
+  /* ใช้เครื่องหมาย bullet */
+  position: absolute;
+  color: var(--red600);
+  /* สีของเครื่องหมาย bullet */
+  font-size: 12px;
+  /* ขนาดของเครื่องหมาย bullet */
+  left: 4px;
+  /* ตำแหน่งจากซ้าย */
+}
