@@ -16,10 +16,27 @@ import CardSquare from "@/components/Card/CardSquare";
 import { useRouter } from "next/navigation";
 import CardListItem from "@/components/Card/CardListItem";
 import store from "@/lib/store"
+import useSWR from 'swr'
+
+
+const fetcher = (url) => fetch(url, {
+    method: 'POST',
+    headers: {
+        'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({ "shopcode": "S001" }),
+}).then(res => res.json());
 
 export default function page() {
     const { clearDataOrderListConfirm } = store();
     const [isScrolledDown, setIsScrolledDown] = useState(false);
+
+    const { data: dataPromohot, error: errorPromohot } = useSWR(
+        'http://localhost:3003/api/v1/product/byshop/getList',
+        fetcher
+    );
+
+
     //event clear ข้อมูลก่อนทำรายการธถัดไป
     useEffect(() => {
         clearDataOrderListConfirm()
@@ -54,6 +71,9 @@ export default function page() {
     const ClickBulgur = (state) => {
         setIsOpenBulgur(state)
     }
+    if (dataPromohot) {
+        console.log("dataPromohot", dataPromohot)
+    }
 
     return (
         <div className="">
@@ -87,55 +107,102 @@ export default function page() {
                 <div className="ps-[16px] pe-[16px]">
                     <div className={'container-content-bottom flex flex-col pt-5'} >
                         <div>
-                            <TittleHeader textHeader="โปรโมชั่น" />
+                            {!dataPromohot ?
+                                <div className="w-1/3">
+                                    <Skeleton count={1} height={23} borderRadius={24} />
+                                </div>
+                                :
+                                <TittleHeader textHeader={dataPromohot.result[0].container_name_th} img={'/' + dataPromohot.result[0].icon} />
+
+                            }
+
                             <div className={'list-promotion pt-2 grid grid-cols-2 gap-2 w-full'}>
-                                <CardSquare whenClick={() => router.push("/list-order/orderid")} />
+                                {/* <CardSquare whenClick={() => router.push("/list-order/orderid")} /> */}
+
+                                {
+                                    !dataPromohot ? listData.map((e) => (
+                                        <div className='w-full flex flex-col'>
+                                            <div>
+                                                <Skeleton count={1} height={170} borderRadius={24} />
+
+                                            </div>
+                                            <div className="w-2/3">
+                                                <Skeleton count={1} height={19} borderRadius={24} />
+
+                                            </div>
+                                            <div className="w-1/3">
+                                                <Skeleton count={1} height={19} borderRadius={24} />
+
+                                            </div>
+
+                                        </div>
+                                    )) :
+                                        dataPromohot.result[0].list_data.map((elm) => (
+                                            <CardSquare title={elm.th_name} price={elm.price} img={elm.img} />
+                                        ))
+
+                                }
+                                {/* <div className="w-1/3">
+                                    <Skeleton count={1} height={23} borderRadius={24} />
+                                </div>
+                                :
+                                <TittleHeader textHeader={dataPromohot.result[0].container_name_th} img={'/' + dataPromohot.result[0].icon} />
+                                <div className='w-full flex flex-col'>
+                                    <div>
+                                        <Skeleton count={1} height={170} borderRadius={24} />
+
+                                    </div>
+                                    <div className="w-2/3">
+                                        <Skeleton count={1} height={19} borderRadius={24} />
+
+                                    </div>
+                                    <div className="w-1/3">
+                                        <Skeleton count={1} height={19} borderRadius={24} />
+
+                                    </div>
+
+                                </div> */}
+                                {/* <CardSquare />
                                 <CardSquare />
-                                <CardSquare />
-                                <CardSquare />
+                                <CardSquare /> */}
                             </div>
                         </div>
                         <div>
-                            <div className='contanier-box-item'>
-                                <div className="box-item-title">
-                                    <TittleHeader textHeader="อาหารเช้า (เช้าตรู่ - 11 โมงเท่านั้น)" />
+                            {!dataPromohot ?
+
+                                <div className='contanier-box-item'>
+                                    <div className="box-item-title">
+                                        <div className="w-1/3">
+                                            <Skeleton count={1} height={23} borderRadius={24} />
+                                        </div>
+                                    </div>
+                                    <RenderCardeSkel />
+                                    <RenderCardeSkel />
+                                    <RenderCardeSkel />
+                                    <RenderCardeSkel />
                                 </div>
-                                <div className="box-item-list">
-                                    <CardListItem />
+                                :
+                                <div className='contanier-box-item'>
+                                    <div className="box-item-title">
+                                        <TittleHeader textHeader="อาหารเช้า (เช้าตรู่ - 11 โมงเท่านั้น)" />
+                                    </div>
+                                    <div className="box-item-list">
+                                        <CardListItem />
+                                    </div>
+                                    <div className="box-item-list">
+                                        <CardListItem />
+                                    </div>
+                                    <div className="box-item-list">
+                                        <CardListItem />
+                                    </div>
+                                    <div className="box-item-list">
+                                        <CardListItem />
+                                    </div>
+                                    <div className="box-item-list">
+                                        <CardListItem />
+                                    </div>
                                 </div>
-                                <div className="box-item-list">
-                                    <CardListItem />
-                                </div>
-                                <div className="box-item-list">
-                                    <CardListItem />
-                                </div>
-                                <div className="box-item-list">
-                                    <CardListItem />
-                                </div>
-                                <div className="box-item-list">
-                                    <CardListItem />
-                                </div>
-                            </div>
-                            <div className='contanier-box-item'>
-                                <div className="box-item-title">
-                                    <TittleHeader textHeader="เมนูมาใหม่ โดนใจกว่าเดิม" />
-                                </div>
-                                <div className="box-item-list">
-                                    <CardListItem />
-                                </div>
-                                <div className="box-item-list">
-                                    <CardListItem />
-                                </div>
-                                <div className="box-item-list">
-                                    <CardListItem />
-                                </div>
-                                <div className="box-item-list">
-                                    <CardListItem />
-                                </div>
-                                <div className="box-item-list">
-                                    <CardListItem />
-                                </div>
-                            </div>
+                            }
                         </div>
                     </div>
                 </div>
@@ -149,8 +216,38 @@ export default function page() {
                 <SideNavBar isOpen={isOpenBulgur} Close={setIsOpenBulgur} />
             </div>
 
-        </div>
+        </div >
     );
+}
+
+function RenderCardeSkel() {
+    return (
+        <>
+            <div className="box-item-list">
+                <div className="flex flex-col">
+                    <div className={"flex flex-row w-full"}>
+                        <div className={"w-[93px]"}>
+                            <Skeleton count={1} height={93} borderRadius={24} />
+                        </div>
+                        <div className={'ps-[10px] flex flex-col w-1/2 justify-evenly'}>
+                            <div>
+                                <div className="w-1/3">
+                                    <Skeleton count={1} height={20} borderRadius={24} />
+                                </div>
+                                <div className="w-3/4">
+                                    <Skeleton count={1} height={20} borderRadius={24} />
+                                </div>
+                            </div>
+
+                            <div className="w-1/2">
+                                <Skeleton count={1} height={20} borderRadius={24} />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </>
+    )
 }
 
 function RenderCardSquareSkel() {
