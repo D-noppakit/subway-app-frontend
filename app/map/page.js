@@ -31,8 +31,8 @@ export default function Map() {
             <div className="inline-flex flex-col absolute bg-[#008938] h-2/3 bottom-0 rounded-t-3xl p-4 w-full">
                 <div className="flex w-full justify-between items-center">
                     <div className="text-[14px] text-white flex items-center justify-center">เลือกสาขา</div>
-                    <div className="w-[500px] h-[50px] py-[6px] px-[12px]">
-                        <ButtonCustom btnText={"สาขาใกล้ฉัน"} textSize="14px" img="" type={"secondary"} checkout={true} btnText2={'2'}/>
+                    <div className="w-[140px] h-[50px] py-[6px] px-[12px]">
+                        <ButtonCustom btnText={"สาขาใกล้ฉัน"} textSize="14px" img="" type={"secondary"} />
                     </div>
                 </div>
                 <div className="flex flex-col overflow-y-auto max-h-[60vh] hide-scrollbar ">
