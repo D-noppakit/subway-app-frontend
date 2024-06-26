@@ -14,7 +14,8 @@ import CardSquare from "@/components/Card/CardSquare";
 import CardListItem from "@/components/Card/CardListItem";
 import TittleHeader from "@/components/HomeComponents/TittleHeader";
 import store from "@/lib/store";
-
+import Removecrosspluscircle from "@/public/icon/removecrosspluscircle.png";
+import CloseGreen from "@/public/icon/Close-green.png";
 const fetcher = (url) => fetch(url, {
   method: 'POST',
   headers: {
@@ -31,7 +32,7 @@ export default function Page({ params }) {
   const [selectOption, setSelectOption] = useState([]);
   const [selectedValue, setSelectedValue] = useState('');
   const [isSeach, setIsSeach] = useState(false);
-
+  const [searchText, setSeachText] = useState('')
   const { data: dataPromohot } = useSWR(
     'http://localhost:3003/api/v1/product/byshop/getList',
     fetcher
@@ -39,7 +40,6 @@ export default function Page({ params }) {
 
 
   const toggleClass = () => {
-    console.log("!!!!")
     setIsSeach(!isSeach);
   }
 
@@ -113,6 +113,22 @@ export default function Page({ params }) {
     setIsOpenBulgur(state);
   };
 
+  const handleChangeTextSearch = (event) => {
+    console.log(event.target.value)
+
+    setSeachText(event.target.value)
+
+  };
+
+  const clearTextFunc = () => {
+    setSeachText('')
+  }
+
+  const handleClearText = () => {
+    setIsSeach(!isSeach);
+    setSeachText('')
+  }
+
   return (
     <div className="">
       <HeaderOne CartCount={0} whenClickBulgur={ClickBulgur} />
@@ -143,8 +159,19 @@ export default function Page({ params }) {
             </div>
           </div>
           <div className={'textsearch-box w-full ' + (isSeach ? 'active' : '')} >
-            <div className={'flex w-full'}>
-              <input className='border border-1 border-[#DFE0E7] rounded-3xl h-[45px] w-full outline-none p-[16px]' placeholder='ค้นหาสาขา' />
+            <div className={'flex w-full flex justify-between'}>
+              <div className={'flex relative w-5/6'}>
+                <input value={searchText} onInput={handleChangeTextSearch} className='border border-1 border-[#DFE0E7] w-full rounded-3xl h-[45px]  outline-none p-[16px]' placeholder='ค้นหาเมนู' />
+                <div onClick={clearTextFunc} className={'flex absolute h-full items-center right-[10px] ' + (searchText.length > 0 ? '' : 'hidden')}>
+                  <div className={' h-[24px] w-[24px]'}>
+                    <Image src={Removecrosspluscircle} alt="Removecrosspluscircle" width={24} height={24} />
+
+                  </div>
+                </div>
+              </div>
+              <div onClick={handleClearText}>
+                <Image src={CloseGreen} alt="CloseGreen" width={45} height={45} />
+              </div>
 
             </div>
           </div>
@@ -155,14 +182,42 @@ export default function Page({ params }) {
             {!dataPromohot ?
               <SkeletonLoading />
               :
-              dataPromohot.result.map((elm, index) => (
+              !searchText && dataPromohot.result ? dataPromohot.result.map((elm, index) => (
                 <div key={'div' + index} id={'div' + index} className={'container-category'}>
                   {elm.con_type === 'square' ?
                     RenderCatTypeSquare(elm.container_name_th, elm.list_data, elm.icon, elm.text_color) :
                     RenderCatTypeList(elm.container_name_th, elm.list_data, elm.icon, elm.text_color)
                   }
                 </div>
-              ))
+              )) :
+                <div>
+                  <div className='contanier-box-item'>
+                    {dataPromohot.result.map((elm, index) => (
+
+
+                      elm.list_data.map((elm2, index) => {
+                        console.log("elm2", elm2)
+                        if (elm2.th_name.includes(searchText)) {
+                          return <>
+                            <div className="box-item-list" key={'CLI' + elm.th_name}>
+                              <CardListItem title={elm2.th_name} des={elm2.des} price={elm2.price} img={elm2.img} />
+                            </div>
+                          </>
+
+                        }
+                        // {
+                        //   listData.map((elm) => (
+                        //     
+                        //   ))
+                        // }
+
+                      })
+
+
+
+                    ))}
+                  </div>
+                </div>
             }
           </div>
         </div>
