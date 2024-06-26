@@ -5,8 +5,8 @@ export default function OptionalMenu() {
     const OPTIONAL_RECOMMEND_MENU = []
     for (let i = 0; i < 10; i++) {
         OPTIONAL_RECOMMEND_MENU.push(
-            <div className="w-[120px] flex">
-                <CardSquare fullPrice={185} key={'orm_' + i} width={"120px"}/>
+            <div key={'orm_' + i} className="w-[120px] flex">
+                <CardSquare fullPrice={185} width={"120px"}/>
             </div>
         )
     }
