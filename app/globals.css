@@ -196,6 +196,11 @@ body {
   color: var(--neutral50);
 }
 
+.bt-custom.checkout {
+  display: flex;
+  justify-content: space-between;
+}
+
 .price {
   color: var(--primary-subway-green);
 }

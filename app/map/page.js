@@ -9,6 +9,7 @@ import CardHeaderGreen from '@/components/Card/CardHeaderGreen';
 import ImagePhone from "@/public/icon/phone.png"
 import ImageMap1 from "@/public/icon/map1.png"
 import { useRouter } from 'next/navigation';
+import GMap from '@/components/Map/Map'
 
 export default function Map() {
     const router = useRouter();
@@ -16,6 +17,8 @@ export default function Map() {
     const mock = Array.from({ length: 10 }, (_, index) => "1")
     return (
         <div className='h-screen w-screen relative bg-slate-400'>
+            <GMap />
+
             <div className='h-77px absolute z-[10] top-0 w-full inline-flex items-center outline-none p-1'>
                 <div className='flex justify-between items-center h-[77px] px-4 w-full'>
 
@@ -28,8 +31,8 @@ export default function Map() {
             <div className="inline-flex flex-col absolute bg-[#008938] h-2/3 bottom-0 rounded-t-3xl p-4 w-full">
                 <div className="flex w-full justify-between items-center">
                     <div className="text-[14px] text-white flex items-center justify-center">เลือกสาขา</div>
-                    <div className="w-[120px] h-[50px] py-[6px] px-[12px]">
-                        <ButtonCustom btnText={"สาขาใกล้ฉัน"} textSize="14px" img="" type={"secondary"} />
+                    <div className="w-[500px] h-[50px] py-[6px] px-[12px]">
+                        <ButtonCustom btnText={"สาขาใกล้ฉัน"} textSize="14px" img="" type={"secondary"} checkout={true} btnText2={'2'}/>
                     </div>
                 </div>
                 <div className="flex flex-col overflow-y-auto max-h-[60vh] hide-scrollbar ">
