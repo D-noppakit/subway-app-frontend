@@ -6,12 +6,17 @@ export default function Subwaytextbox({
   type,
   defaultValue,
   listData = [],
-  errorMsg = "Error message"
+  errorMsg = "Error message",
+  onChange = () => {},
+  selectedValue
 }) {
+
   return (
     <div className="w-full">
       <div className="custom-select">
         <select
+        value={selectedValue}
+          onChange = {onChange}
           className={
             "bg-gray-50 border border-gray-300 text-sm focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 rounded-full " +
             (type ? type:'')
@@ -20,12 +25,12 @@ export default function Subwaytextbox({
           disabled={type == 'disabled' ? true : null}
         >
           {defaultValue &&
-            <option id={defaultValue}>
+            <option key={defaultValue} id={defaultValue}>
               {defaultValue}
             </option>}
           {listData.map(elm => {
             return (
-              <option id={elm.id}>
+              <option key={elm.id} id={elm.id}>
                 {elm.value}
               </option>
             );
