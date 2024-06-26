@@ -44,7 +44,7 @@ export default function ButtonCustom({
     return (
         <div className={`flex justify-center items-center text-white w-full h-full`} >
             {useBoxOnly ? <>{children}</> :
-                <button className={`flex justify-center items-center w-full h-full p-2 rounded-[100px] text-xl bt-custom ${type} ${checkout ? 'checkout' : ''} ${padding ? ` ps-[${padding}] pe-[${padding}]`: ''}`} onClick={whenClick} disabled={isDisabled ? true : false}>
+                <button className={`flex justify-center items-center w-full h-full p-2 rounded-[100px] text-xl bt-custom ${type} ${checkout ? 'checkout' : ''} ${padding ? ` px-[${padding}]`: ''}`} onClick={whenClick} disabled={isDisabled ? true : false}>
                     <div>
                         {img && <Image src={img} width={20} height={10}
                             alt="Picture of the author" />}
