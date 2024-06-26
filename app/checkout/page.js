@@ -21,13 +21,10 @@ export default function Checkout() {
                 <main className={`w-full h-[139px] bg-[#0b8a45] relative`}>
                     <div className="relative ">
                         <LocationAt NameLocation={"Subway CW Tower"} Time={"ทันที"} whenClick={() => console.log('ทันที')} />
-
                     </div>
                     <div className="sm:top-[-6vh] md:top-[-6vh] top-[-8vh] absolute z-0 h-very-small:h-[190px] h-half-medium:h-[207px] h-tall:h-[210px] h-small:h-[198px]" style={{ objectFit: "contain", overflow: "hidden" }}>
-                        <Image src={"/imgs/bg-select-top.png"} alt="bg-select-top.png" className="w-full" width={1000} height={139}
-                        />
+                        <Image src={"/imgs/bg-select-top.png"} alt="bg-select-top.png" className="w-full" width={1000} height={139} />
                     </div>
-
                 </main>
             </div>
             <div className="h-very-small:h-[450px] h-small:h-[525px] h-half-medium:h-[630px] h-tall:h-[680px] h-very-tall:h-[700px] overflow-y-scroll">
@@ -51,9 +48,9 @@ export default function Checkout() {
                 <div className="w-full px-5 mb-[15px]">
                     <span className="text-[#0C8A44] text-[16px] font-bold">การชำระเงิน</span>
                     <div className="flex flex-col gap-[5px] mt-[5px]">
-                        <RadioPaymentMethod image_path="/icon/CreditCard1StreamlineCore.svg.png" input_group="payment_method" method_name="Credit Card"/>
-                        <RadioPaymentMethod image_path="/logo/maxme_logo.png" input_group="payment_method" method_name="Max Me Wallet"/>
-                        <RadioPaymentMethod image_path="/logo/thai_qr_logo.png" input_group="payment_method" method_name="Thai QR PromptPay"/>
+                        <RadioPaymentMethod image_path="/icon/CreditCard1StreamlineCore.svg.png" input_group="payment_method" method_name="Credit Card" />
+                        <RadioPaymentMethod image_path="/logo/maxme_logo.png" input_group="payment_method" method_name="Max Me Wallet" />
+                        <RadioPaymentMethod image_path="/logo/thai_qr_logo.png" input_group="payment_method" method_name="Thai QR PromptPay" />
                     </div>
                 </div>
                 <div className="w-full px-5 mb-[50px]">
@@ -89,11 +86,8 @@ export default function Checkout() {
                 </div>
             </div>
             <div className="bg-white w-full px-5 h-very-small:h-[75px] flex items-center justify-center">
-                <div className={`flex justify-center items-center text-white w-full h-[55px]`} >
-                    <button className={`flex justify-between items-center w-full h-full p-2 rounded-[100px] text-xl bt-custom primary`}>
-                        <div>ชำระเงิน</div>
-                        <div className={`text-[10px] font-mediam`}>฿440</div>
-                    </button>
+                <div className="h-[55px] w-full">
+                    <ButtonCustom btnText={'ชำระเงิน'} btnText2={'฿440'} checkout={true} type={'primary'} img="" />
                 </div>
             </div>
         </div>
