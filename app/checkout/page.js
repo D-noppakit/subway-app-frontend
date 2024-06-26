@@ -7,6 +7,7 @@ import Image from "next/image";
 import { useState } from "react";
 import CardBurnpoint from "@/components/Card/CardBurnpoint";
 import ButtonCustom from "@/components/Button/ButtonCustom";
+import RadioPaymentMethod from "@/components/RadioPaymentMethod";
 
 export default function Checkout() {
     const [isOpenBulgur, setIsOpenBulgur] = useState(false)
@@ -47,8 +48,44 @@ export default function Checkout() {
                     </div>
                 </div>
                 <CardBurnpoint maxcardno={''} />
-                <div className="w-full p-5">
-                    <div className="h-[385px]"></div>
+                <div className="w-full px-5 mb-[15px]">
+                    <span className="text-[#0C8A44] text-[16px] font-bold">การชำระเงิน</span>
+                    <div className="flex flex-col gap-[5px] mt-[5px]">
+                        <RadioPaymentMethod image_path="/icon/CreditCard1StreamlineCore.svg.png" input_group="payment_method" method_name="Credit Card"/>
+                        <RadioPaymentMethod image_path="/logo/maxme_logo.png" input_group="payment_method" method_name="Max Me Wallet"/>
+                        <RadioPaymentMethod image_path="/logo/thai_qr_logo.png" input_group="payment_method" method_name="Thai QR PromptPay"/>
+                    </div>
+                </div>
+                <div className="w-full px-5 mb-[50px]">
+                    <span className="text-[#0C8A44] text-[16px] font-bold">สรุปรายการชำระ</span>
+                    <div className="flex flex-col gap-[5px] mt-[5px] gap-[10px]">
+                        <div className="flex justify-between items-center text-[12px]">
+                            <span>ยอดรวม</span>
+                            <span>฿480</span>
+                        </div>
+                        <div className="text-[#D83A3A]">
+                            <div className="flex justify-between items-center text-[14px]">
+                                <span>Coupon Discount</span>
+                                <span>-฿20</span>
+                            </div>
+                            <div className="flex flex-col text-[12px] pl-[10px] font-normal">
+                                <span>• Discount detail</span>
+                            </div>
+                        </div>
+                        <div className="text-[#FF822B]">
+                            <div className="flex justify-between items-center text-[14px]">
+                                <span>ใช้ Max Point เป็นส่วนลด</span>
+                                <span>-฿20</span>
+                            </div>
+                            <div className="flex flex-col text-[12px] pl-[10px] font-normal">
+                                <span>• 200 Max Point</span>
+                            </div>
+                        </div>
+                        <div className="flex justify-between items-center text-[16px]">
+                            <span>ยอดชำระ</span>
+                            <span>฿440</span>
+                        </div>
+                    </div>
                 </div>
             </div>
             <div className="bg-white w-full px-5 h-very-small:h-[75px] flex items-center justify-center">
