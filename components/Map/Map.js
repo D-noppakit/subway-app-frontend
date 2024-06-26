@@ -36,9 +36,12 @@ function Map() {
             }
         );
     }, []);
+
+    const gapikey = process.env.GoogleMapKey
+    // const apiKey = process.env.API_KEY;
     return (
         <LoadScript
-            googleMapsApiKey="AIzaSyAfiky9TpZMFOiV_x7Kh9OpN0StSoX1Xr8" // ใส่ API Key ของคุณที่นี่
+            googleMapsApiKey={gapikey} // ใส่ API Key ของคุณที่นี่
         >
             <GoogleMap
                 mapContainerStyle={containerStyle}

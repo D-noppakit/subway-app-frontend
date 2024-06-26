@@ -17,7 +17,10 @@ const nextConfig = {
       },
       // Add more patterns if needed
     ]
-  }
+  },
+  env: {
+    GoogleMapKey: process.env.GOOGLE_KEY,
+  },
 }
 export default MillionLint.next({
   rsc: true
