@@ -2,6 +2,18 @@
 @tailwind components;
 @tailwind utilities;
 
+.hide-scrollbar::-webkit-scrollbar {
+  display: none;
+  /* สำหรับ Chrome, Safari และ Opera */
+}
+
+.hide-scrollbar {
+  -ms-overflow-style: none;
+  /* สำหรับ Internet Explorer และ Edge */
+  scrollbar-width: none;
+  /* สำหรับ Firefox */
+}
+
 :root {
   --neutral50: #ffffff;
   --neutral100: #f8f9fb;
@@ -73,10 +85,12 @@
   --secondary-pepper-green: #97D700;
 }
 
-html, body {
+html,
+body {
   margin: 0;
   padding: 0;
-  overflow: hidden; /* Prevents scrolling */
+  overflow: hidden;
+  /* Prevents scrolling */
   height: 100%;
   width: 100%;
 }
@@ -174,23 +188,23 @@ html, body {
 
 .bt-custom.outline {
   background: var(--neutral50);
-  color:var(--green600);
+  color: var(--green600);
 }
 
 .bt-custom.disabled {
   background: var(--neutral500);
-  color:var(--neutral50);
+  color: var(--neutral50);
 }
 
-.price{
+.price {
   color: var(--primary-subway-green);
 }
 
-.price-discount{
+.price-discount {
   color: var(--red600);
 }
 
-.price-non-discout{
+.price-non-discout {
   color: var(--neutral600);
 }
 
@@ -206,31 +220,33 @@ html, body {
   line-height: 1.8;
 }
 
-.contaner-list-item{
+.contaner-list-item {
   height: fit-content;
   gap: 14px;
   display: flex;
   flex-direction: column;
 }
 
-.contaner-list-item .list-item:not(:last-child){
+.contaner-list-item .list-item:not(:last-child) {
   border-bottom: 1px solid #E9E9E9;
   padding-bottom: 14px;
 }
 
-.contaner-list-item .list-item:last-child{
+.contaner-list-item .list-item:last-child {
   padding-bottom: 30px;
 }
 
-.card-item.isDisabled *{
+.card-item.isDisabled * {
   color: var(--neutral600) !important;
 
 }
-.card-item.isDisabled .badgeCustom{
+
+.card-item.isDisabled .badgeCustom {
   color: var(--neutral50) !important;
   background-color: var(--neutral600) !important;
 }
-.card-item.isDisabled .badgeCustom>span{
+
+.card-item.isDisabled .badgeCustom>span {
   color: var(--neutral50) !important;
 }
 
@@ -241,34 +257,79 @@ html, body {
   justify-self: flex-end;
 } */
 
-.contanier-box-item:first-child{
+.contanier-box-item:first-child {
   padding-top: 25px;
 }
 
 
 
-.contanier-box-item .box-item-title{
+.contanier-box-item .box-item-title {
   padding-bottom: 14px;
 }
-.contanier-box-item .box-item-list:not(:last-child){
+
+.contanier-box-item .box-item-list:not(:last-child) {
   padding: 14px 0;
   border-bottom: 1px solid #E9E9E9;
 
 }
 
-.contanier-box-item .box-item-list:last-child{
+.contanier-box-item .box-item-list:last-child {
   padding-bottom: 30px;
 }
-.item-des{
-  position: relative; /* ใช้ตำแหน่งสัมพัทธ์ */
-  padding-left: 1.5em; /* เยื้องเนื้อหา */
-  margin-bottom: 10px; /* ระยะห่างระหว่างแต่ละ div */
+
+.item-des {
+  position: relative;
+  /* ใช้ตำแหน่งสัมพัทธ์ */
+  padding-left: 1.5em;
+  /* เยื้องเนื้อหา */
+  margin-bottom: 10px;
+  /* ระยะห่างระหว่างแต่ละ div */
 }
 
-.container-detail .item-des::before{
-  content: '• '; /* ใช้เครื่องหมาย bullet */
+.container-detail .item-des::before {
+  content: '• ';
+  /* ใช้เครื่องหมาย bullet */
   position: absolute;
-  color: black; /* สีของเครื่องหมาย bullet */
-  font-size: 18px; /* ขนาดของเครื่องหมาย bullet */
-  left: 0; /* ตำแหน่งจากซ้าย */
+  color: black;
+  /* สีของเครื่องหมาย bullet */
+  font-size: 18px;
+  /* ขนาดของเครื่องหมาย bullet */
+  left: 0;
+  /* ตำแหน่งจากซ้าย */
+}
+
+.item-des-small {
+  position: relative;
+  /* ใช้ตำแหน่งสัมพัทธ์ */
+  padding-left: 1.5em;
+  /* เยื้องเนื้อหา */
+  margin-bottom: 10px;
+  /* ระยะห่างระหว่างแต่ละ div */
+}
+.container-detail .item-des-small::before {
+  content: '• ';
+  /* ใช้เครื่องหมาย bullet */
+  position: absolute;
+  color: var(--red600);
+  /* สีของเครื่องหมาย bullet */
+  font-size: 12px;
+  /* ขนาดของเครื่องหมาย bullet */
+  left: 4px;
+  /* ตำแหน่งจากซ้าย */
+}
+
+.container-category:last-child{
+  padding-bottom: 30px;
+}
+
+.textsearch-box{
+  display: none;
+}
+
+.textsearch-box.active{
+  display: flex;
+}
+
+.seleced-box.hide,.fav-box.hide{
+  display: none;
 }

@@ -7,10 +7,8 @@ import choiceMark from "@/public/imgs/Choice-Mark.png"
 import PinMap from "@/public/imgs/pin-map.png"
 import PersonSetting from "@/public/imgs/user-setting-bolt-nut.png"
 import QAimg from "@/public/imgs/QAimg.png"
-import CardHeaderGreen from "@/components/Card/CardHeaderGreen"
 import ButtonCustom from '../Button/ButtonCustom'
 import ButtonMenu from '@/components/Button/ButtonMenu';
-import OtpInput from 'react-otp-input';
 import ButtonWhiteBorderGray from '../Button/ButtonWhiteBorderGray';
 import Loading from '../Loading';
 import CardLoginSuccess from "@/components/Card/CardLoginSuccess"
@@ -18,7 +16,9 @@ import Image from 'next/image';
 import FlowLogin from '../Navbar/FlowLogin';
 import store from "@/lib/store"
 import { useRouter } from 'next/navigation';
-export default function SideNavBar({ isOpen = false, Close = () => console.log("Close") }) {
+import Link from 'next/link';
+
+export default function SideNavBar({ isOpen = false, Close = () => console.log("Close")  }) {
     const router = useRouter()
     const [isOpenCard, setIsCard] = useState(false);
     const [isConfirmOTP, setIsConfirmOTP] = useState(false);
@@ -53,8 +53,6 @@ export default function SideNavBar({ isOpen = false, Close = () => console.log("
     const OpenCard = () => {
         setIsCard(true)
     }
-
-
     return (
         <div >
             {isLoading && <Loading />}
@@ -70,7 +68,9 @@ export default function SideNavBar({ isOpen = false, Close = () => console.log("
                             type={isLoginClient ? 2 : 1}
                         />
                     </div>
-                    <ButtonMenu text={"ออเดอร์ของฉัน"} img={logo1} />
+                    <Link href={"/menu-list-order"}>
+                        <ButtonMenu text={"ออเดอร์ของฉัน"} img={logo1} />
+                    </Link>
                     <ButtonMenu text={"ซับเวย์ รีวอร์ด"} img={choiceMark} />
                     <ButtonMenu text={"ค้นหาสาขา"} img={PinMap} />
                     <ButtonMenu text={"ตั้งค่าโปรไฟล์"} img={PersonSetting} />

@@ -2,10 +2,13 @@
 import Image from 'next/image'
 import { useState, useEffect } from 'react';
 import mainHeaderGreen from "@/public/imgs/subway-logo-green.png"
+import { useRouter } from 'next/navigation';
 export default function HeaderOne({ debug, CartCount, whenClickBulgur }) {
+  const router = useRouter()
   const handleEventClick = (event) => {
     whenClickBulgur(true)
   }
+
   const [isScrolledDown, setIsScrolledDown] = useState(false);
 
   useEffect(() => {
@@ -34,7 +37,7 @@ export default function HeaderOne({ debug, CartCount, whenClickBulgur }) {
       <div className='w-[125px] h-full flex items-center align-middle justify-center'>
         {!isScrolledDown ? <Image src={"/imgs/subway-logo-home.png"} width={200} height={200} alt='subway' /> : <Image src={mainHeaderGreen} width={200} height={200} alt='subway' />}
       </div>
-      <div className='w-[40px] flex justify-center items-center relative'>
+      <div onClick={()=>{router.push("/checkout")}} className='w-[40px] flex justify-center items-center relative'>
         {CartCount > 0 ? <NotiCart num={CartCount} /> : <></>}
         {!isScrolledDown ? <Image className='p-[7px]' src={"/imgs/CartOrange.png"} width={100} height={100} alt='3' /> : <Image src={"/imgs/Shopping-Basket-Card-green.png"} width={100} height={100} alt='3' />}
       </div>

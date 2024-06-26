@@ -22,8 +22,8 @@ export default function page() {
           </div>
 
         </main>
-        <div style={{ top: '70px', position: 'absolute' }} className='w-screen flex p-5 '>
-          <div className='bg-[--primary-subway-white] w-full border rounded-[16px] border-[--neutral300] pt-[10px] pb-[10px] ps-[16px] pe-[16px]'>
+        <div style={{ top: '70px', position: 'absolute',height: 'calc(100% - 30px)' }} className='w-screen flex p-5 '>
+          <div className='bg-[--primary-subway-white] w-full border rounded-[16px] border-[--neutral300] pt-[10px] pb-[10px] ps-[16px] pe-[16px]' style={{height: 'calc(100% - 30px)', overflowY:'auto'}}>
             <div className='flex flex-col border-b border-[--neutral300]'>
               <div className='flex text-[14px] text-[--primary-subway-green] justify-center leading-[22.98px]'>
                 หมายเลขออเดอร์
@@ -113,28 +113,58 @@ export default function page() {
                   <div>
                     <Image src={InformationRed} alt='InformationRed' width={18} height={18} />
                   </div>
-                  <div style={{paddingLeft:"5px",color:"var(--red500)"}}>มีอาการแพ้งา และแตงกวาดอง</div>
+                  <div style={{ paddingLeft: "5px", color: "var(--red500)" }}>มีอาการแพ้งา และแตงกวาดอง</div>
                 </div>
               </div>
             </div>
             <div className='flex flex-col border-b border-[--neutral300]'>
-              <div className='flex text-[12px] text-[--primary-subway-black] '>
-                ยอดรวม
-              </div>
-              <div className='container-detail flex flex-col'>
-                <div className='item-des'>
-                  <span>ขอไม่อุ่นนะคะ</span>
+              <div className='flex flex-col text-[12px] text-[--primary-subway-black] '>
+                <div className={'flex flex-row justify-between w-full pt-2'}>
+                  <span>ยอดรวม</span>
+                  <span>฿289</span>
                 </div>
-              </div>
-              <div className='container-detail flex flex-col'>
-                <div className='item-title flex flex-row items-center'>
-                  <div>
-                    <Image src={InformationRed} alt='InformationRed' width={18} height={18} />
+                <div className={'flex flex-row justify-between w-full text-[--red600]'}>
+                  <div className={'flex flex-col container-detail'}>
+                    <span>Coupon Discount</span>
+                    <div className='item-des-small'>
+                      <span>Discount detail</span>
+                    </div>
                   </div>
-                  <div style={{paddingLeft:"5px",color:"var(--red500)"}}>มีอาการแพ้งา และแตงกวาดอง</div>
+                  <span>-฿20</span>
+                </div>
+                <div className={'flex flex-row justify-between w-full text-[16px]'}>
+                  <span>ยอดชำระ</span>
+                  <span>฿269</span>
+                </div>
+
+              </div>
+            </div>
+            <div className='flex flex-col w-full border-b border-[--neutral300] pt-2'>
+              <div className={'text-[--primary-subway-green]'}>
+                ชำระด้วย
+              </div>
+              <div className={'flex flex-row w-full justify-between'}>
+                <div className={'flex flex-row'}>
+                  <Image src={'/icon/CreditCard1StreamlineCore.svg.png'} alt='CreditCard1StreamlineCore.svg.png' width={24} height={24} />
+                  <div className={'ps-1'}>Credit/Debit Card x2456</div>
+                </div>
+                <div>
+                  -฿269
                 </div>
               </div>
             </div>
+            <div className='flex flex-row w-full justify-between pt-2 text-[--neutral700]'>
+
+              <div>
+                Tran-ID
+              </div>
+              <div>
+                1/B-124532
+              </div>
+
+            </div>
+
+
           </div>
         </div>
       </div>

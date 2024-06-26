@@ -4,7 +4,7 @@ import HeaderOne from "@/components/HeaderOne";
 import SelectionTopHome from "@/components/SelectionTopHome";
 import SectionBottom from "@/components/HomeComponents/SectionBottom";
 import SideNavBar from "@/components/HomeComponents/SideNavBar";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Skeleton from 'react-loading-skeleton'
 import 'react-loading-skeleton/dist/skeleton.css'
 import CardSquareSkel from "@/components/Skeleton/CardSquareSkel"
@@ -16,6 +16,15 @@ import CardLastOrder from "@/components/Card/CardLastOrder";
 import TittleHeader from "@/components/HomeComponents/TittleHeader";
 import CardCategory from "@/components/Card/CardCategory"
 import Link from 'next/link'
+import useSWR from 'swr';
+
+const fetcher = (url) => fetch(url, {
+    method: 'POST',
+    headers: {
+        'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({ "shopcode": "S001" }),
+}).then(res => res.json());
 
 
 export default function page() {
@@ -30,6 +39,25 @@ export default function page() {
     const ClickBulgur = (state) => {
         setIsOpenBulgur(state)
     }
+
+    const { data: dataCat } = useSWR(
+        'http://localhost:3003/api/v1/product/byshop/getcat',
+        fetcher
+    );
+    useEffect(() => {
+        if (dataCat) {
+            console.log("dataCat", dataCat)
+            const newOptions = dataCat.result.map((e, index) => ({
+                id: index,
+                value: e.container_name_th
+            }));
+
+        }
+
+    }, [dataCat]);
+
+
+
     return (
         <div className="">
             <HeaderOne CartCount={0} whenClickBulgur={ClickBulgur} />
@@ -52,10 +80,14 @@ export default function page() {
                     <div className="flex flex-col pt-5 w-full">
                         <TittleHeader textHeader="เลือกหมวดหมู่" img={''} />
                         <div className="grid grid-cols-2 gap-2 w-full">
-                            {listData.length > 0 ? listData.map((elm) =>
-                                <Link href={"/listmenu"} className={'w-full'}>
-                                    <CardCategory />
+
+
+                            {dataCat && dataCat.result.length > 0 ? dataCat.result.map((e, index) => (
+                                <Link href={"/listmenu/" + index} className={'w-full'}>
+                                    <CardCategory title={e.container_name_th} img={e.img} />
                                 </Link>
+                            )
+
                             ) : null}
                         </div>
                     </div>
