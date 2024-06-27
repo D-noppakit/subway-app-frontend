@@ -1,27 +1,26 @@
 "use client"
 import Image from "next/image"
-import { useEffect, useState } from "react"
+import { useEffect, useMemo, useState } from "react"
 import store from "@/lib/store"
 import CheckBoxCustom from "../CheckBoxCustom"
-
-export default function ListOrderCheckbox({ id = 1, data, title, num, max, min }) {
+export default function ListOrderCheckbox({ id = 1, data, title, num, max, min, groupid }) {
     const count = max - min + 1
-    const { DataOrderListConfirm, SetDataOrderListConfirmTypeRadio } = store();
-    const [checkedItems, setCheckedItems] = useState([]);
+    const { SetDataOrderListConfirmTypeCheck } = store();
+    const [checkedItems, setCheckedItems] = useState(data.map(item => ({ ...item, check: false })));
     const [isArrowTop, setIsArrowTop] = useState(false)
     const [deg, setDeg] = useState("90deg")
     const [ListCheckBox, setListCheckBox] = useState([])
+
+
     useEffect(() => {
-        const CheckBoxData = data.map((item) => ({ ...item, check: false }))
-        setCheckedItems(CheckBoxData)
-    }, [])
-    useEffect(() => {
-        console.log(ListCheckBox)
-    }, [ListCheckBox])
-    useEffect(() => {
-        console.log({ data })
+        console.log({ ListCheckBox })
         console.log({ checkedItems })
-    }, [checkedItems])
+        if (ListCheckBox[0]) {
+            console.log("groupid set :", groupid)
+            SetDataOrderListConfirmTypeCheck({ data: ListCheckBox, type: "checkbox", "groupid": groupid })
+        }
+    }, [ListCheckBox, checkedItems])
+
     useEffect(() => {
         if (isArrowTop) {
             setDeg("270deg")
@@ -43,33 +42,61 @@ export default function ListOrderCheckbox({ id = 1, data, title, num, max, min }
             return "กรุณาเลือก 1 รายการ"
         }
     }
-
     const AddListOrderCheckBox = (is, data) => {
-        console.log({ is })
-        console.log({ data })
-        if (ListCheckBox.length === max) {
-            if (checkedItems) {
-                const setTrue = checkedItems.map((item) => ({ ...item, disabled: true }))
-                setCheckedItems(setTrue)
-                return
-            }
+        if (is && ListCheckBox.length >= max) {
+            return; // หยุดการทำงานถ้าจำนวน checkbox ที่เลือกถึงจำนวนสูงสุดแล้ว
         }
+
+        data.check = is;
         if (is) {
-            const check = ListCheckBox.some((v) => v.subitemcode === data.subitemcode)
-            console.log({ check: !check })
-            if (!check) { // ถ้าไม่มี ในarry ให้ append
-                setListCheckBox([...ListCheckBox, data])
-            }
-        } else { // ถ้า checkbox เป็น false ให้ลบ
-            console.log("AddListOrderCheckBox else")
-            const remove = ListCheckBox.filter((v) => v !== data)
-            console.log({ remove })
-            setListCheckBox(remove)
+            setListCheckBox(prevList => {
+                const check = prevList.some(v => v.subitemcode === data.subitemcode);
+                if (!check) {
+                    return [...prevList, data];
+                }
+                return prevList;
+            });
+        } else {
+            setListCheckBox(prevList => prevList.filter(v => v.subitemcode !== data.subitemcode));
         }
-        console.log({ ListCheckBox })
 
+        setCheckedItems(prevItems => prevItems.map(item => item.subitemcode === data.subitemcode ? { ...item, check: is } : item));
+
+    };
+
+    // const AddListOrderCheckBox = (is, data) => {
+    //     data.check = is
+    //     console.log("subitemcode", data.subitemcode)
+    //     console.log({ is })
+    //     console.log({ ListCheckBox })
+    //     // if(ListCheckBox.length === max) return false;
+    //     console.log(1)
+    //     if (data.check) {
+    //         console.log(2)
+    //         if (ListCheckBox.length === max) {
+    //             console.log(3)
+    //             console.log("---max---")
+    //             return
+    //         }
+    //         const check = ListCheckBox.some((v) => v.subitemcode === data.subitemcode)
+    //         if (!check) { // ถ้าไม่มี ในarry ให้ append
+    //             console.log(4)
+    //             setListCheckBox([...ListCheckBox, data])
+    //             updateIsCheckBox(data)
+    //         }
+    //     } else { // ถ้า checkbox เป็น false ให้ลบ
+    //         console.log(5)
+    //         console.log("AddListOrderCheckBox else")
+    //         const remove = ListCheckBox.filter((v) => v !== data)
+    //         console.log({ remove })
+    //         setListCheckBox(remove)
+    //         console.log("data.check",data.check)
+    //         updateIsCheckBox(data)
+    //     }
+    // }
+    const updateIsCheckBox = (data) => {
+        setCheckedItems(prevItems => prevItems.map((item) => item.subitemcode === data.subitemcode ? data : item)); // update ข้อมูล
     }
-
     return (
         <div >
             <div className='bg-white flex flex-col justify-between items-center rounded-2xl p-3 relative mt-3'>
@@ -86,6 +113,7 @@ export default function ListOrderCheckbox({ id = 1, data, title, num, max, min }
                     </div>
                 </div>
                 {checkedItems.map((item, index) => {
+                    // console.log(item)
                     if (!isArrowTop) {
                         return (
                             <div key={index} className="flex flex-row w-full gap-2 pt-3">
@@ -102,8 +130,7 @@ export default function ListOrderCheckbox({ id = 1, data, title, num, max, min }
                                     <CheckBoxCustom
                                         key={index}
                                         item={item}
-                                        isChecked={item.checked}
-                                        onCheckboxChange={(isChecked) => handleCheckboxChange(index, isChecked)}
+                                        isChecked={item.check}
                                         text={item.value}
                                         disabled={item.disabled}
                                         max={max}

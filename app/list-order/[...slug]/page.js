@@ -8,14 +8,20 @@ import Description from "@/components/list-order/Description"
 import AllergiesDescription from "@/components/list-order/AllergiesDescription"
 import dynamic from 'next/dynamic'
 import useSWR from "swr";
-import { Suspense } from "react";
+import { Suspense, useEffect } from "react";
 import Loading from "@/components/Loading";
 import { useRouter } from "next/navigation";
 import { v7 as uuidv7 } from 'uuid';
 const CalOrder = dynamic(() => import('@/components/list-order/CalOrder'), { ssr: false })
-
+import store from "@/lib/store"
 export default function ListOrderPage({ params }) {
-    console.log(params)
+    const { DataOrderListConfirm, clearDataOrderListConfirm } = store();
+    useEffect(() => {
+        clearDataOrderListConfirm()
+    }, [])
+    useEffect(() => {
+        console.log("DataOrderListConfirm", DataOrderListConfirm)
+    }, [DataOrderListConfirm])
     const router = useRouter()
     const { slug } = params
     const shopcode = slug[0]; // Assuming slug is a string array
@@ -38,19 +44,7 @@ export default function ListOrderPage({ params }) {
     }
     const { result } = data
     const { price_take_away, th_des, img, subitem, } = result
-    const renderListOrder = () => {
-        return subitem.map((value, index) => {
-            const { type, groupname, min, max, listitem, groupid } = value;
-            const key = `${type}-${index}`; // Use a unique identifier
 
-            return type === "radio" ? (
-                <ListOrderSelection id={index} key={key} data={listitem} min={min} max={max} title={groupname} num={index + 1} groupid={groupid} />
-            ) : (
-
-                <ListOrderCheckbox id={index} key={key}  data={listitem} min={min} max={max} title={groupname} num={index + 1} />
-            );
-        });
-    };
 
     return (
         <div className="h-screen  flex flex-col ">
@@ -59,8 +53,8 @@ export default function ListOrderPage({ params }) {
                 <div className="px-[20px] pb-[20px] pt-3 gap-1 flex flex-col h-full mb-16">
                     <div className="text-white text-16px p-[10px]">เลือกส่วนประกอบ</div>
                     <DeliciousRecipe />
-                    {renderListOrder()}
-                    
+                    {renderListOrder(data)}
+
                     <Description />
                     <AllergiesDescription />
                 </div>
@@ -69,3 +63,19 @@ export default function ListOrderPage({ params }) {
         </div>
     )
 }
+
+const renderListOrder = (data) => {
+    const { result } = data
+    const { price_take_away, th_des, img, subitem, } = result
+    return subitem.map((value, index) => {
+        const { type, groupname, min, max, listitem, groupid } = value;
+        console.log("page: ", { groupid })
+        const key = `${type}-${index}`; // Use a unique identifier
+        type !== "radio" && console.log(index)
+        return type === "radio" ? (
+            <ListOrderSelection id={index} key={key} data={listitem} min={min} max={max} title={groupname} num={index + 1} groupid={groupid} />
+        ) : (
+            <ListOrderCheckbox id={index} key={key} data={listitem} min={min} max={max} title={groupname} num={index + 1} groupid={groupid} />
+        );
+    });
+};

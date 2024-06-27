@@ -7,7 +7,6 @@ import ButtonCustom from '../Button/ButtonCustom';
 export default function CalOrder() {
     const { count, increaseCount, decreaseCount ,  DataOrderListConfirm} = store();
     if (true) {
-        console.log("have have" , DataOrderListConfirm)
         return (
             <div className='h-[75px] bg-white absolute bottom-0 z-40 w-full p-4 flex justify-center items-center'>
                 <div className='flex items-center justify-between w-full h-10'>
