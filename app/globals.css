@@ -196,6 +196,11 @@ body {
   color: var(--neutral50);
 }
 
+.bt-custom.checkout {
+  display: flex;
+  justify-content: space-between;
+}
+
 .price {
   color: var(--primary-subway-green);
 }
@@ -316,4 +321,20 @@ body {
   /* ขนาดของเครื่องหมาย bullet */
   left: 4px;
   /* ตำแหน่งจากซ้าย */
+}
+
+.container-category:last-child{
+  padding-bottom: 30px;
+}
+
+.textsearch-box{
+  display: none;
+}
+
+.textsearch-box.active{
+  display: flex;
+}
+
+.seleced-box.hide,.fav-box.hide{
+  display: none;
 }
