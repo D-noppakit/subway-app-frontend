@@ -9,7 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "@million/lint": "^1.0.0-rc.26",
+    "@million/lint": "^1.0.0-faire.6",
     "@next/font": "^14.2.3",
     "@react-google-maps/api": "^2.19.3",
     "next": "14.2.3",
@@ -23,6 +23,7 @@
     "slick-carousel": "^1.8.1",
     "styled-components": "^6.1.11",
     "swr": "^2.2.5",
+    "uuid": "^10.0.0",
     "zustand": "^4.5.2"
   },
   "devDependencies": {
