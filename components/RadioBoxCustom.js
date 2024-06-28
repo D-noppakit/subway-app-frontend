@@ -9,7 +9,7 @@ const RadioBoxCustom = ({ data, value = "1", group = "A", setValue, selectedOpti
         const value = event.target.value;
         // console.log("Setting selectedOption:", value);
         setSelectedOption(value);
-        setValue({ value, group, type: 'radio' , data });
+        setValue({ value, groupid: group, type: 'radio', data });
     };
     // console.log({value , selectedOption})
     if (!isArrowTop) {

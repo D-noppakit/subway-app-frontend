@@ -56,7 +56,7 @@ export default function ListOrderPage({ params }) {
                     <AllergiesDescription />
                 </div>
             </div>
-            <CalOrder />
+            <CalOrder DefaultPrice={price_take_away} />
         </div>
     )
 }
