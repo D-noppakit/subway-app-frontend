@@ -18,6 +18,7 @@ import CardCategory from "@/components/Card/CardCategory"
 import Link from 'next/link'
 import useSWR from 'swr';
 import PickUpAt from "@/components/PickUpAt";
+import { modalLocation } from "@/hooks/openModal";
 
 const fetcher = (url) => fetch(url, {
     method: 'POST',
@@ -30,14 +31,15 @@ const fetcher = (url) => fetch(url, {
 
 export default function page() {
 
+    const modal = modalLocation()
+
     let listData = [
         { id: "1", value: "us" },
         { id: "2", value: "en" },
         { id: "3", value: "en" },
         { id: "4", value: "en" }
     ]
-    const [isOpenBulgur, setIsOpenBulgur] = useState(false)
-    const [isOpenModalLocation, setIsOpenModalLocation] = useState(false)
+    const [isOpenBulgur, setIsOpenBulgur] = useState(false)    
     const ClickBulgur = (state) => {
         setIsOpenBulgur(state)
     }
@@ -62,12 +64,12 @@ export default function page() {
 
     return (
         <div className="">
-            {isOpenModalLocation && <PickUpAt setIsOpenModalLocation={setIsOpenModalLocation}/>}
+            {modal.isOpenModalLocation && <PickUpAt setIsOpenModalLocation={modal.toggle}/>}
             <HeaderOne CartCount={0} whenClickBulgur={ClickBulgur} />
             <div style={{ height: "fit-content" }}>
                 <main className={`w-full h-[139px] bg-[#0b8a45] relative`}>
                     <div className="relative ">
-                        <LocationAt NameLocation={"Subway CW Tower"} Time={"ทันที"} whenClick={() => setIsOpenModalLocation(!isOpenModalLocation)} />
+                        <LocationAt NameLocation={"Subway CW Tower"} Time={"ทันที"} whenClick={modal.toggle} />
 
                     </div>
                     <div className="sm:top-[-6vh] md:top-[-6vh] top-[-8vh] absolute z-0 h-[200px] " style={{ objectFit: "contain", overflow: "hidden" }}>
