@@ -12,6 +12,7 @@
     "@million/lint": "^1.0.0-faire.6",
     "@next/font": "^14.2.3",
     "@react-google-maps/api": "^2.19.3",
+    "million": "^3.1.11",
     "next": "14.2.3",
     "react": "^18",
     "react-dom": "^18",
