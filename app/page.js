@@ -4,7 +4,7 @@ import HeaderOne from "@/components/HeaderOne";
 import SelectionTopHome from "@/components/SelectionTopHome";
 import SectionBottom from "@/components/HomeComponents/SectionBottom";
 import SideNavBar from "@/components/HomeComponents/SideNavBar";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import CardSquare from "@/components/Card/CardSquare"
 import 'react-loading-skeleton/dist/skeleton.css'
 import CardSquareSkel from "@/components/Skeleton/CardSquareSkel"
@@ -12,10 +12,6 @@ import HomeBanner from "@/components/HomeComponents/HomeBanner";
 import BannerSkel from "@/components/Skeleton/BannerSkel"
 import { useRouter } from 'next/navigation'
 import useSWR from 'swr'
-import CardHeaderGreen from '@/components/Card/CardHeaderGreen'
-import HomeImage from "@/public/imgs/home.png"
-import Image from 'next/image'
-import ButtonCustom from "@/components/Button/ButtonCustom";
 import PickUpAt from "@/components/PickUpAt"
 const fetcher = (url) => fetch(url, {
   method: 'POST',
