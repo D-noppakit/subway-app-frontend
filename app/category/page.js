@@ -17,6 +17,7 @@ import TittleHeader from "@/components/HomeComponents/TittleHeader";
 import CardCategory from "@/components/Card/CardCategory"
 import Link from 'next/link'
 import useSWR from 'swr';
+import PickUpAt from "../page";
 
 const fetcher = (url) => fetch(url, {
     method: 'POST',
@@ -60,6 +61,7 @@ export default function page() {
 
     return (
         <div className="">
+            <PickUpAt />
             <HeaderOne CartCount={0} whenClickBulgur={ClickBulgur} />
             <div style={{ height: "fit-content" }}>
                 <main className={`w-full h-[139px] bg-[#0b8a45] relative`}>
@@ -68,8 +70,7 @@ export default function page() {
 
                     </div>
                     <div className="sm:top-[-6vh] md:top-[-6vh] top-[-8vh] absolute z-0 h-[200px] " style={{ objectFit: "contain", overflow: "hidden" }}>
-                        <Image src={"/imgs/bg-select-top.png"} alt="bg-select-top.png" className="w-full" width={1000} height={139}
-                        />
+                        <Image src={"/imgs/bg-select-top.png"} alt="bg-select-top.png" className="w-full" width={1000} height={139}/>
                     </div>
 
                 </main>
@@ -83,8 +84,8 @@ export default function page() {
 
 
                             {dataCat && dataCat.result.length > 0 ? dataCat.result.map((e, index) => (
-                                <Link href={"/listmenu/" + index} className={'w-full'}>
-                                    <CardCategory title={e.container_name_th} img={e.img} />
+                                <Link key={index} href={"/listmenu/" + index} className={'w-full'}>
+                                    <CardCategory title={e.container_name_th} alt={'img' + index} img={e.img} />
                                 </Link>
                             )
 
