@@ -4,7 +4,7 @@ import HeaderOne from "@/components/HeaderOne";
 import SelectionTopHome from "@/components/SelectionTopHome";
 import SectionBottom from "@/components/HomeComponents/SectionBottom";
 import SideNavBar from "@/components/HomeComponents/SideNavBar";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import CardSquare from "@/components/Card/CardSquare"
 import 'react-loading-skeleton/dist/skeleton.css'
 import CardSquareSkel from "@/components/Skeleton/CardSquareSkel"

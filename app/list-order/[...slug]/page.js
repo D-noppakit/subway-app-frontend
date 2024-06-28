@@ -66,7 +66,6 @@ const renderListOrder = (data) => {
     const { subitem } = result
     return subitem.map((value, index) => {
         const { type, groupname, min, max, listitem, groupid } = value;
-        console.log("page: ", { groupid })
         const key = `${type}-${index}`; // Use a unique identifier
         type !== "radio" && console.log(index)
         return type === "radio" ? (

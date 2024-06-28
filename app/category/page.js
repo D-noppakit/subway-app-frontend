@@ -30,9 +30,7 @@ const fetcher = (url) => fetch(url, {
 
 
 export default function page() {
-
     const modal = modalLocation()
-
     let listData = [
         { id: "1", value: "us" },
         { id: "2", value: "en" },

@@ -7,7 +7,7 @@ import CardHeaderGreen from '../Card/CardHeaderGreen'
 import ButtonWhiteBorderGray from '../Button/ButtonWhiteBorderGray'
 export default function LocationAt({ NameLocation, Time, whenClick }) {
     return (
-        <div className="p-3 w-[90%] h-[70px] bg-white absolute z-10 max-[375px]:top-[18vh] rounded-[16px] top-[13vh] min-[380px]:top[20vh] left-1/2 transform -translate-x-1/2 -translate-y-1/2 border-solid border-solid border-[--neutral500] border-[1px]">
+        <div className="p-3 w-[90%] h-[70px] bg-white absolute z-10 iphone-se:top-[18vh] rounded-[16px] top-[13vh] min-[380px]:top[20vh] left-1/2 transform -translate-x-1/2 -translate-y-1/2 border-solid border-solid border-[--neutral500] border-[1px]">
             <div className='flex w-full h-full justify-between'>
                 <div className='w-full h-full text-[#008938]'>
 
