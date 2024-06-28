@@ -17,7 +17,7 @@ import TittleHeader from "@/components/HomeComponents/TittleHeader";
 import CardCategory from "@/components/Card/CardCategory"
 import Link from 'next/link'
 import useSWR from 'swr';
-import PickUpAt from "../page";
+import PickUpAt from "@/components/PickUpAt";
 
 const fetcher = (url) => fetch(url, {
     method: 'POST',
@@ -37,6 +37,7 @@ export default function page() {
         { id: "4", value: "en" }
     ]
     const [isOpenBulgur, setIsOpenBulgur] = useState(false)
+    const [isOpenModalLocation, setIsOpenModalLocation] = useState(false)
     const ClickBulgur = (state) => {
         setIsOpenBulgur(state)
     }
@@ -61,12 +62,12 @@ export default function page() {
 
     return (
         <div className="">
-            <PickUpAt />
+            {isOpenModalLocation && <PickUpAt setIsOpenModalLocation={setIsOpenModalLocation}/>}
             <HeaderOne CartCount={0} whenClickBulgur={ClickBulgur} />
             <div style={{ height: "fit-content" }}>
                 <main className={`w-full h-[139px] bg-[#0b8a45] relative`}>
                     <div className="relative ">
-                        <LocationAt NameLocation={"Subway CW Tower"} Time={"ทันที"} whenClick={() => console.log('ทันที')} />
+                        <LocationAt NameLocation={"Subway CW Tower"} Time={"ทันที"} whenClick={() => setIsOpenModalLocation(!isOpenModalLocation)} />
 
                     </div>
                     <div className="sm:top-[-6vh] md:top-[-6vh] top-[-8vh] absolute z-0 h-[200px] " style={{ objectFit: "contain", overflow: "hidden" }}>
