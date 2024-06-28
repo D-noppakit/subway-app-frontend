@@ -44,8 +44,6 @@ export default function ListOrderPage({ params }) {
     }
     const { result } = data
     const { price_take_away, th_des, img, subitem, } = result
-
-
     return (
         <div className="h-screen  flex flex-col ">
             <ListOrderHeader img={img} name={result.th_name} price={price_take_away} des={th_des ? th_des : "-"} />
@@ -54,7 +52,6 @@ export default function ListOrderPage({ params }) {
                     <div className="text-white text-16px p-[10px]">เลือกส่วนประกอบ</div>
                     <DeliciousRecipe />
                     {renderListOrder(data)}
-
                     <Description />
                     <AllergiesDescription />
                 </div>
@@ -66,7 +63,7 @@ export default function ListOrderPage({ params }) {
 
 const renderListOrder = (data) => {
     const { result } = data
-    const { price_take_away, th_des, img, subitem, } = result
+    const { subitem } = result
     return subitem.map((value, index) => {
         const { type, groupname, min, max, listitem, groupid } = value;
         console.log("page: ", { groupid })
