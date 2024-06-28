@@ -64,36 +64,6 @@ export default function ListOrderCheckbox({ id = 1, data, title, num, max, min, 
 
     };
 
-    // const AddListOrderCheckBox = (is, data) => {
-    //     data.check = is
-    //     console.log("subitemcode", data.subitemcode)
-    //     console.log({ is })
-    //     console.log({ ListCheckBox })
-    //     // if(ListCheckBox.length === max) return false;
-    //     console.log(1)
-    //     if (data.check) {
-    //         console.log(2)
-    //         if (ListCheckBox.length === max) {
-    //             console.log(3)
-    //             console.log("---max---")
-    //             return
-    //         }
-    //         const check = ListCheckBox.some((v) => v.subitemcode === data.subitemcode)
-    //         if (!check) { // ถ้าไม่มี ในarry ให้ append
-    //             console.log(4)
-    //             setListCheckBox([...ListCheckBox, data])
-    //             updateIsCheckBox(data)
-    //         }
-    //     } else { // ถ้า checkbox เป็น false ให้ลบ
-    //         console.log(5)
-    //         console.log("AddListOrderCheckBox else")
-    //         const remove = ListCheckBox.filter((v) => v !== data)
-    //         console.log({ remove })
-    //         setListCheckBox(remove)
-    //         console.log("data.check",data.check)
-    //         updateIsCheckBox(data)
-    //     }
-    // }
     const updateIsCheckBox = (data) => {
         setCheckedItems(prevItems => prevItems.map((item) => item.subitemcode === data.subitemcode ? data : item)); // update ข้อมูล
     }

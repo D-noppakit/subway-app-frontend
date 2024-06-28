@@ -21,8 +21,8 @@ const nextConfig = {
   },
   env: {
     GoogleMapKey: process.env.GOOGLE_KEY,
+    ENDPOINT_UAT : ""
   },
 }
-export default MillionLint.next({
-  rsc: true,
-})(nextConfig);
+export default MillionLint.next({ rsc: true })(nextConfig);
+
