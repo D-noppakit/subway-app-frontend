@@ -4,16 +4,26 @@ import OptionalMenu from "@/components/ContainerListItem/OptionalMenu";
 import HeaderOne from "@/components/HeaderOne";
 import LocationAt from "@/components/HomeComponents/LocationAt";
 import Image from "next/image";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import CardBurnpoint from "@/components/Card/CardBurnpoint";
 import ButtonCustom from "@/components/Button/ButtonCustom";
 import RadioPaymentMethod from "@/components/RadioPaymentMethod";
+import SideNavBar from "@/components/HomeComponents/SideNavBar";
+import store from "@/lib/store";
 
 export default function Checkout() {
+    const { UserInfo } = store();
+    const [paymentMethod, setPaymentMethod] = useState('');
     const [isOpenBulgur, setIsOpenBulgur] = useState(false)
     const ClickBulgur = (state) => {
         setIsOpenBulgur(state)
     }
+    const handlePaymentMethod = (method) => {
+        setPaymentMethod(method)
+    };
+    useEffect(() => {
+        console.log("UserInfo", UserInfo)
+    })
     return (
         <div className="h-full">
             <HeaderOne CartCount={0} whenClickBulgur={ClickBulgur} />
@@ -44,13 +54,13 @@ export default function Checkout() {
                         </div>
                     </div>
                 </div>
-                <CardBurnpoint maxcardno={''} />
+                <CardBurnpoint maxcardno={UserInfo.flag_maxcard} whenClick={UserInfo.flag_maxcard !== 'Y' ? setIsOpenBulgur : null}/>
                 <div className="w-full px-5 mb-[15px]">
                     <span className="text-[#0C8A44] text-[16px] font-bold">การชำระเงิน</span>
                     <div className="flex flex-col gap-[5px] mt-[5px]">
-                        <RadioPaymentMethod image_path="/icon/CreditCard1StreamlineCore.svg.png" input_group="payment_method" method_name="Credit Card" />
-                        <RadioPaymentMethod image_path="/logo/maxme_logo.png" input_group="payment_method" method_name="Max Me Wallet" />
-                        <RadioPaymentMethod image_path="/logo/thai_qr_logo.png" input_group="payment_method" method_name="Thai QR PromptPay" />
+                        <RadioPaymentMethod image_path="/icon/CreditCard1StreamlineCore.svg.png" input_group="payment_method" method_name="Credit Card" setMethod={() => handlePaymentMethod('C')} />
+                        <RadioPaymentMethod image_path="/logo/maxme_logo.png" input_group="payment_method" method_name="Max Me Wallet" setMethod={() => handlePaymentMethod('W')} />
+                        <RadioPaymentMethod image_path="/logo/thai_qr_logo.png" input_group="payment_method" method_name="Thai QR PromptPay" setMethod={() => handlePaymentMethod('QR')} />
                     </div>
                 </div>
                 <div className="w-full px-5 mb-[50px]">
@@ -87,8 +97,11 @@ export default function Checkout() {
             </div>
             <div className="bg-white w-full px-5 h-very-small:h-[75px] flex items-center justify-center">
                 <div className="h-[55px] w-full">
-                    <ButtonCustom btnText={'ชำระเงิน'} btnText2={'฿440'} checkout={true} type={'primary'} img="" padding={'20px'}/>
+                    <ButtonCustom btnText={'ชำระเงิน'} btnText2={'฿440'} checkout={true} type={paymentMethod == '' ? 'disabled' : 'primary'} img="" padding={'20px'} />
                 </div>
+            </div>
+            <div className={"absolute top-0 z-50"}>
+                <SideNavBar isOpen={isOpenBulgur} Close={setIsOpenBulgur} />
             </div>
         </div>
     );
