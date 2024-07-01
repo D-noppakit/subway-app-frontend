@@ -15,12 +15,13 @@ import { v7 as uuidv7 } from 'uuid';
 const CalOrder = dynamic(() => import('@/components/list-order/CalOrder'), { ssr: false })
 import store from "@/lib/store"
 export default function ListOrderPage({ params }) {
-    const { DataOrderListConfirm, clearDataOrderListConfirm } = store();
+    const { DataOrderListConfirm, clearDataOrderListConfirm, SetListOrderAddon } = store();
     useEffect(() => {
         clearDataOrderListConfirm()
     }, [])
     useEffect(() => {
         console.log("DataOrderListConfirm", DataOrderListConfirm)
+        SetListOrderAddon()
     }, [DataOrderListConfirm])
     const router = useRouter()
     const { slug } = params

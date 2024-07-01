@@ -7,11 +7,11 @@ import ButtonCustom from '../Button/ButtonCustom';
 export default function CalOrder(
     { DefaultPrice }
 ) {
-    const { ListOrderTotal, SetListOrderTotal } = store();
+    const { ListOrderTotal, SetListOrderTotal , DataOrderListConfirm } = store();
     const [count, setCount] = useState(1)
     useEffect(() => {
         SetListOrderTotal(DefaultPrice, count)
-    }, [count])
+    }, [count, DataOrderListConfirm])
     useEffect(() => {
         if (count < 1) {
             setCount(1)
