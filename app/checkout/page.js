@@ -149,7 +149,7 @@ export default function Checkout() {
                 }
             })
             description = replaceLastChar(description, ' / ', '')
-            ORDER_LIST.push(<CardListItemSummary key={element.itemcode + '_' + i} title={element.th_name} des={description} img={element.img} price={element.price_eat_in} quntity={element.ListOrder.quantity}/>)
+            ORDER_LIST.push(<CardListItemSummary key={element.itemcode + '_' + i} title={element.th_name} des={description} img={element.img} price={element.ListOrder.total} quntity={element.ListOrder.quantity}/>)
         }
         return (
             <div>
