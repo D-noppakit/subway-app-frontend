@@ -1,13 +1,32 @@
 'use client'// CalOrder.js
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import store from '@/lib/store';
 import ButtonCustom from '../Button/ButtonCustom';
 
 
-export default function CalOrder() {
-    const { count, increaseCount, decreaseCount ,  DataOrderListConfirm} = store();
+export default function CalOrder(
+    { DefaultPrice }
+) {
+    const { ListOrderTotal, SetListOrderTotal , DataOrderListConfirm } = store();
+    const [count, setCount] = useState(1)
+    useEffect(() => {
+        SetListOrderTotal(DefaultPrice, count)
+    }, [count, DataOrderListConfirm])
+    useEffect(() => {
+        if (count < 1) {
+            setCount(1)
+        }
+    }, [count])
+    const decreaseCount = () => {
+        if (count === 1) {
+            return
+        }
+        setCount(prev => --prev)
+    }
+    const increaseCount = () => {
+        setCount(prev => ++prev)
+    }
     if (true) {
-        console.log("have have" , DataOrderListConfirm)
         return (
             <div className='h-[75px] bg-white absolute bottom-0 z-40 w-full p-4 flex justify-center items-center'>
                 <div className='flex items-center justify-between w-full h-10'>
@@ -17,7 +36,7 @@ export default function CalOrder() {
                         <div onClick={increaseCount} className='bg-[#028937] h-[30px] w-[30px] flex items-center justify-center rounded-full text-white text-[32px] pb-1'>+</div>
                     </div>
                     <div className='w-[50%] self-end '>
-                        <ButtonCustom textSize='18px' img={""} btnText={"เพิ่มออเดอร์ ฿185"} type={"primary"} />
+                        <ButtonCustom textSize='18px' img={""} btnText={`เพิ่มออเดอร์ ฿${ListOrderTotal}`} type={"primary"} isDisabled={true} />
                     </div>
                 </div>
             </div>

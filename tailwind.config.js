@@ -73,7 +73,8 @@ module.exports = {
         green700: '#006e39'.toLowerCase(),
         green800: '#005929'.toLowerCase(),
         green900: '#004618'.toLowerCase(),
-      },screens: {
+      }, screens: {
+        'iphone-se': { 'max': '375px' }, // iPhone SE (2nd generation), 6/7/8
         'h-very-small': { 'raw': '(min-height: 667px)' }, // iPhone SE
         'h-small': { 'raw': '(min-height: 740px)' }, // S8+
         'h-half-medium': { 'raw': '(min-height: 844px)' }, // iPhone 12 Pro
@@ -81,7 +82,6 @@ module.exports = {
         'h-tall': { 'raw': '(min-height: 896px)' }, // iPhone XR
         'h-very-tall': { 'raw': '(min-height: 915px)' }, // Pixel 7 || S20 Ultra || A51/71
         'h-tallest': { 'raw': '(min-height: 932px)' }, // iPhone 14 Pro Max
-        // => @media (min-height: 800px) { ... }
       }
     },
   },

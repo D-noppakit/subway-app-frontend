@@ -1,4 +1,5 @@
-import MillionLint from '@million/lint';
+import MillionLint from "@million/lint";
+
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   images: {
@@ -20,8 +21,8 @@ const nextConfig = {
   },
   env: {
     GoogleMapKey: process.env.GOOGLE_KEY,
+    ENDPOINT_UAT : ""
   },
 }
-export default MillionLint.next({
-  rsc: true
-})(nextConfig);
+export default MillionLint.next({ rsc: true })(nextConfig);
+

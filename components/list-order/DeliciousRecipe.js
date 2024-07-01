@@ -10,7 +10,7 @@ export default function DeliciousRecipe() {
             <div className='w-full flex justify-between items-center p-3 bg-[#FF8356] rounded-t-2xl'>
                 <div className='flex'>
                     <div className='mr-2'>
-                        <Image src={"/icon/like.png"} width={24} height={24} style={{ objectFit: "contain" }} />
+                        <Image alt='like' src={"/icon/like.png"} width={24} height={24} style={{ objectFit: "contain" }} />
                     </div>
                     <div className='text-white' >อร่อยง่ายๆ ตามสูตร</div>
                 </div>
@@ -20,7 +20,7 @@ export default function DeliciousRecipe() {
             </div>
             <div className='p-3 text-[12px] w-full flex'>
                 <div className='w-[20%] flex justify-center items-start'>
-                    <Image src={"/icon/information-orange.png"} width={19} height={19} style={{ objectFit: "contain" }} />
+                    <Image alt='information-orange' src={"/icon/information-orange.png"} width={19} height={19} style={{ objectFit: "contain" }} />
                 </div>
                 <div className='text-[#72747D] text-[12px]'>
                     ตามสูตรอาจมีวัตถุดิบที่ก่อให้เกิดการแพ้อาหาร หากคุณมี

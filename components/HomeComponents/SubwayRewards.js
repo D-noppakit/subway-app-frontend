@@ -9,7 +9,7 @@ export default function SubwayRewards({ Click = () => console.log("click reward"
                 <Image src={subwayLogoWhite} width={45} height={45} style={{ objectFit: "contain" }} alt='img' />
                 <div className='flex w-full flex-col ps-4'>
                     <div className='text-[#008938] w-full font-[700] text-[16px] flex'>
-                        <spam>ซับเวย์ รีวอร์ด</spam>
+                        <span>ซับเวย์ รีวอร์ด</span>
                         <div className='flex justify-center items-center ps-2'>
                             <Image src={"/imgs/arrow-green.png"} width={13} height={13} alt='arrow' />
                         </div>

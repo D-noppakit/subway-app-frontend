@@ -16,6 +16,8 @@ import TittleHeader from "@/components/HomeComponents/TittleHeader";
 import store from "@/lib/store";
 import Removecrosspluscircle from "@/public/icon/removecrosspluscircle.png";
 import CloseGreen from "@/public/icon/Close-green.png";
+import PickUpAt from "@/components/PickUpAt";
+import { modalLocation } from "@/hooks/openModal";
 const fetcher = (url) => fetch(url, {
   method: 'POST',
   headers: {
@@ -38,6 +40,7 @@ export default function Page({ params }) {
     fetcher
   );
 
+  const modal = modalLocation()
 
   const toggleClass = () => {
     setIsSeach(!isSeach);
@@ -131,11 +134,12 @@ export default function Page({ params }) {
 
   return (
     <div className="">
+      {modal.isOpenModalLocation && <PickUpAt setIsOpenModalLocation={modal.toggle}/> }       
       <HeaderOne CartCount={0} whenClickBulgur={ClickBulgur} />
       <div style={{ height: "fit-content" }}>
         <main className={`w-full h-[139px] bg-[#0b8a45] relative`}>
           <div className="relative ">
-            <LocationAt NameLocation={"Subway CW Tower"} Time={"ทันที"} whenClick={() => console.log('ทันที')} />
+            <LocationAt NameLocation={"Subway CW Tower"} Time={"ทันที"} whenClick={modal.toggle} />
           </div>
           <div className="sm:top-[-6vh] md:top-[-6vh] top-[-8vh] absolute z-0 h-[200px]" style={{ objectFit: "contain", overflow: "hidden" }}>
             <Image src={"/imgs/bg-select-top.png"} alt="bg-select-top.png" className="w-full" width={400} height={139} />

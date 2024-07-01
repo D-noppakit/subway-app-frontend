@@ -23,7 +23,7 @@ export default function CardLastOrder({ whenClick = () => console.log("CardLastO
 
         <div style={{ display: "flex",}}>
           <button style={{ width: "114px", height: "40px", borderRadius:"100px", border:"1px solid var(--neutral300)", gap:"8px",display:"flex", alignItems:"center", padding:"8px 10px 8px 10px", color:"var(--green600)"}}>
-            <Image src={logo1} width={24} height={24}/>
+            <Image src={logo1} width={24} height={24} alt='logo'/>
             สั่งอีกครั้ง
           </button>
         </div>
