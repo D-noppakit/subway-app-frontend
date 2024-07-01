@@ -32,11 +32,12 @@ export default function Checkout() {
     const handleCart = (itemlist) => {
         setorderList(itemlist)
         let total_amount = 0
+        console.log(itemlist);
         for (let i = 0; i < itemlist.length; i++) {
             const element = itemlist[i];
             total_amount += element.ListOrder.total
         }
-        setTotalAmount(ListOrderTotal)
+        setTotalAmount(total_amount)
     }
     useEffect(() => {
         resetDiscountInfo()
@@ -147,7 +148,8 @@ export default function Checkout() {
                     })
                 }
             })
-            ORDER_LIST.push(<CardListItemSummary key={element.itemcode + '_' + i} title={element.th_name} des={description} img={element.img} price={element.price_eat_in} />)
+            description = replaceLastChar(description, ' / ', '')
+            ORDER_LIST.push(<CardListItemSummary key={element.itemcode + '_' + i} title={element.th_name} des={description} img={element.img} price={element.price_eat_in} quntity={element.ListOrder.quantity}/>)
         }
         return (
             <div>
@@ -155,4 +157,22 @@ export default function Checkout() {
             </div>
         )
     }
+
+    function replaceLastChar(str, charToReplace, replacementChar) {
+        // Find the last occurrence of the character
+        const lastIndex = str.lastIndexOf(charToReplace);
+      
+        // If the character is not found, return the original string
+        if (lastIndex === -1) {
+          return str;
+        }
+      
+        // Split the string into two parts
+        const before = str.slice(0, lastIndex);
+        const after = str.slice(lastIndex + 2);
+      
+        // Return the new string with the last occurrence replaced
+        return before + replacementChar + after;
+      }
+      
 }

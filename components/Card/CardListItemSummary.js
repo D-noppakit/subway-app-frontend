@@ -4,7 +4,7 @@ import Image from 'next/image'
 import ArrowGray from '@/public/icon/ArrowDownGray.png';
 import { CSSTransition } from "react-transition-group";
 import { Container } from "./styled";
-export default function CardListItemSummary({ whenClick = () => console.log("CardListItem"), title = '(6" นิ้ว) Cheese & Egg', des = "แซนด์วิชชีสและไข่ ขนาด 6 นิ้ว (เมนูนี้มีชีสตาม สูตร หากแพ้ชีสโปรดแจ้ง)(เมนูนี้มีชีสตาม สูตร หากแพ้ชีสโปรดแจ้ง)", price = 185, fullPrice = 0, isDisabled = false, img = "/imgs/demo/img1.webp", tagText = "", tagBgColor = "" }) {
+export default function CardListItemSummary({ whenClick = () => console.log("CardListItem"), title = '(6" นิ้ว) Cheese & Egg', des = "แซนด์วิชชีสและไข่ ขนาด 6 นิ้ว (เมนูนี้มีชีสตาม สูตร หากแพ้ชีสโปรดแจ้ง)(เมนูนี้มีชีสตาม สูตร หากแพ้ชีสโปรดแจ้ง)", price = 185, fullPrice = 0, isDisabled = false, img = "/imgs/demo/img1.webp", quntity = 1}) {
   let hasdiscout = fullPrice && fullPrice > 0 && fullPrice > price
   const [toggle, setToggle] = useState(false);
   const [height, setHeight] = useState(0);
@@ -39,7 +39,7 @@ export default function CardListItemSummary({ whenClick = () => console.log("Car
             <div className='bg-[#0C8A44] rounded-[50%] w-[30px] h-[30px] flex justify-center items-center text-white'>
               <span>-</span>
             </div>
-            <span className='text-[#F3B817]'>1</span>
+            <span className='text-[#F3B817]'>{quntity}</span>
             <div className='bg-[#0C8A44] rounded-[50%] w-[30px] h-[30px] flex justify-center items-center text-white'>
               <span>+</span>
             </div>
