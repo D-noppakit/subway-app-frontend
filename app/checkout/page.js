@@ -87,7 +87,7 @@ export default function Checkout() {
             </div>
             <div className="bg-white w-full px-5 h-very-small:h-[75px] flex items-center justify-center">
                 <div className="h-[55px] w-full">
-                    <ButtonCustom btnText={'ชำระเงิน'} btnText2={'฿440'} checkout={true} type={'primary'} img="" />
+                    <ButtonCustom btnText={'ชำระเงิน'} btnText2={'฿440'} checkout={true} type={'primary'} img="" padding={'20px'}/>
                 </div>
             </div>
         </div>
