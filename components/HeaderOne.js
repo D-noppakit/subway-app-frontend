@@ -12,6 +12,7 @@ export default function HeaderOne({ debug, CartCount, whenClickBulgur }) {
   }
 
   const [isScrolledDown, setIsScrolledDown] = useState(false);
+  const [haveCart, setHaveCart] = useState(0);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -24,7 +25,7 @@ export default function HeaderOne({ debug, CartCount, whenClickBulgur }) {
     document.body.addEventListener('scroll', handleScroll);
     // Initial check in case the user is already scrolled down
     handleScroll();
-
+    setHaveCart(Cart.length)
     // Cleanup the event listener on component unmount
     return () => {
       document.removeEventListener('scroll', handleScroll);
@@ -40,7 +41,7 @@ export default function HeaderOne({ debug, CartCount, whenClickBulgur }) {
         {!isScrolledDown ? <Image src={"/imgs/subway-logo-home.png"} width={200} height={200} alt='subway' /> : <Image src={mainHeaderGreen} width={200} height={200} alt='subway' />}
       </div>
       <div onClick={() => { router.push("/checkout") }} className='w-[40px] flex justify-center items-center relative'>
-        {Cart.length > 0 ? <NotiCart num={Cart.length} /> : <></>}
+        {haveCart > 0 ? <NotiCart num={haveCart} /> : null}
         {!isScrolledDown ? <Image className='p-[7px]' src={"/imgs/CartOrange.png"} width={100} height={100} alt='3' /> : <Image src={"/imgs/Shopping-Basket-Card-green.png"} width={100} height={100} alt='3' />}
       </div>
     </div>

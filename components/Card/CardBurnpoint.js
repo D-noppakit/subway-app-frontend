@@ -8,7 +8,7 @@ export default function CardBurnpoint({ maxcardno, whenClick }) {
     const [isFlex, setIsFlex] = useState('flex');
     const [pointUse, setPointUse] = useState('');
     const [pointToBaht, setPointToBaht] = useState('0.00');
-    const { SetDiscountInfo } = store();
+    const { SetDiscountInfo, Cart } = store();
     useEffect(() => {
         checkClientSideCondition()
     }, []);
@@ -37,6 +37,14 @@ export default function CardBurnpoint({ maxcardno, whenClick }) {
         setPointUse(value)
         setPointToBaht(pointtobaht)
         SetDiscountInfo({ PointToBaht: pointtobaht })
+        let totalpayment = 0
+        for (let i = 0; i < Cart.length; i++) {
+            const element = Cart[i];
+            totalpayment += element.price_eat_in
+        }
+        if(pointtobaht > totalpayment) {
+            clearBurnPoint()
+        }
     }
 
     const clearBurnPoint = () => {
