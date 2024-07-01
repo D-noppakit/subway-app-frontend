@@ -6,7 +6,7 @@ import Store1 from "@/public/icon/Store-1.png"
 import information from "@/public/icon/information-circle--information-frame-info-more-help-point-circle.png"
 import Image from 'next/image';
 import CardHeaderGreen from '@/components/Card/CardHeaderGreen';
-import ImagePhone from "@/public/icon/phone.png"
+import ImagePhone from "@/public/icon/Phone.png"
 import ImageMap1 from "@/public/icon/map1.png"
 import { useRouter } from 'next/navigation';
 import GMap from '@/components/Map/Map'

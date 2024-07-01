@@ -15,10 +15,10 @@ export default function ListOrderCheckbox({ id = 1, data, title, num, max, min, 
     useEffect(() => {
         console.log({ ListCheckBox })
         console.log({ checkedItems })
-        if (ListCheckBox[0]) {
-            console.log("groupid set :", groupid)
-            SetDataOrderListConfirmTypeCheck({ data: ListCheckBox, type: "checkbox", "groupid": groupid })
-        }
+
+        console.log("groupid set :", groupid)
+        SetDataOrderListConfirmTypeCheck({ data: ListCheckBox, type: "checkbox", "groupid": groupid })
+
     }, [ListCheckBox, checkedItems])
 
     useEffect(() => {
@@ -58,15 +58,14 @@ export default function ListOrderCheckbox({ id = 1, data, title, num, max, min, 
             });
         } else {
             setListCheckBox(prevList => prevList.filter(v => v.subitemcode !== data.subitemcode));
+
         }
 
         setCheckedItems(prevItems => prevItems.map(item => item.subitemcode === data.subitemcode ? { ...item, check: is } : item));
-
+        // SetDataOrderListConfirmTypeCheck({ data: ListCheckBox, type: "checkbox", "groupid": groupid })
     };
 
-    const updateIsCheckBox = (data) => {
-        setCheckedItems(prevItems => prevItems.map((item) => item.subitemcode === data.subitemcode ? data : item)); // update ข้อมูล
-    }
+
     return (
         <div >
             <div className='bg-white flex flex-col justify-between items-center rounded-2xl p-3 relative mt-3'>

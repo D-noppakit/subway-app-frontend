@@ -72,9 +72,15 @@ export default function SideNavBar({ isOpen = false, Close = () => console.log("
                         <ButtonMenu text={"ออเดอร์ของฉัน"} img={logo1} />
                     </Link>
                     <ButtonMenu text={"ซับเวย์ รีวอร์ด"} img={choiceMark} />
+                    {/* <Link href={"/map"}>
+                    </Link> */}
                     <ButtonMenu text={"ค้นหาสาขา"} img={PinMap} />
-                    <ButtonMenu text={"ตั้งค่าโปรไฟล์"} img={PersonSetting} />
-                    <ButtonMenu text={"ช่วยเหลือ"} img={QAimg} />
+                    <Link href={"/profile"}>
+                        <ButtonMenu text={"ตั้งค่าโปรไฟล์"} img={PersonSetting} />
+                    </Link>
+                    <Link href={"/help"}>
+                        <ButtonMenu text={"ช่วยเหลือ"} img={QAimg} />
+                    </Link>
                 </div>
                 <div className='py-[8px] px-[16px] w-full  h-[40px] flex justify-center items-center mt-5'>
                     <ButtonWhiteBorderGray height='40px' Click={ClearAllData}>

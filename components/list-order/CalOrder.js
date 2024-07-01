@@ -7,7 +7,7 @@ import ButtonCustom from '../Button/ButtonCustom';
 export default function CalOrder(
     { DefaultPrice }
 ) {
-    const { ListOrderTotal, SetListOrderTotal , DataOrderListConfirm } = store();
+    const { ListOrderTotal, SetListOrderTotal, DataOrderListConfirm, BTN_addOrderActive  , AddCart} = store();
     const [count, setCount] = useState(1)
     useEffect(() => {
         SetListOrderTotal(DefaultPrice, count)
@@ -36,7 +36,7 @@ export default function CalOrder(
                         <div onClick={increaseCount} className='bg-[#028937] h-[30px] w-[30px] flex items-center justify-center rounded-full text-white text-[32px] pb-1'>+</div>
                     </div>
                     <div className='w-[50%] self-end '>
-                        <ButtonCustom textSize='18px' img={""} btnText={`เพิ่มออเดอร์ ฿${ListOrderTotal}`} type={"primary"} isDisabled={true} />
+                        <ButtonCustom whenClick={AddCart} textSize='18px' img={""} btnText={`เพิ่มออเดอร์ ฿${ListOrderTotal}`} type={"primary"} isDisabled={!BTN_addOrderActive} />
                     </div>
                 </div>
             </div>
