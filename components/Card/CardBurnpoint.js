@@ -8,7 +8,7 @@ export default function CardBurnpoint({ maxcardno, whenClick }) {
     const [isFlex, setIsFlex] = useState('flex');
     const [pointUse, setPointUse] = useState('');
     const [pointToBaht, setPointToBaht] = useState('0.00');
-    const { PhoneNO, OnChangePhoneNo, UserInfo, SetUserInfo, setIsLoginApp } = store();
+    const { SetDiscountInfo } = store();
     useEffect(() => {
         checkClientSideCondition()
     }, []);
@@ -36,11 +36,13 @@ export default function CardBurnpoint({ maxcardno, whenClick }) {
         }
         setPointUse(value)
         setPointToBaht(pointtobaht)
+        SetDiscountInfo({ PointToBaht: pointtobaht })
     }
 
     const clearBurnPoint = () => {
         setPointUse('')
         setPointToBaht('0.00')
+        SetDiscountInfo({ PointToBaht: '0.00',Coupon: false })
     }
     return (
         <div className="w-full px-5 mb-[15px]">
@@ -64,7 +66,7 @@ export default function CardBurnpoint({ maxcardno, whenClick }) {
                                 if (/^\d{0,5}$/.test(value)) { // ตรวจสอบว่าเป็นตัวเลขไม่เกิน 10 ตัว
                                     burnPoint(value); // ถ้าถูกต้องให้ set ค่าเข้า state
                                 }
-                            }} disabled={isDisabled} className="w-full bg-transparent outline-none text-center font-normal" placeholder="ระบุจำนวนแต้ม" value={pointUse} onClick={clearBurnPoint}/>
+                            }} disabled={isDisabled} className="w-full bg-transparent outline-none text-center font-normal" placeholder="ระบุจำนวนแต้ม" value={pointUse} onClick={clearBurnPoint} />
                         </div>
                         <div className="flex justify-center items-center">
                             <Image src={"/icon/ArrowRight.png"} alt="arrowright" className="w-[10px] h-[20px]" width={24} height={24} />
