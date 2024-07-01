@@ -1,5 +1,4 @@
 "use client"
-
 import DeliciousRecipe from "@/components/list-order/DeliciousRecipe";
 import ListOrderHeader from "@/components/list-order/ListOrderHeader";
 import ListOrderSelection from "@/components/list-order/ListOrderSelection";
@@ -8,14 +7,14 @@ import Description from "@/components/list-order/Description"
 import AllergiesDescription from "@/components/list-order/AllergiesDescription"
 import dynamic from 'next/dynamic'
 import useSWR from "swr";
-import { Suspense, useEffect } from "react";
+import { useEffect, useState } from "react";
 import Loading from "@/components/Loading";
 import { useRouter } from "next/navigation";
 import { v7 as uuidv7 } from 'uuid';
 const CalOrder = dynamic(() => import('@/components/list-order/CalOrder'), { ssr: false })
 import store from "@/lib/store"
 export default function ListOrderPage({ params }) {
-    const { DataOrderListConfirm, clearDataOrderListConfirm, SetListOrderAddon } = store();
+    const { DataOrderListConfirm, clearDataOrderListConfirm, SetListOrderAddon, SetListOrderDetail } = store();
     useEffect(() => {
         clearDataOrderListConfirm()
     }, [])
@@ -35,6 +34,12 @@ export default function ListOrderPage({ params }) {
         body: JSON.stringify({ shopcode, item })
     }).then((res) => res.json())
     const { data, isLoading, error } = useSWR('http://localhost:3003/api/v1/product/byshop/itemdetail', fetcher)
+    useEffect(() => {
+        if (data) {
+            SetListOrderDetail(data.result)
+        }
+
+    }, [data])
     if (isLoading) {
         return <Loading bgWhite={true} />
     }
@@ -45,6 +50,19 @@ export default function ListOrderPage({ params }) {
     }
     const { result } = data
     const { price_take_away, th_des, img, subitem, } = result
+    const renderListOrder = (data) => {
+        const { result } = data
+        const { subitem } = result
+        return subitem.map((value, index) => {
+            const { type, groupname, min, max, listitem, groupid } = value;
+            const key = `${type}-${index}`; // Use a unique identifier
+            return type === "radio" ? (
+                <ListOrderSelection id={index} key={key} data={listitem} min={min} max={max} title={groupname} num={index + 1} groupid={groupid} />
+            ) : (
+                <ListOrderCheckbox id={index} key={key} data={listitem} min={min} max={max} title={groupname} num={index + 1} groupid={groupid} />
+            );
+        });
+    };
     return (
         <div className="h-screen  flex flex-col ">
             <ListOrderHeader img={img} name={result.th_name} price={price_take_away} des={th_des ? th_des : "-"} />
@@ -62,17 +80,3 @@ export default function ListOrderPage({ params }) {
     )
 }
 
-const renderListOrder = (data) => {
-    const { result } = data
-    const { subitem } = result
-    return subitem.map((value, index) => {
-        const { type, groupname, min, max, listitem, groupid } = value;
-        const key = `${type}-${index}`; // Use a unique identifier
-        type !== "radio" && console.log(index)
-        return type === "radio" ? (
-            <ListOrderSelection id={index} key={key} data={listitem} min={min} max={max} title={groupname} num={index + 1} groupid={groupid} />
-        ) : (
-            <ListOrderCheckbox id={index} key={key} data={listitem} min={min} max={max} title={groupname} num={index + 1} groupid={groupid} />
-        );
-    });
-};

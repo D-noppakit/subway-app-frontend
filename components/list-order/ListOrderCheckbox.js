@@ -3,7 +3,7 @@ import Image from "next/image"
 import { useEffect, useMemo, useState } from "react"
 import store from "@/lib/store"
 import CheckBoxCustom from "../CheckBoxCustom"
-export default function ListOrderCheckbox({ id = 1, data, title, num, max, min, groupid }) {
+export default function ListOrderCheckbox({ id = 1, data, title, num, max, min, groupid, SetIsOpenActiveAddCard }) {
     const count = max - min + 1
     const { SetDataOrderListConfirmTypeCheck } = store();
     const [checkedItems, setCheckedItems] = useState(data.map(item => ({ ...item, check: false })));

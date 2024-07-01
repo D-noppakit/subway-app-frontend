@@ -5,7 +5,7 @@ import RadioBoxCustom from "../RadioBoxCustom"
 import store from "@/lib/store"
 import { v7 as uuidv7 } from 'uuid';
 
-export default function ListOrderSelection({ id = 1, data, title, num, min, max , groupid }) {
+export default function ListOrderSelection({ id = 1, data, title, num, min, max , groupid ,SetIsOpenActiveAddCard }) {
     const { DataOrderListConfirm, SetDataOrderListConfirmTypeRadio } = store();
     const [selectedOption, setSelectedOption] = useState(id);
     const [isArrowTop, setIsArrowTop] = useState(false)
