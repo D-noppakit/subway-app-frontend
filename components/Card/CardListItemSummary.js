@@ -3,6 +3,7 @@ import React, { useLayoutEffect, useRef, useState } from 'react'
 import Image from 'next/image'
 import ArrowGray from '@/public/icon/ArrowDownGray.png';
 import { CSSTransition } from "react-transition-group";
+import { Container } from "./styled";
 export default function CardListItemSummary({ whenClick = () => console.log("CardListItem"), title = '(6" นิ้ว) Cheese & Egg', des = "แซนด์วิชชีสและไข่ ขนาด 6 นิ้ว (เมนูนี้มีชีสตาม สูตร หากแพ้ชีสโปรดแจ้ง)(เมนูนี้มีชีสตาม สูตร หากแพ้ชีสโปรดแจ้ง)", price = 185, fullPrice = 0, isDisabled = false, img = "/imgs/demo/img1.webp", tagText = "", tagBgColor = "" }) {
   let hasdiscout = fullPrice && fullPrice > 0 && fullPrice > price
   const [toggle, setToggle] = useState(false);
@@ -24,11 +25,11 @@ export default function CardListItemSummary({ whenClick = () => console.log("Car
               <Image src={ArrowGray} alt="arrowgray" height={50} width={50} className='w-3/4' />
             </div>
           </div>
-          <div>
-            <CSSTransition in={toggle} timeout={300} classNames="group" unmountOnExit >
-              <span className='multiline-span' style={{ maxHeight: "50px", lineHeight: "1.8", color: "var(--neutral700)", fontSize: "12px" }}>{des}</span>
+          <Container height={height}>
+            <CSSTransition nodeRef={targetRef} in={toggle} timeout={300} classNames="span-checkout" unmountOnExit >
+              <span ref={targetRef} className='multiline-span span-checkout' style={{ maxHeight: "50px", lineHeight: "1.8", color: "var(--neutral700)", fontSize: "12px" }}>{des}</span>
             </CSSTransition>
-          </div>
+          </Container>
           <div className='bg-[#FF8A0038] rounded-[100px] w-[55px] h-[20px] flex justify-center items-center text-[#FF8A00]'>
             <span>Edit</span>
           </div>

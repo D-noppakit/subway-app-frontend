@@ -311,6 +311,7 @@ body {
   margin-bottom: 10px;
   /* ระยะห่างระหว่างแต่ละ div */
 }
+
 .container-detail .item-des-small::before {
   content: '• ';
   /* ใช้เครื่องหมาย bullet */
@@ -323,18 +324,23 @@ body {
   /* ตำแหน่งจากซ้าย */
 }
 
-.container-category:last-child{
+.container-category:last-child {
   padding-bottom: 30px;
 }
 
-.textsearch-box{
+.textsearch-box {
   display: none;
 }
 
-.textsearch-box.active{
+.textsearch-box.active {
   display: flex;
 }
 
-.seleced-box.hide,.fav-box.hide{
+.seleced-box.hide,
+.fav-box.hide {
+  display: none;
+}
+
+::-webkit-scrollbar {
   display: none;
 }

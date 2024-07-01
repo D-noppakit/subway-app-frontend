@@ -44,13 +44,19 @@ export default function Checkout() {
                 </main>
             </div>
             <div className="h-very-small:h-[450px] h-small:h-[525px] h-half-medium:h-[630px] h-tall:h-[680px] h-very-tall:h-[700px] overflow-y-scroll">
-                <div className="w-full p-5 h-[385px] mt-[15px]">
+                <div className="w-full px-5 min-h-[385px] mt-[15px]">
                     <span className="text-[#0C8A44] text-[16px] font-bold">สรุปรายการ</span>
                     <div className="gap-[10px] mt-[10px] flex flex-col h-[300px] overflow-y-scroll">
                         <CardListItemSummary />
                         <CardListItemSummary />
                         <CardListItemSummary />
-
+                        <CardListItemSummary />
+                        <CardListItemSummary />
+                        <div className="w-full flex justify-center items-center mt-[15px]">
+                            <div className="bg-[#FF8A0038] rounded-[100px] flex justify-center items-center text-[#FF8A00] w-2/5 h-[30px]">
+                                <span>Add menu</span>
+                            </div>
+                        </div>
                     </div>
                 </div>
                 <OptionalMenu />
