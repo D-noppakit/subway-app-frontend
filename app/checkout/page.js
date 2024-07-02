@@ -42,6 +42,8 @@ export default function Checkout() {
     useEffect(() => {
         resetDiscountInfo()
         handleCart(Cart)
+        console.log(ListOrderTotal);
+        console.log(Cart);
     }, [])
     return (
         <div className="h-full">
